@@ -1,0 +1,21 @@
+{% extends 'dashboard_app/base_dashboard_teacher.html' %}
+{% block body_block %}
+<div class="container">
+<h1>Draft Posts</h1>
+<ul>
+    {% for post in posts %}
+        <li>
+            <strong>{{ post.title }}</strong><br>
+            {{ post.text|truncatewords:20 }}<br>
+            <em>Created on: {{ post.created_date }}</em><br>
+            {% if user.is_authenticated %}
+                <a class="btn btn-warning" href="{% url 'post_edit' pk=post.pk %}">Edit</a>
+                <a class="btn btn-success" href="{% url 'post_publish' pk=post.pk %}">Publish</a>
+            {% endif %}
+        </li>
+    {% empty %}
+        <li>No draft posts available.</li>
+    {% endfor %}
+</ul>
+</div>
+{% endblock %}

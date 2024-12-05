@@ -1,0 +1,92 @@
+{% extends 'dashboard_app/base_dashboard_teacher.html' %}
+{% load static %}
+{% block head_block %}
+<link rel="stylesheet" href="{% static 'css/teachers_dashboard.css' %}">
+
+{% endblock %}
+{% block body_block %}
+<section class="container-fluid" style="background-color: #FFF3E4;">
+    <div class="row align-items-center">
+      
+      <div class="col-md-6 offset-md-1">
+        <div class="welcome-banner d-flex justify-content-between align-items-center">
+          
+          <div class="text-section">
+            <h2>Welcome back, Teacher!</h2>
+            <p>Always stay updated in your student portal</p>
+          </div>
+          <img src="{% static '/img/talentnew.png'%}" alt="talent" width="150" height="auto" class="img-fluid rounded">  
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section class="container-fluid" style="background-color: #FFF3E4;">
+    <div class="row align-items-center">
+      <div class="col-md-5 offset-md-1">
+        <h2>Your Schedule Teaching</h2>
+        <div class="schedule-cardds">
+          <div class="cardd">
+            <div class="cardd-content">
+              <span class="ri-user-3-line"> Mayang </span>
+              <small>Biologi | 01.00 PM</small>
+            </div>
+          </div>
+          <div class="cardd">
+            <div class="cardd-content">
+              <span class="ri-user-3-line"> Rendi </span>
+              <small>Kimia | 02.40 PM</small>
+            </div>
+          </div>
+          <div class="cardd">
+            <div class="cardd-content">
+              <span class="ri-user-3-line"> Farel </span>
+              <small>Fisika | 04.00 PM</small>
+            </div>
+          </div>
+          <div class="cardd">
+            <div class="cardd-content">
+              <span class="ri-user-3-line"> Mayang </span>
+              <small>Biologi | 01.00 PM</small>
+            </div>
+          </div>
+          <div class="cardd">
+            <div class="cardd-content">
+              <span class="ri-user-3-line"> Rendi </span>
+              <small>Kimia | 02.40 PM</small>
+            </div>
+          </div>
+        </div>
+      </div>
+  </section>
+  
+  <section class="container-fluid" style="background-color: #FFF3E4;">
+      <div class="row align-items-center my-4">
+          <div class="col-md-5 offset-md-1">
+              <h4>Perbarui Iklan Promosi</h4>
+              <div class="promo-box">
+                  <form id="promo-form">
+                      <label for="promo-title">Judul Iklan:</label>
+                      <input type="text" id="promo-title" class="form-control mb-3" placeholder="Masukkan judul iklan" required>
+                      <label for="promo-description">Deskripsi Iklan:</label>
+                      <textarea id="promo-description" class="form-control mb-3" rows="3" placeholder="Masukkan deskripsi iklan" required></textarea>
+                      <button type="submit" class="btn btn-primary">Perbarui Iklan</button>
+                  </form>
+              </div>
+          </div>
+  
+          <div class="col-md-5">
+              <h4>Pantau Pembelajaran Murid</h4>
+              <div class="monitoring-box">
+                  <h5>Progress Murid:</h5>
+                  <ul id="student-progress">
+                      <li><strong>Mayang:</strong> Biologi - 80% selesai</li>
+                      <li><strong>Rendi:</strong> Kimia - 60% selesai</li>
+                      <li><strong>Farel:</strong> Fisika - 90% selesai</li>
+                  </ul>
+                  <button type="submit" class="btn btn-primary">Tambah Progress</button>
+              </div>
+          </div>
+      </div>
+  </section>
+{% endblock %}

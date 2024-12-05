@@ -1,0 +1,67 @@
+{% extends 'user_app/base.html' %}
+{% load static %}
+{% block head_block%}
+<link rel="stylesheet" href="{% static 'css/faq.css' %}">
+<script defer src="{% static 'js/faq.js'%}"></script>
+{% endblock %}
+{% block body_block %}
+<div class="faq-container">
+  <h1 class="mb-4 text-center">Frequently Asked Questions</h1>
+
+  <!-- Category Buttons -->
+  <div class="btn-group mb-4 d-flex justify-content-center" role="group" aria-label="FAQ Categories">
+        <button type="button" class="btn btn-outline-primary" onclick="showFAQ('umum')">Umum</button>
+        <button type="button" class="btn btn-outline-primary" onclick="showFAQ('guru')">Untuk Guru</button>
+        <button type="button" class="btn btn-outline-primary" onclick="showFAQ('murid')">Untuk Murid</button>
+  </div>
+
+  <!-- FAQ Sections -->
+  <div id="faq-umum" class="faq-section">
+      <h2>Umum</h2>
+      <div class="faq-item">
+          <h3 class="faq-question">Apa itu EduTeach?</h3>
+          <div class="faq-answer">EduTeach adalah all-in-one platform untuk pelatihan calon guru dan menyediakan layanan untuk mencari mentor olimpiade terpercaya.</div>
+      </div>
+      <div class="faq-item">
+          <h3 class="faq-question">Bagaimana cara menghubungi kami?</h3>
+          <div class="faq-answer">Anda dapat menghubungi kami melalui halaman Contact Us</div>
+      </div>
+      <div class="faq-item">
+          <h3 class="faq-question">Siapa saja yang bisa menggunakan Eduteach?</h3>
+          <div class="faq-answer">Semua siswa, guru, dan sekolah yang ingin meningkatkan kualitas pembelajaran. </div>
+      </div>
+  </div>
+
+  <div id="faq-guru" class="faq-section" style="display: none;">
+      <h2>Untuk Guru</h2>
+      <div class="faq-item">
+          <h3 class="faq-question">Bagaimana cara mendaftar sebagai mentor?</h3>
+          <div class="faq-answer">Anda bisa mendaftar melalui halaman 'For Teacher' di situs kami dan mengisi formulir pendaftaran sebagai mentor.</div>
+      </div>
+      <div class="faq-item">
+          <h3 class="faq-question">Kriteria apa yang dibutuhkan untuk menjadi mentor?</h3>
+          <div class="faq-answer">Anda harus memiliki pengalaman mengajar dan pengetahuan yang mendalam di bidang yang relevan, khususnya olimpiade sains.</div>
+      </div>
+      <div class="faq-item">
+          <h3 class="faq-question">Apakah mentor mendapatkan insentif?</h3>
+          <div class="faq-answer">Ya, mentor akan mendapatkan insentif sesuai dengan jumlah kelas yang mereka ajar dan performa mereka.</div>
+      </div>
+  </div>
+
+  <div id="faq-murid" class="faq-section" style="display: none;">
+      <h2>Untuk Murid</h2>
+      <div class="faq-item">
+          <h3 class="faq-question">Bagaimana cara mendaftar kursus olimpiade?</h3>
+          <div class="faq-answer">Anda bisa mendaftar kursus melalui halaman 'For Student' dan memilih kursus yang sesuai dengan kebutuhan Anda.</div>
+      </div>
+      <div class="faq-item">
+          <h3 class="faq-question">Apakah ada pembimbing khusus untuk tiap mata pelajaran?</h3>
+          <div class="faq-answer">Ya, setiap mata pelajaran olimpiade memiliki pembimbing yang ahli di bidangnya.</div>
+      </div>
+      <div class="faq-item">
+          <h3 class="faq-question">Apakah kursus ini bersifat online atau offline?</h3>
+          <div class="faq-answer">Kursus olimpiade kami tersedia secara online, sehingga Anda bisa mengikutinya dari mana saja.</div>
+      </div>
+  </div>
+</div>
+{% endblock %}

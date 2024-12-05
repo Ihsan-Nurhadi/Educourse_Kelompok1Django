@@ -1,0 +1,96 @@
+/* buttons filter training*/
+  h2{
+    font-size: 40px;
+    color: #F48C06;
+  }
+  .training{
+    margin-top: 2em;
+  }
+
+  .buttons {
+    margin-top: 1em;
+    padding-left: 20px;
+  }
+  
+  .button-value {
+    border: 2px solid #FFBD73;
+    padding: 1em 2.2em;
+    border-radius: 3em;
+    background-color: transparent;
+    color: #FFBD73;
+    cursor: pointer;
+  } 
+  
+  .active {
+    background-color: #FFBD73;
+    color: #fff;
+  }
+  
+  #products {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-column-gap: 20px;
+    padding: 2em 0;
+    margin-left: 20px;
+  }
+  
+  .card {
+    background-color: #fff;
+    max-width: 25em;
+    margin-top: 1em;
+    padding: 1em;
+    border-radius: 5px;
+    box-shadow: 1em 2em 2.5em rgba(1, 2, 68, 0.08);
+  }
+  
+  .cardd {
+    background-color: #fff;
+    margin-top: 1em;
+    padding: 1em;
+    border-radius: 5px;
+    box-shadow: 1em 2em 2.5em rgba(1, 2, 68, 0.08);
+  }
+   
+  .image-container {
+    text-align: center;
+  }
+  
+  img {
+    max-width: 100%;
+    object-fit: contain;
+  }
+  
+  .container {
+    padding-top: 1em;
+    color:#1b1b3a;
+  }
+  
+  .container h5 {
+    font-weight: 500;
+  }
+  
+  .hide {
+    display: none;
+  }
+  
+  #asteacher {
+    background-image: url(../img/pencil-782755_1280.jpg);
+    background-size: cover;
+  }
+  
+  @media screen and (max-width: 720px) {
+    img {
+      max-width: 100%;
+      object-fit: contain;
+      height: 10em;
+    }
+    .card {
+      max-width: 10em;
+      margin-top: 1em;
+    }
+    #products {
+      grid-template-columns: auto auto;
+      grid-column-gap: 1em;
+    }
+  }
+  

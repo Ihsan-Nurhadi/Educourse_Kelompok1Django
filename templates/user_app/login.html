@@ -1,0 +1,53 @@
+{% extends 'user_app/base.html' %}
+{% load static %}
+{% block head_block %}
+<link rel="stylesheet" href="{% static 'css/login.css' %}">
+<script defer src="{% static 'js/login.js'%}"></script>
+{% endblock %}
+
+{% block body_block %}
+<div class="row">
+  <div class="login-form-container">
+      <h2 id="heading">Login Your Account!</h2>
+      <form method="POST" action="{% url 'user_app:login_view' %}">
+        {% csrf_token %}
+
+        <!-- Menyisipkan Form dari login1 di sini -->
+        <div class="form-block">
+          <span class="mb-0 text-muted">
+            {% if msg %}
+              {{ msg | safe }}
+            {% else %}
+            {% endif %}
+          </span>
+
+          <!-- Username -->
+          <div class="form-group first">
+            <label for="username">Username</label>
+            {{ form.username }}
+          </div>
+
+          <!-- Password -->
+          <div class="form-group last mb-4">
+            <label for="password">Password</label>
+            {{ form.password }}
+          </div>
+
+          <!-- Remember me checkbox -->
+          <div class="d-flex mb-5 align-items-center">
+            <label class="control control--checkbox mb-0">
+              <span class="caption">Remember me</span>
+              <input type="checkbox" checked="checked"/>
+              <div class="control__indicator"></div>
+            </label>
+            <span class="ml-auto"><a href="#" class="forgot-pass">Forgot Password</a></span>
+          </div>
+
+          <!-- Submit button -->
+          <input type="submit" value="Log In" class="btn btn-pill text-white btn-block btn-primary">
+        </div>
+      </form>
+    </div>
+</div>
+
+{% endblock %}

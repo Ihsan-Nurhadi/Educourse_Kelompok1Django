@@ -1,0 +1,36 @@
+{% extends 'dashboard_app/base_dashboard_student.html' %}
+{% load static %}
+{% block head_block %}
+<link rel="stylesheet" href="{% static 'css/updateprofile.css' %}">
+{% endblock %}
+{% block body_block %}
+<div class="component">
+    <form method="post" enctype="multipart/form-data">
+    <h2>Update Your Profile</h2>
+    {% csrf_token %}
+    <div>
+        <label for="username">Username:</label>
+        {{ user_form.username }}
+    </div>
+
+    <div>
+        <label for="email">Email:</label>
+        {{ user_form.email }}
+    </div>
+
+    <div>
+        <label for="portofolio_site">Portfolio Site:</label>
+        {{ profile_form.portofolio_site }}
+    </div>
+
+    <div>
+        <label for="profile_pic">Profile Picture:</label>
+        {{ profile_form.profile_pic }}
+    </div>
+
+    <button type="submit">Save Changes</button>
+    <a href="{% url 'user_app:studentprofile' %}">Cancel</a>
+    </form>
+</div>
+
+{% endblock %}

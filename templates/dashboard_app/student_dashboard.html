@@ -1,0 +1,161 @@
+{% extends 'dashboard_app/base_dashboard_student.html' %}
+{% load static %}
+{% block head_block%}
+<link rel="stylesheet" href="{% static 'css/student_dashboard.css' %}">
+<script>
+  const staticUrl = "{% static '' %}";
+</script>
+{% endblock %}
+{% block body_block%}
+<h1 class="poppins-langganan" style="text-align: center;">Berlangganan <span style="color: #F48C06;">Produk</span> <br>EduTeach</h1>
+<section class="menu">
+    <div class="rounded-pill text-white custom-pill">
+      Domisili</div>
+    <div class="rounded-pill text-white custom-pill">
+      Harga</div>
+    <div class="rounded-pill text-white custom-pill">
+      Bahasa</div>
+    </div>
+    <div class="rounded-pill text-white custom-pill">
+      Metode</div>
+    </div>
+</section>
+
+
+<div class="container">
+  <aside class="aside" style="background-color: #FFF3E4;">
+      <h2 class="poppins-mapel">Pilih Mata Pelajaran</h2>
+      <label class="filter-item"onclick="filterContent('All')">
+        <input type="radio" name="filter" value="official-store">
+        <span>All</span>
+      </label>
+    
+      <label class="filter-item"onclick="filterContent('Kimia')">
+        <input type="radio" name="filter" value="power-merchant-pro">
+        <span> Kimia</span>
+      </label>
+    
+      <label class="filter-item"onclick="filterContent('Biologi')">
+        <input type="radio" name="filter" value="power-merchant">
+        <span>Biologi</span>
+      </label>
+
+      <label class="filter-item"onclick="filterContent('Fisika')">
+        <input type="radio" name="filter" value="power-merchant">
+        <span>Fisika</span>
+      </label>
+
+      <label class="filter-item"onclick="filterContent('Matematika')">
+        <input type="radio" name="filter" value="power-merchant">
+        <span>Matematika</span>
+      </label>
+  </aside>
+  <div class="main-content" style="max-height: 600px; overflow-y: auto; background-color: #2F327D;">
+    <div id="teacher-list" style="background-color: #2F327D;"></div>
+  </div>
+</div>
+
+<br>
+
+<h1 style="padding: 3%; text-align: center;">Student Success Stories</h1>
+<div id="studentStoriesCarousel" class="carousel slide" data-bs-ride="carousel">
+  <!-- Carousel Inner -->
+  <div class="carousel-inner">
+    <!-- Slide Pertama -->
+    <div class="carousel-item active">
+      <div class="d-flex justify-content-center">
+        <div class="card mx-2" style="width: 18rem;">
+          <img src="{% static '/img/student1.jpg'%}" class="card-img-top" alt="Student 1">
+          <div class="card-body text-center">
+            <h5 class="card-title">Dinda, SMA 1 Jakarta</h5>
+            <p class="card-text">"Kursus ini sangat membantu saya dalam memahami konsep-konsep sulit di Fisika Olimpiade!"</p>
+            <span class="badge bg-success">Rating 4.5/5</span>
+          </div>
+        </div>
+
+        <div class="card mx-2" style="width: 18rem;">
+          <img src="{% static '/img/student3.jpg'%}" class="card-img-top" alt="Student 3">
+          <div class="card-body text-center">
+            <h5 class="card-title">Rizky, SMA 2 Bandung</h5>
+            <p class="card-text">"Saya berhasil lolos ke Olimpiade Nasional berkat bimbingan yang saya dapatkan di kursus ini."</p>
+            <span class="badge bg-success">Rating 5/5</span>
+          </div>
+        </div>
+
+        <div class="card mx-2" style="width: 18rem;">
+          <img src="{% static '/img/student2.jpg'%}" class="card-img-top" alt="Student 2">
+          <div class="card-body text-center">
+            <h5 class="card-title">Sarah, SMA 5 Surabaya</h5>
+            <p class="card-text">"Materi dan latihan yang diberikan sangat sesuai dengan kompetisi di tingkat nasional."</p>
+            <span class="badge bg-success">Rating 4.7/5</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide Kedua -->
+    <div class="carousel-item">
+      <div class="d-flex justify-content-center">
+        <div class="card mx-2" style="width: 18rem;">
+          <img src="{% static '/img/student4.jpg'%}" class="card-img-top" alt="Student 4">
+          <div class="card-body text-center">
+            <h5 class="card-title">Sarah, SMA 2 Surabaya</h5>
+            <p class="card-text">"Kursus ini sangat membantu saya dalam memahami konsep-konsep sulit di Fisika Olimpiade!"</p>
+            <span class="badge bg-success">Rating 4.5/5</span>
+          </div>
+        </div>
+
+        <div class="card mx-2" style="width: 18rem;">
+          <img src="{% static '/img/student5.jpg'%}" class="card-img-top" alt="Student 5">
+          <div class="card-body text-center">
+            <h5 class="card-title">Diva, SMA 1 Surakarta</h5>
+            <p class="card-text">"Saya berhasil lolos ke Olimpiade Nasional berkat bimbingan yang saya dapatkan di kursus ini."</p>
+            <span class="badge bg-success">Rating 5/5</span>
+          </div>
+        </div>
+
+        <div class="card mx-2" style="width: 18rem;">
+          <img src="{% static '/img/student6.jpg'%}" class="card-img-top" alt="Student 6">
+          <div class="card-body text-center">
+            <h5 class="card-title">Cintya, SMA 2 Surabaya</h5>
+            <p class="card-text">"Saya berhasil lolos ke Olimpiade Nasional berkat bimbingan yang saya dapatkan di kursus ini."</p>
+            <span class="badge bg-success">Rating 5/5</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#studentStoriesCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#studentStoriesCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+</div>
+
+<br>
+
+<div class="p-5 mb-4 mt-5 rounded-3 custom-iklan" style="background-color: #FFBD73">
+  <div class="container-fluid py-5">
+    <div class="row align-items-center">
+      <!-- Kolom Kiri (Teks dan Button) -->
+      <div class="col-md-6">
+        <h1 class="poppins-mulai">Mulai belajar bersama kami <br> untuk raih prestasi terbaikmu</h1>
+        <p class="poppins-apakah">Apakah kamu siap menjadi juara OSN dan meraih prestasi nasional?
+          <br>Yuk, gabung bersama kami dan persiapkan dirimu sebaik mungkin!</p>
+        <button class="btn btn-lg btn-daftar" type="button">Daftar Sekarang</button>
+        <button class="btn btn-lg btn-lihat" type="button">Lihat paket</button> <!-- Button tambahan -->
+      </div>
+
+      <div class="posisi-gambar">
+        <img src="{% static '/img/vector.png'%}" alt="Deskripsi Gambar" class="img-fluid rounded">
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock%}
+{% block jsblock%}
+<script src="{% static 'js/student.js' %}"></script>
+{% endblock %}

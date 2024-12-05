@@ -1,0 +1,22 @@
+{% extends 'dashboard_app/base_dashboard_teacher.html' %}
+{% load static %}
+{% block head_block %}
+<link rel="stylesheet" href="{% static 'css/profile.css' %}">
+{% endblock %}
+{% block body_block %}
+
+<div class="component">
+    <div class="profile_pic">
+    <h1>Profil Guru</h1>
+    {% if user_profile.profile_pic %}
+    <img src="{{ user_profile.profile_pic.url }}" alt="Profile Picture">
+    {% else %}
+    <p>No profile picture available.</p>
+    {% endif %}
+    </div>
+    <div class="details">
+    <p>Nama: {{ user_profile.username }}</p>
+    <p>Email: {{ user_profile.email }}</p>
+    </div>
+</div>
+{% endblock %}

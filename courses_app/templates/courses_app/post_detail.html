@@ -1,0 +1,66 @@
+{% extends 'dashboard_app/base_dashboard_student.html' %}
+{% load static %}
+{% block head_block %}
+<link rel="stylesheet" href="{% static 'css/post_detail.css' %}">
+{% endblock %}
+{% load embed_video_tags %}
+{% block body_block %}
+<!-- Post title -->
+<div class="py-3" style="background:#FFBD73;position: relative;">
+    <div class="container">
+        <a class="text-black" href="{% url 'user_app:studentdashboard' %}" style="font-size: 25px; text-decoration: none !important;"> Dashboard /</a>
+        <a class="text-black" href="{% url 'post_new' %}" style="font-size: 25px; text-decoration: none !important;"> My Courses /</a>
+        <a class="text-black" href="#" style="font-size: 25px; text-decoration: none !important;"> Publish </a>
+        <h1 class="post-title" >{{ post.title }}</h1>
+        <p class="post-content" style="font-size: 24px !important; ">
+        {{ post.text | safe | linebreaksbr }}
+        </p>
+    <!-- Post published date or publish button -->
+        {% if post.published_date %}
+        <div class="date post-date" style="font-size: 22px !important; margin-left: 5px !important;">{{ post.published_date }}</div>
+        {% else %}
+        <a class="btn btn-primary" href="{% url 'post_publish' pk=post.pk %}">Publish</a>
+        {% endif %}
+    </div>
+    <div class="block">
+        <!-- Thumbnail Image -->
+       {% if post.thumbnail %}
+        <img src="{{ post.thumbnail.url }}" alt="Thumbnail" style="width: 100%; height: auto;">
+       {% else %}
+        <p>No image available</p>
+       {% endif %}
+       <div class="post-price" style="font-size: 24px !important; margin-top: 20px; font-weight: bold;">
+        Price: Rp.{{ post.price }}
+       </div>
+       <button type="button" data-testid="add-to-cart-button" class="ud-btn ud-btn-large ud-btn-brand ud-heading-md add-to-cart" fdprocessedid="s2t4t5" style="width: 80%;">Tambahkan ke keranjang</button>
+   </div>
+</div>
+<br>
+<div class="item">
+    <!-- Video -->
+    {% if post.video %}
+    <!-- Menampilkan video -->
+    {% video post.video 'medium'%}
+    {% else %}
+    <p>No video found for this post.</p>
+    {% endif %}   
+    <p class="deskripsi">Contoh video pembelajaran</p>                 
+</div>
+<br>
+<h2>Classes for this Post:</h2>
+    <ul>
+        {% if classes %}
+            {% for class in classes %}
+                <li>
+                    <strong>{{ class.class_name }}</strong><br>
+                    <em>{{ class.text }}</em><br>
+                    {% if class.video %}
+                        <iframe width="560" height="315" src="{{ class.video.url }}" frameborder="0" allowfullscreen></iframe>
+                    {% endif %}
+                </li>
+            {% endfor %}
+        {% else %}
+            <li>No classes available for this post.</li>
+        {% endif %}
+    </ul>
+{% endblock %}

@@ -1,0 +1,189 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+.poppins-textcard {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 16px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+}
+.navbar-nav{
+  float:right;
+}
+.d {
+  float: left;
+  overflow: hidden;
+}
+.navbar a:hover, .d:hover {
+  background: #ffda7b;
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  width: 115%;
+  left: -15px;
+  right: 10px;
+  padding: 26px;
+}
+.d:hover .dropdown-content {
+  display: block;
+}
+.column {
+  width: 30%;
+  transition: transform 0.3s ease;
+  background-color:#FFF3E4;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.column .ilustrasi {
+  width: 50%;
+  transform: translateX(-14%);
+  margin-bottom: -17px;
+}
+.column a {
+  text-decoration: none;
+  color: #000000;
+  font-weight: bold;
+  display: block;
+  margin-left: -100px; 
+  margin-right: 150px;
+  margin-top: 40px;
+}
+.column h3 {
+  font-size: 20px;
+  cursor: pointer;
+}
+.column h6 {
+  color: #000000;
+  font-size: 15px;
+  cursor: pointer;
+}
+.row:after {
+content: '';
+clear: both;
+}
+@media(max-width: 650px){
+.column {
+  width: 100%;
+  height: auto;
+}
+}
+/* Footer */
+footer {
+  background-color: #1b1b3a;
+  padding: 40px 20px;
+  color: #fff;
+  text-align: center;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.footer-logo img {
+  width: 140px;
+  height: 80px;
+  margin-right: 10px;
+}
+
+.footer-logo .logo-text h1 {
+  font-size: 24px;
+  margin: 0;
+  color: #ffffff;
+}
+
+.footer-logo .logo-text p {
+  margin-top: 5px;
+  color: #b8b8d1;
+}
+
+.newsletter {
+  margin: 20px 0;
+}
+
+.newsletter p {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.newsletter form {
+  display: flex;
+  justify-content: center;
+}
+
+.newsletter input {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 30px;
+  width: 300px;
+  font-size: 16px;
+  outline: none;
+}
+
+.newsletter button {
+  padding: 10px 30px;
+  margin-left: 10px;
+  background-color: #4c52ff;
+  color: #fff;
+  border: none;
+  border-radius: 30px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.newsletter button:hover {
+  background-color: #6a72ff;
+}
+
+.footer-links {
+  margin: 20px 0;
+  color: #b8b8d1;
+}
+
+.footer-links a {
+  color: #b8b8d1;
+  margin: 0 10px;
+  text-decoration: none;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+}
+
+.footer-bottom {
+  margin-top: 20px;
+  font-size: 14px;
+  color: #8a8ab3;
+}
+
+/* Responsive layout - when the screen is less than 700px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 700px) {
+  .row {   
+    flex-direction: column;
+  }
+}
+
+/* Responsive layout - when the screen is less than 400px wide, make the navigation links stack on top of each other instead of next to each other */
+@media screen and (max-width: 400px) {
+  .navbar a {
+    float: none;
+    width: 100%;
+  }
+}

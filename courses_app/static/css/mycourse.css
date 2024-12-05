@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Mona+Sans:ital,wght@0,200..900;1,200..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Russo+One&display=swap');
+h2{
+    padding: 10px 20px;
+}
+.item{
+    margin: 20px 15%;
+}
+.item ul{
+    display: flex ;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin: 20px;
+}
+.item ul li{
+    background-color: rgb(255, 156, 115);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+    padding: 20px;
+}
+.item ul li:hover{
+    transform: scale(1.02);
+}

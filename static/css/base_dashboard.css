@@ -1,0 +1,308 @@
+/* sidebar css */
+*{
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  text-decoration: none;
+}
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #FFF2E1;
+}
+.sidebar {
+  position: fixed;
+  left: -250px;
+  width: 250px;
+  height: 100%;
+  background: #FFBD73;
+  transition: all .5s ease;
+}
+.sidebar header {
+  margin-top: 1em;
+  width: 100%;
+  color: rgb(0, 0, 0);
+  line-height: 70px;
+  text-align: center;
+  background: #FFBD73;
+  user-select: none;
+}
+.sidebar ul a{
+  display: block;
+  height: 100%;
+  width: 100%;
+  line-height: 65px;
+  font-size: 20px;
+  color: rgb(0, 0, 0);
+  padding-left: 40px;
+  box-sizing: border-box;
+  border-top: 1px solid rgba(255,255,255,.1);
+  transition: .4s;
+}
+ul li:hover a{
+  padding-left: 50px;
+}
+.sidebar ul a i{
+  margin-right: 16px;
+}
+#check{
+  display: none;
+}
+label #btn,label #cancel{
+  position: absolute;
+  background: #FFBD73;
+  border-radius: 3px;
+  cursor: pointer;
+}
+label #btn{
+  left: 20px;
+  top: 15px;
+  font-size: 35px;
+  color: rgb(0, 0, 0);
+  padding: 6px 12px;
+  transition: all .5s;
+}
+label #cancel{
+  z-index: 1111;
+  left: -195px;
+  top: 50px;
+  font-size: 30px;
+  color: #000000;
+  padding: 4px 9px;
+  transition: all .5s ease;
+}
+#check:checked ~ .sidebar{
+  left: 0;
+}
+#check:checked ~ label #btn{
+  left: 250px;
+  opacity: 0;
+  pointer-events: none;
+}
+#check:checked ~ label #cancel{
+  left: 195px;
+}
+#check:checked ~ section{
+  margin-left: 250px;
+}
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+    .sidebar {
+        width: 50%;
+    }
+}
+
+/* Footer */
+footer {
+  background-color: #1b1b3a;
+  padding: 40px 20px;
+  color: #fff;
+  text-align: center;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.footer-logo img {
+  width: 140px;
+  height: 80px;
+  margin-right: 10px;
+}
+
+.footer-logo .logo-text h1 {
+  font-size: 24px;
+  margin: 0;
+  color: #ffffff;
+}
+
+.footer-logo .logo-text p {
+  margin-top: 5px;
+  color: #b8b8d1;
+}
+
+.newsletter {
+  margin: 20px 0;
+}
+
+.newsletter p {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.newsletter form {
+  display: flex;
+  justify-content: center;
+}
+
+.newsletter input {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 30px;
+  width: 300px;
+  font-size: 16px;
+  outline: none;
+}
+
+.newsletter button {
+  padding: 10px 30px;
+  margin-left: 10px;
+  background-color: #4c52ff;
+  color: #fff;
+  border: none;
+  border-radius: 30px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.newsletter button:hover {
+  background-color: #6a72ff;
+}
+
+.footer-links {
+  margin: 20px 0;
+  color: #b8b8d1;
+}
+
+.footer-links a {
+  color: #b8b8d1;
+  margin: 0 10px;
+  text-decoration: none;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+}
+
+.footer-bottom {
+  margin-top: 20px;
+  font-size: 14px;
+  color: #8a8ab3;
+}
+
+/* Responsive layout - when the screen is less than 700px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 700px) {
+  .row {   
+    flex-direction: column;
+  }
+}
+
+/* Responsive layout - when the screen is less than 400px wide, make the navigation links stack on top of each other instead of next to each other */
+@media screen and (max-width: 400px) {
+  .navbar a {
+    float: none;
+    width: 100%;
+  }
+}
+/*navbar flex  */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+.poppins-textcard {
+font-family: "Poppins", sans-serif;
+font-weight: 600;
+font-style: normal;
+font-size: 16px;
+}
+
+* {
+box-sizing: border-box;
+}
+
+body {
+font-family: Arial, Helvetica, sans-serif;
+margin: 0;
+}
+/* navbar */
+.containerr {
+  margin-top: 1em;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  align-items: center;
+  text-align: left;
+  padding: 10px;
+  background-color:  #FFF2E1;
+}
+
+.nav {
+  background-color: #FFF2E1;
+  padding: 10px;
+  text-align: right;
+}
+
+.nav a {
+  margin-left: 10px;
+  text-decoration: none;
+  color: #333;
+}
+
+.nav a:hover {
+  text-decoration: underline;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  align-items: center;
+}
+
+.nav-links li {
+  margin-right: 40px;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+}
+
+.nav-links li a:hover {
+  color: #FF9900;
+}
+
+.icons {
+  display: flex;
+  align-items: center;
+}
+
+.icons i {
+  margin-right: 10px;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.icons i:hover {
+  color: #FF9900;
+}
+
+.button {
+  background-color: #FF9900;
+  color: #FFFFFF;
+  padding: 10px 25px;
+  border-radius: 20px;
+  border: 2px solid #FF9900;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.button:hover {
+  background-color: #FFCC66;
+}
+@media(max-width: 650px){
+.column {
+  width: 100%;
+  height: auto;
+}
+}
+

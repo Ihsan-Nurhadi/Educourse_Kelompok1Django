@@ -1,0 +1,59 @@
+/*FAQ */
+.faq-container {
+  max-width: 900px;
+  text-align: center;
+  margin: auto;
+  background: #ffffff;
+  padding: 20px;
+  margin-bottom: 100px;
+  margin-top: 100px;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+}
+
+.faq-container:hover {
+  transform: scale(1.02);
+}
+
+.faq-item {
+  margin-bottom: 15px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.faq-question {
+  cursor: pointer;
+  background: #ff8200;
+  color: white;
+  padding: 15px;
+  border: none;
+  text-align: left;
+  font-size: 18px;
+}
+
+.faq-question:hover {
+  background:#ff9d3f;
+}
+
+.faq-answer {
+  display: none;
+  padding: 15px;
+  background: #f7f9fc;
+  border-top: 1px solid #e0e0e0;
+
+}
+.btn-group .btn {
+  width: 150px;
+  margin: 0 5px;
+  background-color: #ff8200; 
+  color: white; 
+  border: 1px solid #ff8200; /* Sesuaikan dengan warna latar belakang */
+}
+
+.btn-group .btn:hover {
+  background-color: #ff9d3f; /* Warna biru lebih gelap saat hover */
+  border-color:#ff9d3f;
+  color: white; /* Warna teks tetap putih */
+}

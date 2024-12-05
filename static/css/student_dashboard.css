@@ -1,0 +1,507 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+.poppins-langganan{
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 42px; 
+  color: #2F327D;
+  margin-top: 60px;
+}
+
+.poppins-textcard {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 16px;
+}
+
+.poppins-mapel{
+  color: #2F327D;
+  font-family: "Poppins", sans-serif;
+  font-weight: bold;
+  font-style: normal;
+  font-size: 26px;
+  margin-top: 30px;
+}
+
+.poppins-mulai{
+  color: #2F327D;
+  font-family: "Poppins", sans-serif; 
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.poppins-apakah{
+  color: #2F327D;
+  font-family: "Poppins", sans-serif; 
+  font-size: 16px;
+  margin-top: 20px;
+}
+
+.posisi-gambar {
+  position: relative;
+}
+
+.posisi-gambar img {
+  position: absolute;
+  left: 490px;
+  top: -255px;
+}
+
+.custom-iklan {
+  overflow: hidden;
+  width: 1267px;
+  height: 400px;
+  margin: auto; /* Menempatkan di tengah */
+  padding-top: 90px; /* Mengatur padding */
+  border: 2px solid #dee2e6; /* Menambahkan border */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Memberikan bayangan */
+}
+
+.btn-daftar {
+  text-align: center;
+  font-size: 14px;
+  background-color: #2F327D;
+  width: 162px;
+  height: 38px;
+  border-radius: 80px;
+  border-color: #2F327D;
+  color: #ffffff; 
+  font-family: "Poppins", sans-serif;
+}
+
+.btn-daftar:hover {
+  color: #ffffff;
+  background-color: #4a4c8a; /* Warna saat di-hover */
+}
+
+.btn-lihat {
+  width: 162px;
+  height: 38px;
+  border: 2px solid #2F327D;
+  background-color: transparent;
+  font-size: 14px;
+  color: #2F327D; /* Warna teks biru */
+  border-radius: 80px;
+  font-weight: bold;
+  font-family: "Poppins", sans-serif;;
+  
+}
+
+.btn-lihat:hover {
+  color: #ffffff;
+  border: 2px solid #2F327D;
+}
+
+.custom-pill {
+  background-color: #F48C06;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  width: 253px;
+  height: 54px; 
+  text-align: center; 
+  display: flex; 
+  justify-content: center;
+  align-items: center; 
+  font-size: 16px;
+  color: #fff; /* Warna teks */
+  border-radius: 30px; /* Sudut lebih membulat */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Bayangan */
+  transition: transform 0.3s, box-shadow 0.3s; /* Transisi */
+}
+
+.custom-pill:hover {
+  background: linear-gradient(90deg, #F48C06, #FFA726); /* Gradien saat hover */
+  transform: translateY(-3px); /* Sedikit mengangkat */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Bayangan lebih besar */
+}
+
+
+
+* {
+    box-sizing: border-box;
+ }
+  
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+}
+  /* Navbar*/
+.navbar-nav{
+    float:right;
+}
+.d {
+  float: left;
+  overflow: hidden;
+}
+.navbar a:hover, .d:hover {
+  background: #ffda7b;
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  width: 115%;
+  left: -15px;
+  right: 10px;
+  padding: 26px;
+}
+.d:hover .dropdown-content {
+  display: block;
+}
+.column {
+  width: 30%;
+  transition: transform 0.3s ease;
+  background-color:#FFF3E4;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.column .ilustrasi {
+  width: 50%;
+  transform: translateX(-14%);
+  margin-bottom: -17px;
+}
+.column a {
+  text-decoration: none;
+  color: #000000;
+  font-weight: bold;
+  display: block;
+  margin-left: -100px; 
+  margin-right: 150px;
+  margin-top: 40px;
+}
+.column h3 {
+  font-size: 20px;
+  cursor: pointer;
+}
+.column h6 {
+  color: #000000;
+  font-size: 15px;
+  cursor: pointer;
+}
+.row:after {
+content: '';
+clear: both;
+}
+@media(max-width: 650px){
+.column {
+  width: 100%;
+  height: auto;
+}
+}
+.button {
+  border:none;
+  color:white;
+  background-color: #F48C06;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+.menu{
+  max-width: 1400px; 
+  display: flex;
+  margin: 30px auto;
+  justify-content: space-around;
+  padding: 20px;
+}
+.menu-item{
+  width: 300px;
+  height: 54px;
+  color:black;
+  box-shadow: 0 2px 6px 0 rgba(0,0,0,0.2);
+  border-radius: 10%;
+  transition: 0.3s;
+}
+.menu-item:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+.container {
+  display: flex;
+  flex-direction: row;
+  max-width: 1200px;
+  min-height: 70vh; /* Full height */
+  margin:  auto;
+  padding-left: 0 !important;
+  box-shadow: 0 2px 6px 0 rgba(0,0,0,0.2);
+}
+
+/* Main content area */
+.main-content {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  padding: 20px;
+  background-color: white;
+}
+
+/* Aside panel */
+.aside {
+  flex-basis: 250px; /* Fixed width */
+  background-color: #f1f1f1;
+  color: black;
+  padding: 20px;
+}
+/* Aside Button */
+.filter-item {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.filter-item input[type="radio"] {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #333;
+  border-radius: 4px;
+  margin-right: 8px;
+  position: relative;
+}
+
+.filter-item input[type="radio"]:checked {
+  background-color: #333;
+}
+
+.filter-item input[type="radio"]:checked::after {
+  content: "✔";
+  font-size: 12px;
+  color: white;
+  position: absolute;
+  top: 2px;
+  left: 4px;
+}
+.card{
+  width: 100%;
+  margin-top: 20px;
+  padding: 40px;
+  background-color: #FFF3E4;
+  box-shadow: 0 2px 6px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  font-family: "Poppins", sans-serif; font-weight: 400;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+.card.hidden {
+  display: none;
+}
+/*Testimonials*/
+/* Styling untuk container utama */
+.carousel-inner {
+  padding: 20px; /* Jarak dalam carousel */
+}
+
+/* Styling untuk kartu */
+.card {
+  border-radius: 15px; /* Sudut bulat */
+  border: none; /* Tanpa border */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Bayangan untuk kedalaman */
+  transition: transform 0.3s ease; /* Transisi saat hover */
+}
+
+/* Efek hover pada kartu */
+.card:hover {
+  transform: translateY(-5px); /* Mengangkat kartu sedikit saat hover */
+}
+
+/* Styling untuk gambar pada kartu */
+.card-img-top {
+  border-radius: 50%; /* Gambar bulat */
+  width: 150px; /* Lebar gambar */
+  height: 150px; /* Tinggi gambar */
+  object-fit: cover; /* Memastikan gambar tidak terdistorsi */
+  margin: 0 auto; /* Mengatur margin otomatis untuk pusat */
+  margin-bottom: 20px; /* Jarak bawah */
+}
+
+.btn-custom{
+  background-color: #F48C06;
+  font-family: "Poppins", sans-serif; color: #ffffff;
+}
+
+/* Styling untuk badge */
+.badge {
+  background-color: #00bfa5; /* Warna latar badge */
+  color: white; /* Warna teks badge */
+  padding: 10px; /* Padding badge */
+  border-radius: 20px; /* Sudut bulat badge */
+}
+
+/* Responsif untuk layar kecil */
+@media (max-width: 768px) {
+  .card {
+    width: 90%; /* Lebar kartu di layar kecil */
+    margin-bottom: 20px; /* Jarak bawah kartu */
+  }
+}
+/* Styling untuk tombol kontrol carousel */
+.carousel-control-prev,
+.carousel-control-next {
+    width: 50px; /* Lebar tombol */
+    height: 50px; /* Tinggi tombol */
+    background-color: rgba(255, 255, 255, 0.7); /* Warna latar belakang semi-transparan */
+    border-radius: 50%; /* Membuat tombol berbentuk bulat */
+    border: none; /* Tanpa border */
+    transition: background-color 0.3s ease; /* Efek transisi saat hover */
+    z-index: 10; /* Pastikan tombol di atas carousel */
+}
+
+/* Efek hover pada tombol kontrol */
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+    background-color: rgba(255, 255, 255, 1); /* Warna latar belakang penuh saat hover */
+}
+
+/* Styling untuk ikon kontrol */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: #000; /* Warna ikon */
+    border-radius: 50%; /* Membuat ikon berbentuk bulat */
+}
+
+/* Mengatur ukuran ikon */
+.carousel-control-prev-icon {
+    width: 20px; /* Lebar ikon */
+    height: 20px; /* Tinggi ikon */
+}
+
+.carousel-control-next-icon {
+    width: 20px; /* Lebar ikon */
+    height: 20px; /* Tinggi ikon */
+}
+
+/* Menyesuaikan tampilan pada layar kecil */
+@media (max-width: 768px) {
+    .carousel-control-prev,
+    .carousel-control-next {
+        width: 40px; /* Lebar tombol lebih kecil di layar kecil */
+        height: 40px; /* Tinggi tombol lebih kecil di layar kecil */
+    }
+
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+        width: 15px; /* Lebar ikon lebih kecil di layar kecil */
+        height: 15px; /* Tinggi ikon lebih kecil di layar kecil */
+    }
+}
+
+/* Footer */
+footer {
+  background-color: #1b1b3a;
+  padding: 40px 20px;
+  color: #fff;
+  text-align: center;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.footer-logo img {
+  width: 140px;
+  height: 80px;
+  margin-right: 10px;
+}
+
+.footer-logo .logo-text h1 {
+  font-size: 24px;
+  margin: 0;
+  color: #ffffff;
+}
+
+.footer-logo .logo-text p {
+  margin-top: 5px;
+  color: #b8b8d1;
+}
+
+.newsletter {
+  margin: 20px 0;
+}
+
+.newsletter p {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.newsletter form {
+  display: flex;
+  justify-content: center;
+}
+
+.newsletter input {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 30px;
+  width: 300px;
+  font-size: 16px;
+  outline: none;
+}
+
+.newsletter button {
+  padding: 10px 30px;
+  margin-left: 10px;
+  background-color: #4c52ff;
+  color: #fff;
+  border: none;
+  border-radius: 30px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.newsletter button:hover {
+  background-color: #6a72ff;
+}
+
+.footer-links {
+  margin: 20px 0;
+  color: #b8b8d1;
+}
+
+.footer-links a {
+  color: #b8b8d1;
+  margin: 0 10px;
+  text-decoration: none;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+}
+
+.footer-bottom {
+  margin-top: 20px;
+  font-size: 14px;
+  color: #8a8ab3;
+}
+
+/* Responsive layout - when the screen is less than 700px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 700px) {
+  .row {   
+    flex-direction: column;
+  }
+  .row .column a {
+    margin-left: 0;
+  }
+}
+
+/* Responsive layout - when the screen is less than 400px wide, make the navigation links stack on top of each other instead of next to each other */
+@media screen and (max-width: 400px) {
+  .navbar a {
+    float: none;
+    width: 100%;
+  }
+}

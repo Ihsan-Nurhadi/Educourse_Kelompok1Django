@@ -1,0 +1,181 @@
+.menu{
+  max-width: 1400px; 
+  display: flex;
+  margin: 30px auto;
+  justify-content: space-around;
+  padding: 20px;
+}
+.menu-item{
+  width: 300px;
+  height: 70px;
+  color:black;
+  box-shadow: 0 2px 6px 0 rgba(0,0,0,0.2);
+  border-radius: 10%;
+  transition: 0.3s;
+}
+.menu-item:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+.container {
+  display: flex;
+  flex-direction: row;
+  min-height: 70vh; /* Full height */
+  margin:  auto;
+  padding-left: 0 !important;
+  box-shadow: 0 2px 6px 0 rgba(0,0,0,0.2);
+}
+
+/* Main content area */
+.main-content {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  padding: 20px;
+  background-color: white;
+}
+
+/* Aside panel */
+.aside {
+  flex-basis: 250px; /* Fixed width */
+  background-color: #f1f1f1;
+  color: black;
+  padding: 20px;
+}
+/* Aside Button */
+.filter-item {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.filter-item input[type="radio"] {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #333;
+  border-radius: 4px;
+  margin-right: 8px;
+  position: relative;
+}
+
+.filter-item input[type="radio"]:checked {
+  background-color: #333;
+}
+
+.filter-item input[type="radio"]:checked::after {
+  content: "✔";
+  font-size: 12px;
+  color: white;
+  position: absolute;
+  top: 2px;
+  left: 4px;
+}
+.card{
+  width: 100%;
+  margin-top: 20px;
+  padding: 40px;
+  color:black;
+  box-shadow: 0 2px 6px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+}
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+.card.hidden {
+  display: none;
+}
+/*Testimonials*/
+/* Styling untuk container utama */
+.carousel-inner {
+  padding: 20px; /* Jarak dalam carousel */
+}
+
+/* Styling untuk kartu */
+.card {
+  border-radius: 15px; /* Sudut bulat */
+  border: none; /* Tanpa border */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Bayangan untuk kedalaman */
+  transition: transform 0.3s ease; /* Transisi saat hover */
+}
+
+/* Efek hover pada kartu */
+.card:hover {
+  transform: translateY(-5px); /* Mengangkat kartu sedikit saat hover */
+}
+
+/* Styling untuk gambar pada kartu */
+.card-img-top {
+  border-radius: 50%; /* Gambar bulat */
+  width: 150px; /* Lebar gambar */
+  height: 150px; /* Tinggi gambar */
+  object-fit: cover; /* Memastikan gambar tidak terdistorsi */
+  margin: 0 auto; /* Mengatur margin otomatis untuk pusat */
+  margin-bottom: 20px; /* Jarak bawah */
+}
+
+/* Styling untuk badge */
+.badge {
+  background-color: #00bfa5; /* Warna latar badge */
+  color: white; /* Warna teks badge */
+  padding: 10px; /* Padding badge */
+  border-radius: 20px; /* Sudut bulat badge */
+}
+
+/* Responsif untuk layar kecil */
+@media (max-width: 768px) {
+  .card {
+    width: 90%; /* Lebar kartu di layar kecil */
+    margin-bottom: 20px; /* Jarak bawah kartu */
+  }
+}
+/* Styling untuk tombol kontrol carousel */
+.carousel-control-prev,
+.carousel-control-next {
+    width: 50px; /* Lebar tombol */
+    height: 50px; /* Tinggi tombol */
+    background-color: rgba(255, 255, 255, 0.7); /* Warna latar belakang semi-transparan */
+    border-radius: 50%; /* Membuat tombol berbentuk bulat */
+    border: none; /* Tanpa border */
+    transition: background-color 0.3s ease; /* Efek transisi saat hover */
+    z-index: 10; /* Pastikan tombol di atas carousel */
+}
+
+/* Efek hover pada tombol kontrol */
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+    background-color: rgba(255, 255, 255, 1); /* Warna latar belakang penuh saat hover */
+}
+
+/* Styling untuk ikon kontrol */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: #000; /* Warna ikon */
+    border-radius: 50%; /* Membuat ikon berbentuk bulat */
+}
+
+/* Mengatur ukuran ikon */
+.carousel-control-prev-icon {
+    width: 20px; /* Lebar ikon */
+    height: 20px; /* Tinggi ikon */
+}
+
+.carousel-control-next-icon {
+    width: 20px; /* Lebar ikon */
+    height: 20px; /* Tinggi ikon */
+}
+
+/* Menyesuaikan tampilan pada layar kecil */
+@media (max-width: 768px) {
+    .carousel-control-prev,
+    .carousel-control-next {
+        width: 40px; /* Lebar tombol lebih kecil di layar kecil */
+        height: 40px; /* Tinggi tombol lebih kecil di layar kecil */
+    }
+
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+        width: 15px; /* Lebar ikon lebih kecil di layar kecil */
+        height: 15px; /* Tinggi ikon lebih kecil di layar kecil */
+    }
+}

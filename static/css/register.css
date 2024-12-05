@@ -1,0 +1,114 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  background-image: url(../img/latar-sing_up-login.png);
+  background-size: cover;
+}
+
+.signup-form-container button {
+width: 100%;
+padding: 12px;
+background-color: #ff8200;
+color: #fff;
+border: none;
+border-radius: 8px;
+cursor: pointer;
+font-size: 16px;
+margin-top: 20px; /* Tambahkan margin untuk memberi jarak */
+}
+
+
+.signup-form-container {
+  transition: transform 0.3s, box-shadow 0.3s; /* Transisi untuk efek */
+}
+  
+  /* Style ketika input aktif/fokus */
+.input-active {
+box-shadow: 0 0 10px #F48C06; /* Efek bayangan biru */
+}
+.signup-form-container {
+max-width: 400px;
+margin: 100px auto;
+padding: 40px;
+background-color: #fff3e6;
+border-radius: 10px;
+box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.signup-form-container h2 {
+text-align: center;
+color: #ff8200;
+margin-bottom: 20px;
+}
+
+.signup-form-container label {
+font-weight: bold;
+color: #555;
+display: block;
+margin-bottom: 8px;
+}
+
+.component{
+display: flex;
+}
+
+.signup-form-container input {
+width: 100%;
+padding: 12px;
+margin-bottom: 20px;
+border-radius: 8px;
+border: 1px solid #ccc;
+font-size: 16px;
+}
+
+.signup-form-container button:hover {
+background-color: #ff9d3f;
+}
+
+.signup-form-container p {
+text-align: center;
+margin-top: 20px;
+color: #555;
+}
+
+.signup-form-container a {
+color: #ff8200;
+text-decoration: none;
+}
+
+.signup-form-container a:hover {
+text-decoration: underline;
+}
+
+/* css untuk register_option */
+.card-container {
+max-width: 600px;
+margin: 50px auto;
+color: #ff9d3f;
+}
+.card {
+border: none;
+margin-bottom: 20px;
+box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+.card:hover {
+transform: scale(1.02);
+box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+.card img {
+max-height: 100%;
+object-fit: cover;
+border-radius: 0.25rem 0 0 0.25rem;
+}
+.card-title {
+color: #343a40;
+font-weight: bold;
+}
+.card-link {
+text-decoration: none;
+color: inherit;
+}

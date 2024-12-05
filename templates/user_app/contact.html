@@ -1,0 +1,41 @@
+{% extends 'user_app/base.html' %}
+{% load static %}
+{% block head_block%}
+<link rel="stylesheet" href="{% static 'css/contact.css' %}">
+<script defer src="{% static 'js/contact.js'%}"></script>
+{% endblock %}
+{% block body_block %}
+<div class="contact-section">
+  <div class="container contact-container">
+    <div class="contact-text">
+      <h1>Let's Get <span class="highlight">In Touch!</span></h1>
+      <p>
+        Have a question or need assistance? Reach out to us via contact form below. We're eager to assist you. 
+      </p>
+    </div>
+    <div class="contact-form">
+      <form>
+        <div class="row mb-3">
+          <div class="col-md-6 position-relative">
+            <input type="text" class="form-control" id="first-name" placeholder=" " required>
+            <label for="first-name" class="floating-label">First name</label>
+          </div>
+          <div class="col-md-6 position-relative">
+            <input type="text" class="form-control" id="last-name" placeholder=" " required>
+            <label for="last-name" class="floating-label">Last name</label>
+          </div>
+          <div class="mb-3 position-relative">
+            <input type="email" class="form-control" id="email" placeholder=" " required>
+            <label for="email" class="floating-label">Email Address</label>
+          </div>
+          <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">Message</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+          </div>
+          <button type="submit" class="submit-btn btn">Submit</button>
+        </div>
+      </form>
+    </div>  
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,78 @@
+* {
+  box-sizing: border-box;
+}
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    background-image: url(../img/latar-sing_up-login.png);
+    background-size: cover;
+}
+.login-form-container {
+  max-width: 400px;
+  margin: 100px auto;
+  padding: 40px;
+  background-color: #fff3e6;
+  border-radius: 10px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.login-form-container h2 {
+  text-align: center;
+  color: #ff8200;
+  margin-bottom: 20px;
+}
+
+.login-form-container label {
+  font-weight: bold;
+  color: #555;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.login-form-container input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+
+.login-form-container button {
+  width: 100%;
+  padding: 12px;
+  background-color: #ff8200;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.login-form-container button:hover {
+  background-color: #ff9d3f;
+}
+
+.login-form-container p {
+  text-align: center;
+  margin-top: 20px;
+  color: #555;
+}
+
+.login-form-container a {
+  color: #ff8200;
+  text-decoration: none;
+}
+
+.login-form-container a:hover {
+  text-decoration: underline;
+}
+/* Style input box default */
+.login-form-container {
+  transition: transform 0.3s, box-shadow 0.3s; /* Transisi untuk efek */
+}
+  
+  /* Style ketika input aktif/fokus */
+.input-active {
+box-shadow: 0 0 10px #F48C06; /* Efek bayangan */
+}

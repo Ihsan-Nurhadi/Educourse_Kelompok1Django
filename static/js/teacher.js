@@ -43,7 +43,8 @@ const card = `
             </div>
             <div class="container">
             <h5 class="product-name">${product.productName.toUpperCase()}</h5>
-            <h6>Rp. ${product.price}</h6>
+            <h6 style="float: left;">Rp. ${product.price}</h6>
+            <button href="#" type="button" style="float: right; background-color: blue; color: white; border: none; padding: 10px;"> Add Cart </button>
             </div>
         </div>
     </div>

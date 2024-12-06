@@ -1,0 +1,13 @@
+{% extends 'dashboard_app/base_dashboard_student.html' %}
+{% load static %}
+{% load embed_video_tags %}
+{% block body_block %}
+<h1>Detail Kelas: {{ class_instance.class_name }}</h1>
+
+<p>{{ class_instance.text }}</p>
+{% if class_instance.video %}
+    <div>
+        <iframe src="{{ class_instance.video }}" width="560" height="315"></iframe>
+    </div>
+{% endif %}
+{% endblock %}

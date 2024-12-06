@@ -33,6 +33,7 @@
         Price: Rp.{{ post.price }}
        </div>
        <button type="button" data-testid="add-to-cart-button" class="ud-btn ud-btn-large ud-btn-brand ud-heading-md add-to-cart" fdprocessedid="s2t4t5" style="width: 80%;">Tambahkan ke keranjang</button>
+       <a href="{% url 'class_list' pk=post.pk %}" class="btn btn-primary">Lihat Kelas</a>
    </div>
 </div>
 <br>

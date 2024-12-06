@@ -18,6 +18,38 @@ class PostListView(ListView):
 
     def get_queryset(self):
         return Post.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
+    
+class ClassListView(ListView):
+    model = Class
+    template_name = 'courses_app/class_list.html'
+    context_object_name = 'classes'
+
+    def get_queryset(self):
+        # Mendapatkan post berdasarkan pk yang diteruskan
+        post = get_object_or_404(Post, pk=self.kwargs['pk'])
+        # Mengambil kelas yang terkait dengan post tersebut
+        return Class.objects.filter(post=post)
+
+class ClassDetailView(LoginRequiredMixin, DetailView):
+    model = Class
+    template_name = 'courses_app/class_detail.html'
+    context_object_name = 'class_instance'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        class_instance = self.object
+        context['form'] = ClassForm(instance=class_instance)  # Form untuk mengedit kelas
+        return context
+
+    def post(self, request, *args, **kwargs):
+        class_instance = self.get_object()
+        form = ClassForm(request.POST, instance=class_instance)
+        if form.is_valid():
+            form.save()
+            return redirect('class_list', pk=class_instance.post.pk)  # Setelah submit, kembali ke class list
+        context = self.get_context_data()
+        context['form'] = form
+        return self.render_to_response(context)
 
 class PostDetailView(DetailView):
     model = Post

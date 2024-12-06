@@ -48,9 +48,11 @@ class PostCreateView(LoginRequiredMixin, CreateView):
         user = User.objects.get(username=self.request.user.username)
         post.author = user  # Ganti Teacher dengan User
         post.save()
-        # Setelah menyimpan post, arahkan ke halaman create_class
-        return redirect('create_class', post_id=post.id)
+        # Setelah menyimpan post, arahkan ke halaman post_draft_list, bukan create_class
+        return redirect('post_draft_list')
 
+
+# views.py
 class ClassCreateView(LoginRequiredMixin, CreateView):
     login_url = '/login/'
     form_class = ClassForm
@@ -59,17 +61,19 @@ class ClassCreateView(LoginRequiredMixin, CreateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        post = get_object_or_404(Post, pk=self.kwargs['post_id'])
-        context['post'] = post
+        user = self.request.user
+        # Ambil semua post yang dibuat oleh teacher
+        context['posts'] = Post.objects.filter(author=user)
         return context
 
     def form_valid(self, form):
-        # Simpan kelas terkait dengan post
-        post = get_object_or_404(Post, pk=self.kwargs['post_id'])
+        # Simpan kelas terkait dengan post yang dipilih
         class_instance = form.save(commit=False)
-        class_instance.post = post  # Kaitkan kelas dengan post yang baru saja dibuat
+        post = form.cleaned_data['post']
+        class_instance.post = post  # Kaitkan kelas dengan post yang dipilih
         class_instance.save()
-        return redirect('post_draft_list')  # Setelah kelas disimpan, arahkan kembali ke daftar draft
+        return redirect('post_detail', pk=post.pk)  # Arahkan ke halaman post_detail setelah menyimpan kelas
+
 
 
 class PostUpdateView(LoginRequiredMixin, UpdateView):

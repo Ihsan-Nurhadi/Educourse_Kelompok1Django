@@ -1,11 +1,12 @@
 {% extends 'dashboard_app/base_dashboard_teacher.html' %}
 {% block body_block %}
 <div class="container">
-    <h1>Create a Class for Post: {{ post.title }}</h1>
-    <form method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button class="btn btn-primary" type="submit">Save</button>
-    </form>
+  <h2>Add a new class </h2>
+
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Add Class</button>
+  </form>
 </div>
 {% endblock %}

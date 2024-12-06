@@ -56,6 +56,22 @@ class SignUpForm(UserCreationForm):
         ),
         required=False  # Jika gambar tidak wajib
     )
+    is_teacher = forms.BooleanField(
+        widget=forms.CheckboxInput(
+            attrs={
+                "class": "form-check-input"
+            }
+        ),
+        required=False  # Jika field tidak wajib diisi
+    )
+    is_student = forms.BooleanField(
+        widget=forms.CheckboxInput(
+            attrs={
+                "class": "form-check-input"
+            }
+        ),
+        required=False  # Jika field tidak wajib diisi
+    )
 
     class Meta:
         model = User

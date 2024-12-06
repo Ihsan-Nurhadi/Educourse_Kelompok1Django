@@ -17,7 +17,7 @@
         </p>
     <!-- Post published date or publish button -->
         {% if post.published_date %}
-        <div class="date post-date" style="font-size: 22px !important; margin-left: 5px !important;">{{ post.published_date }}</div>
+        <div class="date post-date" style="font-size: 17px !important; margin-left: 5px !important;">Dibuat pada : {{ post.published_date }}</div>
         {% else %}
         <a class="btn btn-primary" href="{% url 'post_publish' pk=post.pk %}">Publish</a>
         {% endif %}
@@ -47,6 +47,7 @@
     <p class="deskripsi">Contoh video pembelajaran</p>                 
 </div>
 <br>
+<div class="container">
 <h2>Classes for this Post:</h2>
     <ul>
         {% if classes %}
@@ -54,13 +55,11 @@
                 <li>
                     <strong>{{ class.class_name }}</strong><br>
                     <em>{{ class.text }}</em><br>
-                    {% if class.video %}
-                        <iframe width="560" height="315" src="{{ class.video.url }}" frameborder="0" allowfullscreen></iframe>
-                    {% endif %}
                 </li>
             {% endfor %}
         {% else %}
             <li>No classes available for this post.</li>
         {% endif %}
     </ul>
+</div>
 {% endblock %}

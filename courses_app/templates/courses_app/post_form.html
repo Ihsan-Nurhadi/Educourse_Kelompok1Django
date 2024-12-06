@@ -43,11 +43,16 @@
 </ul>
 </div>
 <div class="container">
+<div class="form-group">
 <h1>New post: </h1>
 <form method="POST" class="post-form" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form.as_p }}
-    <button class="btn btn-primary save" type="submit">Save</button>
+    <button style="margin-bottom: 20px;" class="btn btn-primary save" type="submit">Save</button>
 </form>
 </div>
+<a href="{% url 'create_class' %}" class="btn btn-info">Add Classes</a>
+</div>
+<br>
+
 {% endblock %}

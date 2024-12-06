@@ -14,6 +14,7 @@
 /* buttons filter training*/
 .training {
   margin-top: 5em;
+  margin-left: 1em;
 }
 
 .button-value {
@@ -25,21 +26,21 @@
   cursor: pointer;
 } 
 
+#products {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-column-gap: .5em;
+  padding: 2em 0;
+}
+
 .active {
   background-color: #6a72ff;
   color: #fff;
 }
 
-#products {
-  display: grid;
-  grid-template-columns: auto auto auto;
-  grid-column-gap: 1.5em;
-  padding: 2em 0;
-}
-
 .card {
   background-color: #fff;
-  max-width: 18em;
+  max-width: 10em;
   margin-top: 1em;
   padding: 1em;
   border-radius: 5px;

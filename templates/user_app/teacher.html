@@ -5,29 +5,17 @@
 <script defer src="{% static 'js/teacher.js'%}"></script>
 {% endblock %}
 {% block body_block %}
-<section class="container-fluid" style="background-color: #FFF3E4;">
-  <div class="row align-items-center">
-    
-    <div class="col-md-5 offset-md-1">
-      <p class="text1section" style="font-size: 40px;"><span style="color: #F48C06;">Searching</span> Tutor is much <br> easier</p>
-      <p class="lead">Eduteach is an interesting platform that will give <br> you the best tutor in your area</p>
-      <a href="#" class="btn btn-light btn-lg" style="background-color: #F48C06; color: white; font-style: normal; font-weight: bold; border-radius: 30px;">Join for free</a>
-    </div>
-    
-    <div class="col-md-5">
-      <img src="{% static 'img/talentnew.png'%}" alt="talent" width="590" height="auto" class="img-fluid rounded">
-    </div>
-  </div>
-</section>
-
 
 <div id="asteacher" class="px-4 pt-5 pb-5 text-center border-bottom container-fluid fade-in">
+  <div class="container-fluid" style="padding: 10rem 0px;">
   <h1 class="display-4 fw-bold text-body-emphasis">Daftar Sekarang !!!</h1>
   <div class="col-lg-6 mx-auto">
     <p class="lead mb-4">✨ Jadilah bagian dari perubahan! Bantu siswa-siswa berbakat meraih potensinya dan wujudkan pendidikan yang lebih baik di Indonesia.</p>
     <p class="lead mb-4">📢 Telp : (+62) 801 2345 6789 📢 Email: info osnmentor@gmail.com</p>
     <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
+      <a href="#" class="btn btn-light btn-lg" style="background-color: #F48C06; color: white; font-style: normal; font-weight: bold; border-radius: 30px;">Join for free</a>
     </div>
+  </div>
   </div>
 </div>
 
@@ -36,31 +24,35 @@
     <div class="col-md-5 offset-md-1 px-4 pt-5">
       <p class="text1section" style="font-size: 40px;">Be our partner <br> <span style="color: #F48C06;"> as Mentor EduTeach </span></p>
       <p class="lead">Kami hadir dengan program pelatihan mentor yang dirancang khusus untuk membantu Anda mencapai puncak prestasi!<br> you the best tutor in your area</p>
-      <a href="#pelatihan" class="btn btn-light btn-lg" style="background-color: #F48C06; color: white; font-style: normal; font-weight: bold; border-radius: 30px;">Start Training</a>
+      <a href="{% url 'user_app:register' %}" class="btn btn-light btn-lg" style="background-color: #F48C06; color: white; font-style: normal; font-weight: bold; border-radius: 30px;">Start Training</a>
     </div>
     
     <div class="col-md-5 offset-md-1 px-4 pt-5">
       <p class="text1section" style="font-size: 40px;">Be our part <br> <span style="color: #F48C06;"> of EduTeach </span></p>
       <p class="lead">Ingin mempersiapkan diri dengan maksimal untuk Olimpiade Sains Nasional? Jadi bagian dari EduTeach as Mentor Terbaik untuk Dunia Olimpiade Sains Nasional</p>
-      <a href="#asteacher" class="btn btn-light btn-lg" style="background-color: #F48C06; color: white; font-style: normal; font-weight: bold; border-radius: 30px;">Start Teaching</a>
+      <a href="{% url 'user_app:register' %}" class="btn btn-light btn-lg" style="background-color: #F48C06; color: white; font-style: normal; font-weight: bold; border-radius: 30px;">Start Teaching</a>
     </div>
   </div>
 </section>
-
-<div class="training" id="pelatihan" style="margin-left: 2em !important;">
-  <div class="buttons" id="buttons">
-    <button class="button-value active" onclick="filterProduct('all')">All</button>
-    <button class="button-value" onclick="filterProduct('Biologi')">Biologi</button>
-    <button class="button-value" onclick="filterProduct('Kimia')">Kimia</button>
-    <button class="button-value" onclick="filterProduct('Fisika')">Fisika</button>
-    <button class="button-value" onclick="filterProduct('Matematika')">Matematika</button>
-    <button class="button-value" onclick="filterProduct('English')">English</button>
-    <button class="button-value" onclick="filterProduct('Technology')">Technology</button>
+<div id="teacher-course" class="px-4 pt-5 pb-5 text-center border-bottom container-fluid fade-in">
+<div class="container-fluid" style="padding: 1rem 0px;">
+<h1 class="display-4 fw-bold text-body-emphasis" style="color: #F48C06 !important;">Courses For Teaching</h1>
+  <div class="training" id="pelatihan" style="margin-left: 2em !important;">
+    <div class="buttons" id="buttons">
+      <button class="button-value active" onclick="filterProduct('all')">All</button>
+      <button class="button-value" onclick="filterProduct('Biologi')">Biologi</button>
+      <button class="button-value" onclick="filterProduct('Kimia')">Kimia</button>
+      <button class="button-value" onclick="filterProduct('Fisika')">Fisika</button>
+      <button class="button-value" onclick="filterProduct('Matematika')">Matematika</button>
+      <button class="button-value" onclick="filterProduct('English')">English</button>
+      <button class="button-value" onclick="filterProduct('Technology')">Technology</button>
+    </div>
+    <div id="products" style="float: left !important;  grid-column-gap: 2.5em !important;"></div>
   </div>
-  <div id="products" style="float: left !important;  grid-column-gap: 2.5em !important;"></div>
+</div>
 </div>
 
-<div id="testimonials" class="reviewers"></div>
+<div id="testimonials" class="reviewers" style="">
   <div class="testimonial-heading">
     <span>Comment</span>
     <h1>Client Says</h1>

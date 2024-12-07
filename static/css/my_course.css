@@ -1,3 +1,7 @@
+.nav-jejak .text-black{
+  text-decoration: none !important;
+}
+
 /* buttons filter training*/
   h2{
     font-size: 40px;

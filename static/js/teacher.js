@@ -30,8 +30,8 @@ const products = [
         image: "static/img/english.jpg",
     },
     {
-        productName: "OSN Bidang Teknologi Informasi dan Komunikasi 2024",
-        category: "Technology",
+        productName: "OSN Bidang Ekonomi 2024",
+        category: "Economy",
         price: "195.000",
         image: "static/img/tech.jpg",
     },

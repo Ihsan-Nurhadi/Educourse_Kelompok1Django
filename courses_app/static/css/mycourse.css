@@ -20,3 +20,7 @@ h2{
 .item ul li:hover{
     transform: scale(1.02);
 }
+.nav-jejak .text-black{
+    text-decoration: none !important;
+}
+  

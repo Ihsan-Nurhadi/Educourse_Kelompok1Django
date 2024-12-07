@@ -11,8 +11,8 @@
 <section>
 
   <div class="py-3" style="background:#FFBD73">
-    <div class="container">
-      <a class="text-black" href="{% url 'user_app:teachersdashboard' %}" style="font-size: 25px;"> Dashboard /</a>
+    <div class="container nav-jejak">
+      <a class="text-black" href="{% url 'user_app:teacherdashboard' %}" style="font-size: 25px;"> Dashboard /</a>
       <a class="text-black" href="{% url 'user_app:teacherscourses' %}" style="font-size: 25px;"> Search Courses /</a>
       <a class="text-black" href="{% url 'user_app:productcourses' products.category.slug %}" style="font-size: 25px;"> {{ products.category.name }} /</a>
       <a class="text-black" href="{% url 'user_app:productdetails' products.category.slug products.slug%}" style="font-size: 25px;"> {{ products.name }}</a>
@@ -45,25 +45,9 @@
                     {{ products.small_desc }}
                   </p>
                   <br>
-                  {% if products.quantity > 0 %}
-                    <label class="badge bg-success">In stock</label>
-                  {% else %}
-                    <label class="badge bg-danger">Out of stock</label>
-                  {% endif %}
                   <div class="row mt-2">
-                    <div class="col md-3">
-                        <label for="Quantity">Quantity</label>
-                        <div class="input-group text-center mb-3" style="width:130px;">
-                            <button class="input-group-text decrement-btn">-</button>
-                            <input type="text" name="quantity" class="form-control text-center" value="1">
-                            <button class="input-group-text increment-btn">+</button>
-                        </div>
-                    </div>
                     <div class="col-md-9">
-                        <br/>
-                        {% if products.quantity > 0 %}
-                            <button type="button" class="btn btn-primary me-3 float-start">Add to Cart </button>
-                        {% endif %}
+                      <button href="#" type="button" style="background-color: blue; color: white; border: none; padding: 10px;"> Add to Cart </button>
                     </div>
                   </div>
                 </div>

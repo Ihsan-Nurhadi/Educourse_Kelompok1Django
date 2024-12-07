@@ -17,6 +17,8 @@ def contact(request):
     return render(request,'user_app/contact.html')
 def about(request):
     return render(request,'user_app/aboutus.html')
+def team(request):
+    return render(request,'user_app/team.html')
 def student(request):
     return render(request,'user_app/student.html')
 def teacher(request):

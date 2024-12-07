@@ -29,6 +29,12 @@ const products = [
         price: "175.000",
         image: "static/img/english.jpg",
     },
+    {
+        productName: "OSN Bidang Teknologi Informasi dan Komunikasi 2024",
+        category: "Technology",
+        price: "195.000",
+        image: "static/img/tech.jpg",
+    },
 ];
 
 const productsListElement = document.getElementById('products');

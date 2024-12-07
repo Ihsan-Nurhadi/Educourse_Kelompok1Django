@@ -40,7 +40,7 @@
 
 .card {
   background-color: #fff;
-  max-width: 10em;
+  max-width: 26em;
   margin-top: 1em;
   padding: 1em;
   border-radius: 5px;
@@ -211,6 +211,15 @@ a {
   }
   .testimonial-heading h1 {
     font-size: 1.4rem;
+  }
+  .box-top{
+    margin: 0;
+    padding-left: 10px;
+  }
+  .reviews{
+    justify-content: right;
+    display: flex;
+    width: 5%;
   }
 }
 @media(max-width:300px) {

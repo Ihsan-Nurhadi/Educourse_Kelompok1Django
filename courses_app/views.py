@@ -40,17 +40,7 @@ class ClassDetailView(LoginRequiredMixin, DetailView):
         class_instance = self.object
         context['form'] = ClassForm(instance=class_instance)  # Form untuk mengedit kelas
         return context
-
-    def post(self, request, *args, **kwargs):
-        class_instance = self.get_object()
-        form = ClassForm(request.POST, instance=class_instance)
-        if form.is_valid():
-            form.save()
-            return redirect('class_list', pk=class_instance.post.pk)  # Setelah submit, kembali ke class list
-        context = self.get_context_data()
-        context['form'] = form
-        return self.render_to_response(context)
-
+    
 class PostDetailView(DetailView):
     model = Post
 
@@ -83,29 +73,41 @@ class PostCreateView(LoginRequiredMixin, CreateView):
         # Setelah menyimpan post, arahkan ke halaman post_draft_list, bukan create_class
         return redirect('post_draft_list')
 
-
-# views.py
 class ClassCreateView(LoginRequiredMixin, CreateView):
     login_url = '/login/'
     form_class = ClassForm
     model = Class
     template_name = 'courses_app/create_class.html'
 
+    def get_form_kwargs(self):
+        """
+        Override method ini untuk mengirimkan user ke ClassForm.
+        """
+        kwargs = super().get_form_kwargs()
+        kwargs['user'] = self.request.user  # Kirim user yang sedang login
+        return kwargs
+
     def get_context_data(self, **kwargs):
+        """
+        Tambahkan informasi tambahan ke context.
+        """
         context = super().get_context_data(**kwargs)
         user = self.request.user
-        # Ambil semua post yang dibuat oleh teacher
+        # Ambil semua post yang dibuat oleh user
         context['posts'] = Post.objects.filter(author=user)
         return context
 
     def form_valid(self, form):
-        # Simpan kelas terkait dengan post yang dipilih
+        """
+        Validasi form sebelum menyimpan.
+        """
         class_instance = form.save(commit=False)
-        post = form.cleaned_data['post']
-        class_instance.post = post  # Kaitkan kelas dengan post yang dipilih
+        # Pastikan post milik user yang sedang login
+        if class_instance.post.author != self.request.user:
+            form.add_error('post', "Anda tidak memiliki izin untuk menggunakan post ini.")
+            return self.form_invalid(form)
         class_instance.save()
-        return redirect('post_detail', pk=post.pk)  # Arahkan ke halaman post_detail setelah menyimpan kelas
-
+        return redirect('user_app:teacherdashboard')  # Arahkan ke halaman post_detail setelah menyimpan kelas
 
 
 class PostUpdateView(LoginRequiredMixin, UpdateView):
@@ -141,7 +143,7 @@ class PostDeleteView(LoginRequiredMixin, DeleteView):
 def post_publish(request, pk):
     post = get_object_or_404(Post, pk=pk)
     post.publish()
-    return redirect('post_detail', pk=pk)
+    return redirect('user_app:teacherdashboard')
 
 @login_required
 def post_(request, pk):

@@ -9,22 +9,22 @@
   <section>
 
     <div class="py-3" style="background:#FFBD73">
-      <div class="container">
+      <div class="container nav-jejak">
         <a class="text-black" href="{% url 'user_app:teacherdashboard' %}" style="font-size: 25px;"> Dashboard /</a>
         <a class="text-black" href="#" style="font-size: 25px;"> Search Courses</a>
       </div>
     </div>
     
     <div class="container">
-      <h2 class="moto">Tingkatkan Ketrampilan Mengajarmu!</h2>
+      <h2 class="moto">Tingkatkan Keterampilan Mengajarmu!</h2>
       <div class="row">
         <div class="col-md-12">
-          <h1>List Ketersedian Courses</h1>
+          <h1>List Ketersediaan Courses</h1>
           <div class="row">
             {% for item in category %}
             <div class="col-md-4">
               <div class="card">
-                <a href="{% url 'user_app:productcourses' item.slug %}">
+                <a href="{% url 'user_app:productcourses' item.slug %}" style="text-decoration: none; color: #F48C06;">
                   <div class="card-body">
                     <div class="category-image">
                       <img src="{{ item.image.url }}" alt="Category Image">
@@ -38,5 +38,6 @@
           </div>
         </div>
       </div>
+      <br>
     </div>
 {% endblock %}

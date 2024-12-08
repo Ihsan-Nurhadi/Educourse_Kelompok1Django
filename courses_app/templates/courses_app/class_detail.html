@@ -6,8 +6,8 @@
 
 <p>{{ class_instance.text }}</p>
 {% if class_instance.video %}
-    <div>
-        <iframe src="{{ class_instance.video }}" width="560" height="315"></iframe>
-    </div>
-{% endif %}
+{% video class_instance.video 'medium'%}
+{% else %}
+<p>No video found for this post.</p>
+{% endif %}  
 {% endblock %}

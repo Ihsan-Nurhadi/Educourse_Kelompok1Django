@@ -1,6 +1,7 @@
 /* Contact */
 .contact-section {
-background-color: #fff; /* Light grey background */
+background-image: url(../img/latar-sing_up-login.png);
+background-size: cover;
 padding: 60px 0;
 }
 

@@ -40,6 +40,10 @@ body {
   border-top: 1px solid rgba(255,255,255,.1);
   transition: .4s;
 }
+.sidebar ul li a{
+  text-decoration: none !important;
+}
+
 ul li:hover a{
   padding-left: 50px;
 }

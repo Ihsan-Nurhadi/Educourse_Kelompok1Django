@@ -107,7 +107,7 @@ class ClassCreateView(LoginRequiredMixin, CreateView):
             form.add_error('post', "Anda tidak memiliki izin untuk menggunakan post ini.")
             return self.form_invalid(form)
         class_instance.save()
-        return redirect('post_detail', pk=class_instance.post.pk)  # Arahkan ke halaman post_detail setelah menyimpan kelas
+        return redirect('user_app:teacherdashboard')  # Arahkan ke halaman post_detail setelah menyimpan kelas
 
 
 class PostUpdateView(LoginRequiredMixin, UpdateView):
@@ -143,7 +143,7 @@ class PostDeleteView(LoginRequiredMixin, DeleteView):
 def post_publish(request, pk):
     post = get_object_or_404(Post, pk=pk)
     post.publish()
-    return redirect('post_detail', pk=pk)
+    return redirect('user_app:teacherdashboard')
 
 @login_required
 def post_(request, pk):

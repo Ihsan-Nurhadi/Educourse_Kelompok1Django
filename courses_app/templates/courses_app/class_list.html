@@ -5,17 +5,17 @@
 <link rel="stylesheet" href="{% static 'css/class_list.css' %}">
 {% endblock %}
 {% block body_block %}
-<div class="container">
+<div class="container ">
     {% if post.thumbnail %}
     <img src="{{ post.thumbnail.url }}" alt="Thumbnail" style="width: 100%; height: auto;">
-   {% else %}
-    <p>No image available</p>
    {% endif %}
 <h2>Berikut adalah kelas yan terdapat dalam materi</h2>
 <ul>
     {% for class in classes %}
     <li>
-        <a href="{% url 'class_detail' pk=class.pk %}">{{ class.class_name }}</a>  <!-- Link ke ClassDetailView -->
+        {{ class.class_name }}
+        <br>
+        <a href="{% url 'class_detail' pk=class.pk %}" class="btn btn-primary">Lihat</a>  <!-- Link ke ClassDetailView -->
     </li>
     {% endfor %}
 </ul>

@@ -1,0 +1,10 @@
+.container ul{
+    display: flex ;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin: 20px;    
+}
+.container ul li{
+    background-color: white;
+    padding: 20px;
+}

@@ -2,6 +2,7 @@
 {% load static %}
 {% block head_block %}
 <link rel="stylesheet" href="{% static 'css/post_detail.css' %}">
+
 {% endblock %}
 {% load embed_video_tags %}
 {% block body_block %}
@@ -9,8 +10,8 @@
 <div class="py-3" style="background:#FFBD73;position: relative;">
     <div class="container">
         <a class="text-black" href="{% url 'user_app:studentdashboard' %}" style="font-size: 25px; text-decoration: none !important;"> Dashboard /</a>
-        <a class="text-black" href="{% url 'post_new' %}" style="font-size: 25px; text-decoration: none !important;"> My Courses /</a>
-        <a class="text-black" href="#" style="font-size: 25px; text-decoration: none !important;"> Publish </a>
+        <a class="text-black" href="{% url 'post_list' %}" style="font-size: 25px; text-decoration: none !important;"> Search /</a>
+        <a class="text-black" href="#" style="font-size: 25px; text-decoration: none !important;"> {{ post.title }} </a>
         <h1 class="post-title" >{{ post.title }}</h1>
         <p class="post-content" style="font-size: 24px !important; ">
         {{ post.text | safe | linebreaksbr }}
@@ -33,7 +34,12 @@
         Price: Rp.{{ post.price }}
        </div>
        <button type="button" data-testid="add-to-cart-button" class="ud-btn ud-btn-large ud-btn-brand ud-heading-md add-to-cart" fdprocessedid="s2t4t5" style="width: 80%;">Tambahkan ke keranjang</button>
+       <br>
        <a href="{% url 'class_list' pk=post.pk %}" class="btn btn-primary">Lihat Kelas</a>
+       <br>
+       {% for class in classes %}
+       Pelajaran ini mengandung : {{class_instance.count}}
+       {% endfor %}
    </div>
 </div>
 <br>
@@ -48,8 +54,8 @@
     <p class="deskripsi">Contoh video pembelajaran</p>                 
 </div>
 <br>
-<div class="container">
-<h2>Classes for this Post:</h2>
+<div id = "content" >
+<h3 class="title">Course content:</h3>
     <ul>
         {% if classes %}
             {% for class in classes %}
@@ -64,3 +70,4 @@
     </ul>
 </div>
 {% endblock %}
+

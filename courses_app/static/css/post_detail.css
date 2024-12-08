@@ -2,7 +2,7 @@
     text-transform: uppercase;
 }
 .item{
-    margin-left: 17%;
+    margin-left: 16%;
     margin-right: 40%;
     background-color: white;
     padding: 20px;
@@ -60,4 +60,15 @@
     font-size: 40px;
     font-family:'Times New Roman', Times, serif;
 
+}
+#content{
+    max-width: 850px;
+    margin-left: 16%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    background-color: whitesmoke;
+    margin-bottom: 10px;
+}
+.title{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }

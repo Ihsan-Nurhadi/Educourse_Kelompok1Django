@@ -33,8 +33,8 @@
                   <h4 class="text-center"> {{ item.name }}</h4>
                   <br>
                   <p style="text-decoration: none; color: #252525;" >{{ item.desc }}</p>
-                  <span class="float-start">{{ item.ori_price | stringformat:'d' }}</span>
-                  <span class="float-end">{{ item.sell_price | stringformat:'d' }}</span>
+                  <span class="float-start" style="text-decoration: line-through;">Rp. {{ item.ori_price | stringformat:'d' }}</span>
+                  <span class="float-end">Harga Promo : Rp. {{ item.sell_price | stringformat:'d' }}</span>
                 </div>
               </a>
             </div>

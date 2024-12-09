@@ -20,26 +20,30 @@
 </div>
 
 <!-- Thumbnail Post -->
-<div class="container">
-    {% if post.thumbnail %}
-    <img src="{{ post.thumbnail.url }}" alt="Thumbnail" class="img-fluid my-4" style="max-width: 100%; height: auto;">
-    {% endif %}
-    
-    <h2>Berikut adalah kelas yang terdapat dalam materi "{{ post.title }}"</h2>
-    
-    <!-- Daftar Kelas -->
-    <ul>
-        {% for class in classes %}
-        <li class="class-item">
-            <div class="class-info">
-                <span class="class-name">{{ class.class_name }}</span>
-                <a href="{% url 'class_detail' pk=class.pk %}" class="btn btn-primary">Lihat</a>
-            </div>
-        </li>
-        {% empty %}
-        <li>Tidak ada kelas tersedia.</li>
-        {% endfor %}
-    </ul>
+<div class="container my-5">
+    <div class="p-5 text-white ">
+      <h1 class="text white">Kelas : {{ post.title }} </h1>
+      <p class="lead">
+        Dibuat oleh <code>{{post.author}}</code>
+      </p>
+      Dibuat pada : {{ post.published_date }}
+    </div>
+    <div class="p-5 text-white" id="class">
+        <h2>Berikut adalah kelas yang terdapat dalam materi "{{ post.title }}"</h2>
+        <!-- Daftar Kelas -->
+        <ul>
+            {% for class in classes %}
+            <li class="class-item">
+                <div class="class-info">
+                    <span class="class-name">{{ class.class_name }}</span>
+                    <a href="{% url 'class_detail' pk=class.pk %}" class="btn btn-primary">Lihat</a>
+                </div>
+            </li>
+            {% empty %}
+            <li style="color: black;">Tidak ada kelas tersedia.</li>
+            {% endfor %}
+        </ul>
+    </div>
 </div>
 
 {% endblock %}

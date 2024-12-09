@@ -6,13 +6,13 @@ from django.http import JsonResponse,  HttpResponse
 
 #tutorial 3
 
-def cart_summary (request):
-    return render(request, "cart.html",{})
+# def cart_summary (request):
+#     return render(request, "cart.html",{})
 
-# def cartPage (request):
-#     cart = Cart(request)
-#     cart_products = cart.get_prods
-#     return render(request, "cart.html", {'cart_products':cart_products})
+def cart_summary (request):
+    cart = Cart(request)
+    cart_products = cart.get_prods
+    return render(request, "cart.html", {'cart_products':cart_products})
 
 # tutorial pertama
 def cart_add(request):
@@ -27,21 +27,19 @@ def cart_add(request):
         #save to session
         cart.add(product=product)
 
-        # return response
-        response = JsonResponse({'Product Name : ': product.name })
+    #     # return response
+    #     response = JsonResponse({'Product Name : ': product.name })
+    #     return response
+    # else:
+    #     return HttpResponse('This view only handles POST requests.')  # Respon untuk request lain
+
+        #Get cart quantity
+        cart_quantity = cart.__len__()
+
+        #return response
+        # response = JsonResponse({'Product Name: ': product.name})
+        response = JsonResponse({'qty: ': cart_quantity})
         return response
-    else:
-        return HttpResponse('This view only handles POST requests.')  # Respon untuk request lain
-
-#         #tutorial 2
-#         #Get cart quantity
-#         cart_quantity = cart.__len__()
-
-#         #return response
-#         # response = JsonResponse({'Product Name: ': product.name})
-#         #tutorial 2
-#         response = JsonResponse({'qty: ': cart_quantity})
-#         return response
     
 # def cart_delete(request):
 #     pass

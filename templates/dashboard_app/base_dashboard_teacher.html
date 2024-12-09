@@ -22,7 +22,8 @@
           <li><a href="#">Transaction</a></li>
           <li><a><i class="fas fa-bell"></i></a></li>
           <li><a href="{% url 'cart_summary' %}" class="btn btn-outline-dark"><i class="fas fa-cart-arrow-down"></i>
-            <span class=" badge bg-dark text-white ms-1 rounded-pill" id="cart_quantity">0
+            <span class=" badge bg-dark text-white ms-1 rounded-pill" id="cart_quantity">
+              {{cart|length}}
             </span></a></li>
           <button class="button"><i class="fas fa-user"></i> Teacher</button>
         </ul>

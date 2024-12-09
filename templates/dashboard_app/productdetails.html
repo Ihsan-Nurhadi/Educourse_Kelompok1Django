@@ -40,7 +40,6 @@
                   <label class="fw-bold">Selling Price : Rp {{ item.sell_price | stringformat:'d' }}</label>
                   <p class="mt-3">
                     {{ products.small_desc }}
-                    <br>ID : {{ products.id }}
                   </p>
                   <br>
                   <div class="row mt-2">
@@ -75,10 +74,9 @@
                   action: 'post'
               },
               success: function(json){
-                  console.log(json)
-                  // tutorial 2
-                  // document.getElementById("cart_quantity").
-                  // textContent = json.qty
+                  // console.log(json)
+                  document.getElementById("cart_quantity").
+                  textContent = json.qty
               },
   
               error: function(xhr, errmsg, err){

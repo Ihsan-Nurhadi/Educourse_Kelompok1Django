@@ -15,17 +15,21 @@ def cart_summary (request):
 #     return render(request, "cart.html", {'cart_products':cart_products})
 
 # tutorial pertama
-# def cart_add(request):
-#     # Get the cart
-#     cart = Cart(request)
-#     #test for post
-#     if request.POST.get('action') == 'post':
-#         #get stuff
-#         product_id = int(request.POST.get('product_id'))
-#         #lookup product in DB
-#         product = get_object_or_404(Product, id=product_id)
-#         #save to session
-#         cart.add(product=product)
+def cart_add(request):
+    # Get the cart
+    cart = Cart(request)
+    #test for post
+    if request.POST.get('action') == 'post':
+        #get stuff 
+        product_id = int(request.POST.get('product_id'))
+        #lookup product in DB
+        product = get_object_or_404(Product, id=product_id)
+        #save to session
+        cart.add(product=product)
+
+        # return response
+        response = JsonResponse({'Product Name : ': product.name })
+        return response
 
 #         #tutorial 2
 #         #Get cart quantity

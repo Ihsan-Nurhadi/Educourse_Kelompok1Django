@@ -39,6 +39,17 @@ class Product(models.Model):
     ori_price = models.FloatField(null=False,blank=False)
     sell_price = models.FloatField(null=False,blank=False)
     create_at = models.DateTimeField(auto_now_add=True)
+    id = models.CharField(max_length=10, primary_key=True)
+
+    def save(self, *args, **kwargs):
+        if not self.id:  # Generate ID hanya saat membuat objek baru
+            last_product = Product.objects.order_by('-id').first()
+            if last_product:
+                self.id = f"PROD{int(last_product.id[4:]) + 1:03d}"
+            else:
+                self.id = "PROD001"
+        super().save(*args, **kwargs)
+
 
     def __str__(self):
         return self.name

@@ -1,6 +1,7 @@
-
 from user_app.models import Product
-# tutorial pertama
+from django.contrib.sessions.models import Session
+
+
 class Cart():
     def __init__(self, request):
         self.session = request.session
@@ -16,7 +17,7 @@ class Cart():
         self.cart = cart
 
     def add(self, product):
-        product_id = str(product.id)
+        product_id = str(product_id)
 
         #logic
         if product_id in self.cart:
@@ -25,16 +26,16 @@ class Cart():
             self.cart[product_id] = {'price': str(product.sell_price)}
 
         self.session.modified = True
-# tutorial 2
-    def __len__(self):
-        return len(self.cart)
+# # tutorial 2
+#     def __len__(self):
+#         return len(self.cart)
     
-# tutorial 3
-    def get_prods(self):
-        #get ids from cart
-        product_ids = self.cart.keys()
-        #use ids to lookup product in db model
-        products = Products.objects.filter(id_in=product_ids)
-        #return those look up products
-        return products
+# # tutorial 3
+#     def get_prods(self):
+#         #get ids from cart
+#         product_ids = self.cart.keys()
+#         #use ids to lookup product in db model
+#         products = Products.objects.filter(id_in=product_ids)
+#         #return those look up products
+#         return products
 

@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from .cart import Cart
 from user_app.models import Product
-from django.http import JsonResponse
+from django.http import JsonResponse,  HttpResponse
 # Create your views here.
 
 #tutorial 3
@@ -30,6 +30,8 @@ def cart_add(request):
         # return response
         response = JsonResponse({'Product Name : ': product.name })
         return response
+    else:
+        return HttpResponse('This view only handles POST requests.')  # Respon untuk request lain
 
 #         #tutorial 2
 #         #Get cart quantity

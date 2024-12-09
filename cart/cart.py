@@ -17,7 +17,7 @@ class Cart():
         self.cart = cart
 
     def add(self, product):
-        product_id = str(product_id)
+        product_id = str(product.id)
 
         #logic
         if product_id in self.cart:

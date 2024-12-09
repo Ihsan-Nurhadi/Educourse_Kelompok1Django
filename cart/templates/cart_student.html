@@ -1,7 +1,7 @@
-{% extends 'dashboard_app/base_dashboard_teacher.html' %}
+{% extends 'dashboard_app/base_dashboard_student.html' %}
 {% load static %}
 {% block head_block %}
-<link rel="stylesheet" href="{% static 'css/teachers_dashboard.css' %}">
+<link rel="stylesheet" href="{% static 'css/student_dashboard.css' %}">
 
 {% endblock %}
 {% block body_block %}
@@ -20,7 +20,7 @@
       </div>
     </div>
   </section>
-  {% for product in cart_products %}
+  {% comment %} {% for product in cart_products %}
   <div class="container">
           <div class="col-md-12">
             <div class="col-md-12">
@@ -46,7 +46,7 @@
             </div>
           </div>
         </div><br/>
-  </div>
-  {% endfor %}
+  </div> 
+  {% endfor %}{% endcomment %}
   <br><br><br><br><br><br><br><br><br><br><br><br>
 {% endblock %}

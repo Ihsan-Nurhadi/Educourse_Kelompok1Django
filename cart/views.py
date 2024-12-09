@@ -4,12 +4,11 @@ from user_app.models import Product
 from django.http import JsonResponse,  HttpResponse
 # Create your views here.
 
-#tutorial 3
+def cart_summary_student (request):
+    return render(request, "cart_student.html",{})
 
-# def cart_summary (request):
-#     return render(request, "cart.html",{})
-
-def cart_summary (request):
+# teacher
+def cart_summary_teacher (request):
     cart = Cart(request)
     cart_products = cart.get_prods
     return render(request, "cart.html", {'cart_products':cart_products})

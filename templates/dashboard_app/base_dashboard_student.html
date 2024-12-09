@@ -19,7 +19,10 @@
           <li><a href="#">My Learning</a></li>
           <li><a href="#">Transaction</a></li>
           <li><a><i class="fas fa-bell"></i></a></li>
-          <li><a href="#"><i class="fas fa-cart-arrow-down"></i></a></li>
+          <li><a href="{% url 'cart_summary_student' %}" class="btn btn-outline-dark"><i class="fas fa-cart-arrow-down"></i>
+            <span class=" badge bg-dark text-white ms-1 rounded-pill" id="cart_quantity">
+              {{cart|length}}
+            </span></a></li>
           <button class="button"><i class="fas fa-user"></i> Student</button>
         </ul>
     </div>
@@ -34,7 +37,7 @@
             <li><a href="{% url 'user_app:studentdashboard' %}"><i class="fas fa-qrcode"></i>Dashboard</a></li>
             <li><a href="#"><i class="fas fa-bell"></i>Notification</a></li>
             <li><a href="#"><i class="fas fa-chalkboard"></i></i>Certificate</a></li>
-            <li><a href="#"><i class="fas fa-cart-arrow-down"></i>Cart</a></li>
+            <li><a href="{% url 'cart_summary_student' %}"><i class="fas fa-cart-arrow-down"></i>Cart</a></li>
             <li><a href="#"><i class="fas fa-book"></i>My Learning</a></li>
             <li><br></li>
             <li><br></li><li><a href="{% url 'user_app:studentprofile' %}"><i class="fas fa-user"></i>Student</a></li>

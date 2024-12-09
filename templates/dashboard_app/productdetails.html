@@ -36,8 +36,8 @@
                     {% endif %}
                   </h2>
                   <br>
-                  <label class="me-3">Original Price : <span style="text-decoration: line-through;">Rp {{ item.ori_price | stringformat:'d' }}</span></label>
-                  <label class="fw-bold">Selling Price : Rp {{ item.sell_price | stringformat:'d' }}</label>
+                  <label class="me-3">Original Price : <span style="text-decoration: line-through;">Rp {{ products.ori_price | stringformat:'d' }}</span></label>
+                  <label class="fw-bold">Selling Price : Rp {{ products.sell_price | stringformat:'d' }}</label>
                   <p class="mt-3">
                     {{ products.small_desc }}
                   </p>

@@ -6,8 +6,8 @@ from django.http import JsonResponse
 
 #tutorial 3
 
-def cartPage (request):
-    return render(request, "cart.html")
+def cart_summary (request):
+    return render(request, "cart.html",{})
 
 # def cartPage (request):
 #     cart = Cart(request)

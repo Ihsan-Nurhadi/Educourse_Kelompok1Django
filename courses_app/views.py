@@ -1,4 +1,5 @@
 from typing import Any
+from django.db.models import Q
 from django.shortcuts import render, redirect, get_object_or_404
 from django.db.models.query import QuerySet
 from django.views.generic import (ListView, 
@@ -15,14 +16,43 @@ from user_app.models import User  # Ganti Teacher dengan User
 
 class PostListView(ListView):
     model = Post
+    template_name = 'courses_app/post_list.html'
+    context_object_name = 'post_list'
+    paginate_by = 10
 
     def get_queryset(self):
-        return Post.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
+        # Ambil parameter pencarian dari URL
+        search_query = self.request.GET.get('search', '')
+
+        # Query default: hanya post yang sudah dipublikasikan
+        queryset = Post.objects.filter(published_date__lte=timezone.now())
+
+        # Jika ada parameter pencarian, filter berdasarkan title atau text
+        if search_query:
+            queryset = queryset.filter(
+                Q(title__icontains=search_query) | Q(text__icontains=search_query)
+            )
+
+        # Urutkan berdasarkan tanggal publikasi terbaru
+        return queryset.order_by('-published_date')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['search_query'] = self.request.GET.get('search', '')
+        return context
     
 class ClassListView(ListView):
     model = Class
     template_name = 'courses_app/class_list.html'
     context_object_name = 'classes'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        # Mendapatkan post berdasarkan pk yang diteruskan di URL
+        post = get_object_or_404(Post, pk=self.kwargs['pk'])
+        # Menambahkan post ke dalam konteks
+        context['post'] = post
+        return context
 
     def get_queryset(self):
         # Mendapatkan post berdasarkan pk yang diteruskan

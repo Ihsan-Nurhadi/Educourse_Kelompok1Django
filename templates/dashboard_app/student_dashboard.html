@@ -7,56 +7,26 @@
 </script>
 {% endblock %}
 {% block body_block%}
-<h1 class="poppins-langganan" style="text-align: center;">Berlangganan <span style="color: #F48C06;">Produk</span> <br>EduTeach</h1>
-<section class="menu">
-    <div class="rounded-pill text-white custom-pill">
-      Domisili</div>
-    <div class="rounded-pill text-white custom-pill">
-      Harga</div>
-    <div class="rounded-pill text-white custom-pill">
-      Bahasa</div>
+
+<div class="p-5 mb-4 mt-5 rounded-3 custom-iklan" style="background-color: #FFBD73">
+  <div class="container-fluid py-5">
+    <div class="row align-items-center">
+      <!-- Kolom Kiri (Teks dan Button) -->
+      <div class="col-md-6">
+        <h1 class="poppins-mulai">Mulai belajar bersama kami <br> untuk raih prestasi terbaikmu</h1>
+        <p class="poppins-apakah">Apakah kamu siap menjadi juara OSN dan meraih prestasi nasional?
+          <br>Yuk, gabung bersama kami dan persiapkan dirimu sebaik mungkin!</p>
+        <button class="btn btn-lg btn-daftar" type="button">Daftar Sekarang</button>
+        <button class="btn btn-lg btn-lihat" type="button">Lihat paket</button> <!-- Button tambahan -->
+      </div>
+
+      <div class="posisi-gambar">
+        <img src="{% static '/img/vector.png'%}" alt="Deskripsi Gambar" class="img-fluid rounded">
+      </div>
     </div>
-    <div class="rounded-pill text-white custom-pill">
-      Metode</div>
-    </div>
-</section>
-
-
-<div class="container">
-  <aside class="aside" style="background-color: #FFF3E4;">
-      <h2 class="poppins-mapel">Pilih Mata Pelajaran</h2>
-      <label class="filter-item"onclick="filterContent('All')">
-        <input type="radio" name="filter" value="official-store">
-        <span>All</span>
-      </label>
-    
-      <label class="filter-item"onclick="filterContent('Kimia')">
-        <input type="radio" name="filter" value="power-merchant-pro">
-        <span> Kimia</span>
-      </label>
-    
-      <label class="filter-item"onclick="filterContent('Biologi')">
-        <input type="radio" name="filter" value="power-merchant">
-        <span>Biologi</span>
-      </label>
-
-      <label class="filter-item"onclick="filterContent('Fisika')">
-        <input type="radio" name="filter" value="power-merchant">
-        <span>Fisika</span>
-      </label>
-
-      <label class="filter-item"onclick="filterContent('Matematika')">
-        <input type="radio" name="filter" value="power-merchant">
-        <span>Matematika</span>
-      </label>
-  </aside>
-  <div class="main-content" style="max-height: 600px; overflow-y: auto; background-color: #2F327D;">
-    <div id="teacher-list" style="background-color: #2F327D;"></div>
   </div>
 </div>
-
-<br>
-
+<br> 
 <h1 style="padding: 3%; text-align: center;">Student Success Stories</h1>
 <div id="studentStoriesCarousel" class="carousel slide" data-bs-ride="carousel">
   <!-- Carousel Inner -->
@@ -137,24 +107,6 @@
 
 <br>
 
-<div class="p-5 mb-4 mt-5 rounded-3 custom-iklan" style="background-color: #FFBD73">
-  <div class="container-fluid py-5">
-    <div class="row align-items-center">
-      <!-- Kolom Kiri (Teks dan Button) -->
-      <div class="col-md-6">
-        <h1 class="poppins-mulai">Mulai belajar bersama kami <br> untuk raih prestasi terbaikmu</h1>
-        <p class="poppins-apakah">Apakah kamu siap menjadi juara OSN dan meraih prestasi nasional?
-          <br>Yuk, gabung bersama kami dan persiapkan dirimu sebaik mungkin!</p>
-        <button class="btn btn-lg btn-daftar" type="button">Daftar Sekarang</button>
-        <button class="btn btn-lg btn-lihat" type="button">Lihat paket</button> <!-- Button tambahan -->
-      </div>
-
-      <div class="posisi-gambar">
-        <img src="{% static '/img/vector.png'%}" alt="Deskripsi Gambar" class="img-fluid rounded">
-      </div>
-    </div>
-  </div>
-</div>
 {% endblock%}
 {% block jsblock%}
 <script src="{% static 'js/student.js' %}"></script>

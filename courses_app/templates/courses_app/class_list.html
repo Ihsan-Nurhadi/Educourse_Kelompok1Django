@@ -1,23 +1,45 @@
 {% extends 'dashboard_app/base_dashboard_student.html' %}
 {% load static %}
 {% load embed_video_tags %}
+
 {% block head_block %}
 <link rel="stylesheet" href="{% static 'css/class_list.css' %}">
 {% endblock %}
+
 {% block body_block %}
-<div class="container ">
-    {% if post.thumbnail %}
-    <img src="{{ post.thumbnail.url }}" alt="Thumbnail" style="width: 100%; height: auto;">
-   {% endif %}
-<h2>Berikut adalah kelas yan terdapat dalam materi</h2>
-<ul>
-    {% for class in classes %}
-    <li>
-        {{ class.class_name }}
-        <br>
-        <a href="{% url 'class_detail' pk=class.pk %}" class="btn btn-primary">Lihat</a>  <!-- Link ke ClassDetailView -->
-    </li>
-    {% endfor %}
-</ul>
+<!-- Header dan Navigasi -->
+<div class="py-3" style="background:#FFBD73">
+    <div class="container nav-jejak">
+        <a class="text-black" href="{% url 'user_app:studentdashboard' %}" style="font-size: 25px;"> Dashboard /</a>
+        <a class="text-black" href="{% url 'post_list' %}" style="font-size: 25px; text-decoration: none !important;"> Search /</a>
+        <a class="text-black" href="{% url 'post_detail' pk=post.pk %}" style="font-size: 25px; text-decoration: none !important;"> {{ post.title }} /</a>
+        <a class="text-black" href="#" style="font-size: 25px; text-decoration: none !important;">Class </a>
+
+
+    </div>
 </div>
+
+<!-- Thumbnail Post -->
+<div class="container">
+    {% if post.thumbnail %}
+    <img src="{{ post.thumbnail.url }}" alt="Thumbnail" class="img-fluid my-4" style="max-width: 100%; height: auto;">
+    {% endif %}
+    
+    <h2>Berikut adalah kelas yang terdapat dalam materi "{{ post.title }}"</h2>
+    
+    <!-- Daftar Kelas -->
+    <ul>
+        {% for class in classes %}
+        <li class="class-item">
+            <div class="class-info">
+                <span class="class-name">{{ class.class_name }}</span>
+                <a href="{% url 'class_detail' pk=class.pk %}" class="btn btn-primary">Lihat</a>
+            </div>
+        </li>
+        {% empty %}
+        <li>Tidak ada kelas tersedia.</li>
+        {% endfor %}
+    </ul>
+</div>
+
 {% endblock %}

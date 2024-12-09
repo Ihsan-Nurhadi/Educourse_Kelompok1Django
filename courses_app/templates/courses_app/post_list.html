@@ -5,28 +5,63 @@
 {% endblock %}
 {% block body_block %}
 <div class="py-3" style="background:#FFBD73">
-    <div class="container nav-jejak">
-      <a class="text-black" href="{% url 'user_app:studentdashboard' %}" style="font-size: 25px;"> Dashboard /</a>
-      <a class="text-black" href="#" style="font-size: 25px;"> Search Courses</a>
-    </div>
+  <div class="container nav-jejak">
+    <a class="text-black" href="{% url 'user_app:studentdashboard' %}" style="font-size: 25px;"> Dashboard /</a>
+    <a class="text-black" href="#" style="font-size: 25px;"> Search Courses</a>
   </div>
+</div>
+<h1 class="poppins-langganan" style="text-align: center;">Berlangganan <span style="color: #F48C06;">Produk</span> <br>EduTeach</h1>
 <div class="container mt-4">
-    <div class="row">
-        {% for post in post_list %}
-            <div class="card" style="width: 18rem; margin: 15px;">
-                <a href="{% url 'post_detail' pk=post.pk %}" style="text-decoration: none; color: inherit;">
-                    {% if post.thumbnail %}
-                        <img src="{{ post.thumbnail.url }}" class="card-img-top" alt="Thumbnail">
-                    {% else %}
-                        <p class="text-center">No image available</p>
-                    {% endif %}
-                    <div class="card-body">
-                        <h5 class="card-title">{{ post.title }}</h5>
-                        <p class="card-text">Published on: {{ post.published_date | date:"D M Y" }}</p>
-                    </div>
-                </a>
-            </div>
-        {% endfor %}
+  <!-- Form Pencarian -->
+  <form method="get" action="{% url 'post_list' %}">
+    <div class="row mb-4">
+      <div class="col-md-10">
+        <input type="text" name="search" class="form-control" placeholder="Search posts..." value="{{ search_query }}">
+      </div>
+      <div class="col-md-2">
+        <button type="submit" class="btn btn-primary w-100">Search</button>
+      </div>
     </div>
+  </form>
+
+  <!-- Daftar Post -->
+  <div class="row">
+    {% for post in post_list %}
+      <div class="card" style="width: 18rem; margin: 15px;">
+        <a href="{% url 'post_detail' pk=post.pk %}" style="text-decoration: none; color: inherit;">
+          {% if post.thumbnail %}
+            <img src="{{ post.thumbnail.url }}" class="card-img-top" alt="Thumbnail">
+          {% else %}
+            <p class="text-center">No image available</p>
+          {% endif %}
+          <div class="card-body">
+            <h5 class="card-title">{{ post.title }}</h5>
+            <p class="card-text">Published on: {{ post.published_date|date:"D M Y" }}</p>
+          </div>
+        </a>
+      </div>
+    {% empty %}
+      <p>No posts found.</p>
+    {% endfor %}
+  </div>
+
+  <!-- Pagination (Opsional) -->
+  <div class="pagination">
+    {% if is_paginated %}
+      <span class="step-links">
+        {% if page_obj.has_previous %}
+          <a href="?search={{ search_query }}&page={{ page_obj.previous_page_number }}">Previous</a>
+        {% endif %}
+
+        <span class="current">
+          Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+        </span>
+
+        {% if page_obj.has_next %}
+          <a href="?search={{ search_query }}&page={{ page_obj.next_page_number }}">Next</a>
+        {% endif %}
+      </span>
+    {% endif %}
+  </div>
 </div>
 {% endblock %}

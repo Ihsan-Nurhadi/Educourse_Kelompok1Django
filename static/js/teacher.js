@@ -2,37 +2,43 @@ const products = [
     {
         productName: "OSN Bidang Biologi 2024",
         category: "Biologi",
-        price: "180.000",
+        price: "200.000",
+        sell_price: "180.000",
         image: "static/img/sains.jpg",
     },
     {
         productName: "OSN Bidang Kimia 2024",
         category: "Kimia",
-        price: "180.000",
+        price: "200.000",
+        sel_price: "184.999",
         image: "static/img/sains.jpg",
     },
     {
         productName: "OSN Bidang Fisika 2024",
         category: "Fisika",
-        price: "180.000",
+        price: "200.000",
+        sell_price: "190.000",
         image: "static/img/sains.jpg",
     },
     {
         productName: "OSN Bidang Matematika 2024",
         category: "Matematika",
-        price: "170.000",
+        price: "200.000",
+        sell_price: "170.000",
         image: "static/img/math.jpg",
     },
     {
         productName: "OSN Bidang Bahasa Inggris 2024",
         category: "English",
-        price: "175.000",
+        price: "200.000",
+        sell_price: "175.000",
         image: "static/img/english.jpg",
     },
     {
         productName: "OSN Bidang Ekonomi 2024",
         category: "Economy",
-        price: "195.000",
+        price: "200.000",
+        sell_price: "195.000",
         image: "static/img/tech.jpg",
     },
 ];
@@ -49,7 +55,9 @@ const card = `
             </div>
             <div class="container">
             <h5 class="product-name">${product.productName.toUpperCase()}</h5>
-            <h6 style="float: left;">Rp. ${product.price}</h6>
+            <h6 style="float: left; text-decoration: line-through;">Rp. ${product.price}</h6>
+            <br><br>
+            <h6 style="float: left;">Harga Promo Rp. ${product.sell_price}</h6>
             <button href="#" type="button" style="float: right; background-color: blue; color: white; border: none; padding: 10px;"> Add Cart </button>
             </div>
         </div>

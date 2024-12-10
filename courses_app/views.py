@@ -65,11 +65,6 @@ class ClassDetailView(LoginRequiredMixin, DetailView):
     template_name = 'courses_app/class_detail.html'
     context_object_name = 'class_instance'
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        class_instance = self.object
-        context['form'] = ClassForm(instance=class_instance)  # Form untuk mengedit kelas
-        return context
     
 class PostDetailView(DetailView):
     model = Post

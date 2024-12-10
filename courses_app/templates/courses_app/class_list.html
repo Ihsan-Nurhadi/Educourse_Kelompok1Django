@@ -14,8 +14,6 @@
         <a class="text-black" href="{% url 'post_list' %}" style="font-size: 25px; text-decoration: none !important;"> Search /</a>
         <a class="text-black" href="{% url 'post_detail' pk=post.pk %}" style="font-size: 25px; text-decoration: none !important;"> {{ post.title }} /</a>
         <a class="text-black" href="#" style="font-size: 25px; text-decoration: none !important;">Class </a>
-
-
     </div>
 </div>
 
@@ -24,6 +22,9 @@
     <div class="p-5 text-white ">
       <h1 class="text white">Kelas : {{ post.title }} </h1>
       <p class="lead">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+            <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
+        </svg>
         Dibuat oleh <code>{{post.author}}</code>
       </p>
       Dibuat pada : {{ post.published_date }}

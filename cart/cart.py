@@ -50,4 +50,12 @@ class Cart():
         products = Product.objects.filter(id__in=product_ids)
         #return those look up products
         return products
+    
+    def get_prodss(self):
+        #get ids from cart
+        product_ids = self.cart.keys()
+        #use ids to lookup product in db model
+        products = Post.objects.filter(id__in=product_ids)
+        #return those look up products
+        return products
 

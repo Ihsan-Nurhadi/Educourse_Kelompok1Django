@@ -1,4 +1,5 @@
 from user_app.models import Product
+from courses_app.models import Post
 from django.contrib.sessions.models import Session
 
 
@@ -16,7 +17,7 @@ class Cart():
         #make sure cart is available  on all pages of site
         self.cart = cart
 
-    def add(self, product):
+    def add_teacher(self, product):
         product_id = str(product.id)
 
         #logic
@@ -24,6 +25,17 @@ class Cart():
             pass
         else:
             self.cart[product_id] = {'price': str(product.sell_price)}
+
+        self.session.modified = True
+
+    def add_student(self, post):
+        post_id = str(post.id)
+
+        #logic
+        if post_id in self.cart:
+            pass
+        else:
+            self.cart[post_id] = {'price': str(post.price)}
 
         self.session.modified = True
 

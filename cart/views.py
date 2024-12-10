@@ -1,11 +1,15 @@
 from django.shortcuts import render, get_object_or_404
 from .cart import Cart
 from user_app.models import Product
+from courses_app.models import Post
 from django.http import JsonResponse,  HttpResponse
 # Create your views here.
 
+# student
 def cart_summary_student (request):
-    return render(request, "cart_student.html",{})
+    cart = Cart(request)
+    cart_products = cart.get_prods
+    return render(request, "cart_student.html",{'cart_products':cart_products})
 
 # teacher
 def cart_summary_teacher (request):
@@ -24,13 +28,7 @@ def cart_add(request):
         #lookup product in DB
         product = get_object_or_404(Product, id=product_id)
         #save to session
-        cart.add(product=product)
-
-    #     # return response
-    #     response = JsonResponse({'Product Name : ': product.name })
-    #     return response
-    # else:
-    #     return HttpResponse('This view only handles POST requests.')  # Respon untuk request lain
+        cart.add_teacher(product=product)
 
         #Get cart quantity
         cart_quantity = cart.__len__()
@@ -39,7 +37,27 @@ def cart_add(request):
         # response = JsonResponse({'Product Name: ': product.name})
         response = JsonResponse({'qty: ': cart_quantity})
         return response
-    
+
+def cart_add_student(request):
+    # Get the cart
+    cart = Cart(request)
+    #test for post
+    if request.POST.get('action') == 'post':
+        #get stuff 
+        post_id = int(request.POST.get('post_id'))
+        #lookup product in DB
+        post = get_object_or_404(Post, id=post_id)
+        #save to session
+        cart.add_student(post=post)
+
+        #Get cart quantity
+        cart_quantity_student = cart.__len__()
+
+        #return response
+        # response = JsonResponse({'Product Name: ': product.name})
+        response = JsonResponse({'qty: ': cart_quantity_student})
+        return response
+
 # def cart_delete(request):
 #     pass
 

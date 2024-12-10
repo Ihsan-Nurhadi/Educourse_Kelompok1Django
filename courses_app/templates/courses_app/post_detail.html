@@ -33,7 +33,7 @@
        <div class="post-price" style="font-size: 24px !important; margin-top: 20px; font-weight: bold;">
         Price: Rp.{{ post.price }}
        </div>
-       <button type="button" data-testid="add-to-cart-button" class="ud-btn ud-btn-large ud-btn-brand ud-heading-md add-to-cart" fdprocessedid="s2t4t5" style="width: 80%;">Tambahkan ke keranjang</button>
+       <button type="button" value="{{ post.id }}" id="add-cart-student" data-testid="add-to-cart-button" class="ud-btn ud-btn-large ud-btn-brand ud-heading-md add-to-cart" fdprocessedid="s2t4t5" style="width: 80%;">Tambahkan ke keranjang</button>
        <br>
        <a href="{% url 'class_list' pk=post.pk %}" class="btn btn-primary">Lihat Kelas</a>
        <br>
@@ -66,4 +66,29 @@
         {% endif %}
     </ul>
 </div>
+
+<script>
+    // check if button pressed
+    $(document).on('click', '#add-cart-student', function(e){
+        e.preventDefault();
+        $.ajax({
+            type: 'POST',
+            url: '{% url 'cart_add_student' %}',
+            data: {
+                post_id: $('#add-cart-student').val(),
+                csrfmiddlewaretoken: '{{ csrf_token }}',
+                action: 'post'
+            },
+            success: function(json){
+                // console.log(json)
+                document.getElementById("cart_quantity_student").
+                textContent = json.qty
+            },
+
+            error: function(xhr, errmsg, err){
+
+            }
+        });
+    });
+  </script>
 {% endblock %}

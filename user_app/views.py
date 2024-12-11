@@ -152,3 +152,15 @@ def teacherprofile(request):
             'user_profile': user_profile,
         }
     )
+
+@login_required
+def update_teacherprofile(request):
+    if request.method == 'POST':
+        form = ProfileUpdateForm(request.POST, request.FILES, instance=request.user)
+        if form.is_valid():
+            form.save()
+            return redirect('user_app:teacherprofile')  
+    else:
+        form = ProfileUpdateForm(instance=request.user)
+
+    return render(request, 'dashboard_app/update_teacher_profile.html', {'form': form})

@@ -38,7 +38,8 @@
                       <p style="text-decoration: none; color: #252525;" >{{ product.small_desc }}</p>
                       <p style="text-decoration: none; color: #252525;" >{{ product.desc }}</p>
                       <span class="float-start">Harga Promo : Rp. {{ product.sell_price }}</span>
-                      <span class="float-end"><button type="button" class="btn btn-primary">Payment</button></span>
+                      <br>
+                      <button type="button" data-index="{{product.id}}" class="btn btn-danger delete-product">Remove</button>
                     </div>
                 </div>
               </a>
@@ -48,5 +49,44 @@
         </div><br/>
   </div>
   {% endfor %}
-  <br><br><br><br><br><br><br><br><br><br><br><br>
+  <br>
+  <div align="center">
+    <h3>Total: Rp.{{ totals }}</h3>
+    <a href="{% url 'payment_t' %}" class="btn btn-success">Checkout</a>
+    </div>
+    <br><br><br><br><br><br><br><br><br><br><br>
+  <script>
+    // Delete Item From Cart
+    $(document).on('click', '.delete-product', function(e){
+        e.preventDefault();
+        // grab the product id
+        //var productid = $(this).data('index');
+    
+        $.ajax({
+        type: 'POST',
+        url: '{% url 'cart_delete_product' %}',
+        data: {
+          product_id: $(this).data('index'),
+          csrfmiddlewaretoken: '{{ csrf_token }}',
+          action: 'post'
+        },
+        success: function(json){
+            //console.log(json)
+            //document.getElementById("cart_quantity").textContent = json.qty
+            location.reload();
+        },
+    
+        error: function(xhr, errmsg, err){
+    
+        }
+    
+    
+        });
+    
+    })
+    
+    
+    
+    
+    </script>
 {% endblock %}

@@ -7,5 +7,6 @@ urlpatterns = [
     path('add-teacher/',views.cart_add, name='cart_add'),
     path('add-student/',views.cart_add_student, name='cart_add_student'),
     path('delete/',views.cart_delete, name='cart_delete'),
+    path('deletee/',views.cart_delete_product, name='cart_delete_product'),
     # path('update/',views.cart_update, name='cart_update'),
 ]

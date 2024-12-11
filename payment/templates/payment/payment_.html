@@ -1,0 +1,36 @@
+{% extends 'dashboard_app/base_dashboard_student.html' %}
+{% load static %}
+{% block head_block %}
+<link rel="stylesheet" href="{% static 'css/payment.css' %}">
+
+{% endblock %}
+{% block body_block %}
+<div class="container" style="background-color: white; margin-bottom: 10px;">
+{% for product in cart_products %}
+<div class="containert">
+      <div class="card"  style="background-color: #ffff;">
+        <div class="card-body">
+          <div class="row">
+            <div class="col">
+              <div class="category-image">
+                <img class="image-fluid" style="width: 50%; height: 50%; object-fit: cover;" src="{{ product.product_image.url }}" alt="Category Image">
+              </div>
+            </div>
+            <div class="col">
+              <br>
+              <p style="text-decoration: none; color: #252525;" >{{ product }}</p>
+              <span class="float-start">Rp. {{ product.sell_price }}</span>
+              <br/>
+              <!-- <span class="float-end"><button type="button" class="btn btn-primary">Payment</button></span> -->
+            </div>
+        </div>
+      </a>
+      </div>
+    </div>
+</div>
+{% endfor %}
+<div class="aside">
+    <p>Total: Rp.{{ totals }}</p>
+</div>
+</div>
+{% endblock %}

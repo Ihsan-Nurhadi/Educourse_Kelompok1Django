@@ -32,6 +32,9 @@ class CartHandler():  # Renaming from Cart to CartHandler
     def delete(self, post):
         Cart.objects.filter(user=self.user, post=post).delete()
     
+    def deleteproduct(self, product):
+        Cart.objects.filter(user=self.user, product=product).delete()
+
     def cart_total(self):
         total = Decimal('0.00')  # Initialize total as a Decimal
         for item in self.cart_items:

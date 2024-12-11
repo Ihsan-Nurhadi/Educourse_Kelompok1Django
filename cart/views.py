@@ -14,7 +14,8 @@ def cart_summary_student(request):
 def cart_summary_teacher(request):
     cart = CartHandler(request)
     cart_products = cart.get_prods()
-    return render(request, "cart.html", {'cart_products': cart_products})
+    totals = cart.cart_total()
+    return render(request, "cart.html", {'cart_products': cart_products, 'totals': totals})
 
 def cart_add(request):
     cart = CartHandler(request)
@@ -40,3 +41,10 @@ def cart_delete(request):
         post_id = int(request.POST.get('post_id'))
         cart.delete(post=post_id)
         return JsonResponse({'post': post_id})
+    
+def cart_delete_product(request):
+    cart = CartHandler(request)
+    if request.POST.get('action') == 'post':
+        product_id = int(request.POST.get('product_id'))
+        cart.deleteproduct(product=product_id)
+        return JsonResponse({'product': product_id})

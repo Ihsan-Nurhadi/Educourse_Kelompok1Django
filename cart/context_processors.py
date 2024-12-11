@@ -1,6 +1,10 @@
 from .cart import Cart
 
-# create context processor so our cart can work on all page
+
+# update sinkron database Cart
 def cart(request):
-    # return the default data from our cart
-    return {'cart':Cart(request)}
+    if request.user.is_authenticated:
+        cart_items = Cart.objects.filter(user=request.user)
+        print(f"Context Processor Cart Items: {cart_items.values()}")  # Debugging
+        return {'cart': cart_items}
+    return {'cart':[]}

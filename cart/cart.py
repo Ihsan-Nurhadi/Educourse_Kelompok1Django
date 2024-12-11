@@ -49,6 +49,21 @@ class Cart():
                 current_user.old_cart = carty
                 current_user.save()
 
+    def add_teacher(self, product):
+        product_id = str(product.id)
+
+        # Logic
+        if product_id in self.cart:
+            pass
+        else:
+            self.cart[product_id] = {'price': str(product.sell_price)}
+
+        self.session.modified = True
+
+        # Save cart to User model if logged in
+        if self.request.user.is_authenticated:
+            self.save_cart_to_user()
+
     def delete(self, post):
         post_id = str(post.id)
         if post_id in self.cart:
@@ -79,5 +94,13 @@ class Cart():
         product_ids = self.cart.keys()
         # Use IDs to lookup posts in database model
         products = Post.objects.filter(id__in=product_ids)
+        # Return those looked-up posts
+        return products
+    
+    def get_prods(self):
+        # Get IDs from cart
+        product_ids = self.cart.keys()
+        # Use IDs to lookup posts in database model
+        products = Product.objects.filter(id__in=product_ids)
         # Return those looked-up posts
         return products

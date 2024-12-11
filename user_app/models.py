@@ -9,6 +9,7 @@ class User(AbstractUser):
     is_teacher= models.BooleanField('Is teacher', default=False)
     is_student = models.BooleanField('Is student', default=False)
     profile_pic = models.ImageField(upload_to='profile_pics',blank=True)
+    old_cart = models.CharField(max_length=200, blank=True, null=True)
 
 def get_file_path(request, filename):
     original_filename = filename

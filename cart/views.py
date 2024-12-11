@@ -3,13 +3,15 @@ from .cart import Cart
 from user_app.models import Product
 from courses_app.models import Post
 from django.http import JsonResponse
+from django.contrib import messages
 # Create your views here.
 
 # student
 def cart_summary_student (request):
     cart = Cart(request)
     cart_products_student = cart.get_prodss
-    return render(request, "cart_student.html",{'cart_products_student':cart_products_student})
+    totals = cart.cart_total()
+    return render(request, "cart_student.html",{'cart_products_student':cart_products_student,"totals":totals})
 
 # teacher
 def cart_summary_teacher (request):
@@ -58,8 +60,18 @@ def cart_add_student(request):
         response = JsonResponse({'qty: ': cart_quantity_student})
         return response
 
-# def cart_delete(request):
-#     pass
+def cart_delete(request):
+	cart = Cart(request)
+	if request.POST.get('action') == 'post':
+		# Get stuff
+		post_id = int(request.POST.get('post_id'))
+		# Call delete Function in Cart
+		cart.delete(post=post_id)
+
+		response = JsonResponse({'post':post_id})
+		#return redirect('cart_summary')
+		messages.success(request, ("Item Deleted From Shopping Cart..."))
+		return response
 
 # def cart_update(request):
 #     pass

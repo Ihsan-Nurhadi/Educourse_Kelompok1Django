@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'embed_video',
     'courses_app',
     'cart',
+    'payment',
 ]
 
 MIDDLEWARE = [

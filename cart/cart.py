@@ -1,37 +1,34 @@
-from user_app.models import Product
+from user_app.models import Product, User
 from courses_app.models import Post
 from django.contrib.sessions.models import Session
-
+import json
 
 class Cart():
     def __init__(self, request):
         self.session = request.session
+        self.request = request
 
-        #get the current session key if it exists
+        # Get the current session key if it exists
         cart = self.session.get('session_key')
 
-        #if the user is new, no session key! Create one!
+        # If the user is new, no session key! Create one!
         if 'session_key' not in request.session:
             cart = self.session['session_key'] = {}
 
-        #make sure cart is available  on all pages of site
+        # If the user is authenticated, load the cart from their saved data
+        if self.request.user.is_authenticated:
+            current_user = User.objects.filter(id=self.request.user.id).first()
+            if current_user and current_user.old_cart:
+                # Load old_cart from user and update session
+                old_cart = json.loads(current_user.old_cart)
+                cart.update(old_cart)
+
         self.cart = cart
-
-    def add_teacher(self, product):
-        product_id = str(product.id)
-
-        #logic
-        if product_id in self.cart:
-            pass
-        else:
-            self.cart[product_id] = {'price': str(product.sell_price)}
-
-        self.session.modified = True
 
     def add_student(self, post):
         post_id = str(post.id)
 
-        #logic
+        # Logic
         if post_id in self.cart:
             pass
         else:
@@ -39,23 +36,48 @@ class Cart():
 
         self.session.modified = True
 
+        # Save cart to User model if logged in
+        if self.request.user.is_authenticated:
+            self.save_cart_to_user()
+
+    def save_cart_to_user(self):
+        """Save the current cart to the User model."""
+        if self.request.user.is_authenticated:
+            current_user = User.objects.filter(id=self.request.user.id).first()
+            if current_user:
+                carty = json.dumps(self.cart)  # Convert cart to JSON
+                current_user.old_cart = carty
+                current_user.save()
+
+    def delete(self, post):
+        post_id = str(post.id)
+        if post_id in self.cart:
+            del self.cart[post_id]
+
+        self.session.modified = True
+
+        # Save cart to User model if logged in
+        if self.request.user.is_authenticated:
+            self.save_cart_to_user()
+
+    def cart_total(self):
+        product_ids = self.cart.keys()
+        products = Post.objects.filter(id__in=product_ids)
+        # Start counting at 0
+        total = 0
+
+        for product in products:
+            total += float(self.cart[str(product.id)]['price'])
+
+        return total
+
     def __len__(self):
         return len(self.cart)
-    
 
-    def get_prods(self):
-        #get ids from cart
-        product_ids = self.cart.keys()
-        #use ids to lookup product in db model
-        products = Product.objects.filter(id__in=product_ids)
-        #return those look up products
-        return products
-    
     def get_prodss(self):
-        #get ids from cart
+        # Get IDs from cart
         product_ids = self.cart.keys()
-        #use ids to lookup product in db model
+        # Use IDs to lookup posts in database model
         products = Post.objects.filter(id__in=product_ids)
-        #return those look up products
+        # Return those looked-up posts
         return products
-

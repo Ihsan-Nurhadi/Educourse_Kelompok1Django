@@ -35,8 +35,10 @@
                 <br>
                 <p style="text-decoration: none; color: #252525;" >{{ post.title }}</p>
                 <p style="text-decoration: none; color: #252525;" >{{ post.author }}</p>
-                <span class="float-start">Harga Promo : Rp. {{ post.price }}</span>
-                <span class="float-end"><button type="button" class="btn btn-primary">Payment</button></span>
+                <span class="float-start">Harga : Rp. {{ post.price }}</span>
+                <br/>
+                <!-- <span class="float-end"><button type="button" class="btn btn-primary">Payment</button></span> -->
+                <button type="button" data-index="{{post.id}}" class="btn btn-danger delete-product">Remove</button>
               </div>
           </div>
         </a>
@@ -44,5 +46,43 @@
       </div>
   </div>
   {% endfor %}
+  <div align="center">
+    <h3>Total: Rp.{{ totals }}</h3>
+    <a href="{% url 'payment' %}" class="btn btn-success">Checkout</a>
+    </div>
   <br><br><br><br><br><br><br><br><br><br><br><br>
+  <script>
+    // Delete Item From Cart
+    $(document).on('click', '.delete-product', function(e){
+        e.preventDefault();
+        // grab the product id
+        //var productid = $(this).data('index');
+    
+        $.ajax({
+        type: 'POST',
+        url: '{% url 'cart_delete' %}',
+        data: {
+          post_id: $(this).data('index'),
+          csrfmiddlewaretoken: '{{ csrf_token }}',
+          action: 'post'
+        },
+        success: function(json){
+            //console.log(json)
+            //document.getElementById("cart_quantity").textContent = json.qty
+            location.reload();
+        },
+    
+        error: function(xhr, errmsg, err){
+    
+        }
+    
+    
+        });
+    
+    })
+    
+    
+    
+    
+    </script>
 {% endblock %}

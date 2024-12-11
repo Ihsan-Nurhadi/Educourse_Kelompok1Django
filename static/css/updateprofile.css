@@ -1,103 +1,77 @@
-.component {
+/* Styling khusus untuk halaman update profile */
+.update-profile-container {
     max-width: 600px;
-    margin: 50px auto;
+    margin: 30px auto;
     padding: 20px;
-    background-color: #f9f9f9;
     border: 1px solid #ddd;
     border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    font-family: Arial, sans-serif;
+    background-color: #fff3e6;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.component h2 {
+/* Title styling */
+.update-profile-container h1 {
+    font-size: 24px;
+    font-weight: bold;
     text-align: center;
     color: #333;
     margin-bottom: 20px;
-    font-size: 24px;
-    font-weight: bold;
 }
 
-/* Styling for individual form elements */
-.component div {
-    margin-bottom: 15px;
-}
-
-.component label {
+/* Form labels */
+.update-profile-container label {
     display: block;
-    font-weight: bold;
-    margin-bottom: 5px;
+    font-weight: 600;
     color: #555;
+    margin-bottom: 5px;
 }
 
-/* Styling for form inputs */
-.component input[type="text"],
-.component input[type="email"],
-.component input[type="url"],
-.component input[type="file"],
-.component select,
-.component textarea {
+/* Form inputs */
+.update-profile-container input[type="text"],
+.update-profile-container input[type="email"],
+.update-profile-container input[type="file"],
+.update-profile-container textarea {
     width: 100%;
     padding: 10px;
+    margin-bottom: 15px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    font-size: 14px;
     box-sizing: border-box;
-    background-color: #fff;
+    font-size: 14px;
     color: #333;
 }
 
-/* Add hover focus effect for input fields */
-.component input:focus,
-.component select:focus,
-.component textarea:focus {
+.update-profile-container input[type="text"]:focus,
+.update-profile-container input[type="email"]:focus,
+.update-profile-container input[type="file"]:focus,
+.update-profile-container textarea:focus {
     border-color: #007bff;
     outline: none;
     box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
 
-/* Styling for buttons */
-.component button {
-    display: inline-block;
-    padding: 10px 20px;
-    font-size: 16px;
-    color: #fff;
+/* Button styling */
+.update-profile-container button[type="submit"] {
     background-color: #007bff;
+    color: #fff;
     border: none;
+    padding: 10px 20px;
     border-radius: 4px;
+    font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
-.component button:hover {
+.update-profile-container button[type="submit"]:hover {
     background-color: #0056b3;
 }
 
-/* Styling for the cancel link */
-.component a {
-    display: inline-block;
-    margin-left: 10px;
-    font-size: 16px;
-    text-decoration: none;
-    color: #007bff;
-    transition: color 0.3s ease;
+/* Image upload preview */
+.update-profile-container input[type="file"] {
+    padding: 5px;
 }
 
-.component a:hover {
-    color: #0056b3;
-}
-
-/* Responsive design */
-@media (max-width: 768px) {
-    .component {
-        padding: 15px;
-    }
-
-    .component h2 {
-        font-size: 20px;
-    }
-
-    .component button,
-    .component a {
-        font-size: 14px;
-    }
+/* Alignment and spacing */
+.update-profile-container .text-center {
+    text-align: center;
 }

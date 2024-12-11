@@ -7,6 +7,7 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 from .models import User , Category , Product # Pastikan model User diimpor jika diperlukan
 from django.contrib import messages
+from .forms import ProfileUpdateForm
 
 # Create your views here.
 
@@ -126,6 +127,19 @@ def studentprofile(request):
             'user_profile': user_profile,  # Pass objek user ke template
         }
     )
+
+@login_required
+def update_studentprofile(request):
+    if request.method == 'POST':
+        form = ProfileUpdateForm(request.POST, request.FILES, instance=request.user)
+        if form.is_valid():
+            form.save()
+            return redirect('user_app:studentprofile')  
+    else:
+        form = ProfileUpdateForm(instance=request.user)
+
+    return render(request, 'dashboard_app/update_student_profile.html', {'form': form})
+
 @login_required
 def teacherprofile(request):
     user_profile = request.user

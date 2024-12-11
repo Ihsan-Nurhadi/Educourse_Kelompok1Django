@@ -5,7 +5,7 @@
 {% endblock %}
 {% block body_block %}
 
-<div class="component">
+<div class="component" style="background-color: #fff3e6;">
     <div class="profile_pic">
     <h1>Profil Siswa</h1>
     {% if user_profile.profile_pic %}
@@ -18,5 +18,6 @@
     <p>Nama: {{ user_profile.username }}</p>
     <p>Email: {{ user_profile.email }}</p>
     </div>
+    <a href="{% url 'user_app:update_studentprofile' %}" class="btn btn-primary">Update</a>        
 </div>
 {% endblock %}

@@ -24,7 +24,7 @@
             <span class=" badge bg-dark text-white ms-1 rounded-pill" id="cart_quantity_student">
               {{cart|length}}
             </span></a></li>
-          <button class="button"><i class="fas fa-user"></i> Student</button>
+            <a href="{% url 'user_app:studentprofile' %}" class="button"><i class="fas fa-user"></i> Student</a>        
         </ul>
     </div>
     <input type="checkbox" id="check">

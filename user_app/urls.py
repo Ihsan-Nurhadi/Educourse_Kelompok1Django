@@ -21,4 +21,5 @@ urlpatterns = [
     path('teacherscourses/<str:cate_slug>/<str:prod_slug>', views.productdetails, name='productdetails'),
     path('studentprofile',views.studentprofile, name='studentprofile'),
     path('teacherprofile',views.teacherprofile, name='teacherprofile'),
+    path('update_studentprofile/', views.update_studentprofile, name='update_studentprofile'),
 ]

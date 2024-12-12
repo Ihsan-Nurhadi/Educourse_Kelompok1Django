@@ -15,17 +15,6 @@ class Post(models.Model):
     thumbnail = models.ImageField(upload_to='thumbnail', blank=True)
     video = EmbedVideoField(blank=True, null=True)  # Tambahkan field untuk video
     published_date = models.DateTimeField(blank=True, null=True)
-    id = models.CharField(max_length=10, primary_key=True)
-
-    def save(self, *args, **kwargs):
-        if not self.id:  # Generate ID hanya saat membuat objek baru
-            last_product = Post.objects.order_by('-id').first()
-            if last_product:
-                self.id = f"PROD{int(last_product.id[4:]) + 1:03d}"
-            else:
-                self.id = "PROD001"
-        super().save(*args, **kwargs)
-
 
     def publish(self):
         self.published_date = timezone.now()

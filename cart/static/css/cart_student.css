@@ -509,8 +509,9 @@ footer {
   position: absolute;
   top: 55%;
   right: 15%;
+  text-align: left;
   /* margin: 5%; */
-  max-width: 300px;
+  width: 300px;
   max-height: 500px;
   flex-direction: column; /* Menyusun elemen secara vertikal */
   align-items: center; /* Mengatur agar semua elemen sejajar di tengah */

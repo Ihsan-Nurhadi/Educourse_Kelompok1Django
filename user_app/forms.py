@@ -41,7 +41,7 @@ class SignUpForm(UserCreationForm):
             }
         )
     )
-    email = forms.CharField(
+    email = forms.EmailField(
         widget=forms.TextInput(
             attrs={
                 "class": "form-control"
@@ -54,28 +54,43 @@ class SignUpForm(UserCreationForm):
                 "class": "form-control-file"
             }
         ),
-        required=False  # Jika gambar tidak wajib
+        required=False  # Optional profile picture
     )
-    is_teacher = forms.BooleanField(
-        widget=forms.CheckboxInput(
+    
+    ROLE_CHOICES = [
+        ('student', 'Student'),
+        ('teacher', 'Teacher'),
+    ]
+
+    role = forms.ChoiceField(
+        choices=ROLE_CHOICES,
+        widget=forms.RadioSelect(
             attrs={
                 "class": "form-check-input"
             }
         ),
-        required=False  # Jika field tidak wajib diisi
-    )
-    is_student = forms.BooleanField(
-        widget=forms.CheckboxInput(
-            attrs={
-                "class": "form-check-input"
-            }
-        ),
-        required=False  # Jika field tidak wajib diisi
+        required=True  # At least one role must be selected
     )
 
     class Meta:
         model = User
-        fields = ('username', 'email', 'password1', 'password2', 'is_teacher', 'is_student','profile_pic')
+        fields = ('username', 'email', 'password1', 'password2', 'role', 'profile_pic')
+
+    def save(self, commit=True):
+        user = super().save(commit=False)
+        role = self.cleaned_data['role']
+        
+        # Set the role based on the selected choice
+        if role == 'teacher':
+            user.is_teacher = True
+            user.is_student = False
+        else:
+            user.is_teacher = False
+            user.is_student = True
+        
+        if commit:
+            user.save()
+        return user
 
 class ProfileUpdateForm(forms.ModelForm):
     class Meta:

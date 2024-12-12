@@ -74,27 +74,40 @@ def user_logout(request):
 
 @login_required
 def studentdashboard(request):
-    return render(request,'dashboard_app/student_dashboard.html')
+    # Check if the user is a student
+    if not request.user.is_student:
+        messages.warning(request, "You are not authorized to access this page.")
+        return redirect('index')  # Redirect to a safe page, like the home page
+    return render(request, 'dashboard_app/student_dashboard.html')
 
 @login_required
 def teacherdashboard(request):
-    return render(request,'dashboard_app/teachers_dashboard.html')
+    # Check if the user is a teacher
+    if not request.user.is_teacher:
+        messages.warning(request, "You are not authorized to access this page.")
+        return redirect('index')  # Redirect to a safe page, like the home page
+    return render(request, 'dashboard_app/teachers_dashboard.html')
 
 @login_required
 def teacherscourses(request):
+    # Check if the user is a teacher
+    if not request.user.is_teacher:
+        messages.warning(request, "You are not authorized to access this page.")
+        return redirect('index')  # Redirect to a safe page
     category = Category.objects.filter(status=0)
-    context = {'category':category}
-    return render(
-        request,
-        'dashboard_app/teacherscourses.html', context
-    )
+    context = {'category': category}
+    return render(request, 'dashboard_app/teacherscourses.html', context)
 
 @login_required
 def productcourses(request, slug):
-    if(Category.objects.filter(slug=slug, status=0)):
+    # Check if the user is a teacher
+    if not request.user.is_teacher:
+        messages.warning(request, "You are not authorized to access this page.")
+        return redirect('index')  # Redirect to a safe page
+    if Category.objects.filter(slug=slug, status=0):
         product = Product.objects.filter(category__slug=slug)
         category = Category.objects.filter(slug=slug).first()
-        context = {'product' : product, 'category' : category}
+        context = {'product': product, 'category': category}
         return render(request, "dashboard_app/productcourses.html", context)
     else:
         messages.warning(request, "No such category found")
@@ -102,20 +115,27 @@ def productcourses(request, slug):
 
 @login_required
 def productdetails(request, cate_slug, prod_slug):
-    if(Category.objects.filter(slug=cate_slug, status=0)):
-        if(Product.objects.filter(slug=prod_slug, status=0)):
-            products = Product.objects.filter(slug=prod_slug, status=0).first
-            context = {'products':products}
+    # Check if the user is a teacher
+    if not request.user.is_teacher:
+        messages.warning(request, "You are not authorized to access this page.")
+        return redirect('index')  # Redirect to a safe page
+    if Category.objects.filter(slug=cate_slug, status=0):
+        if Product.objects.filter(slug=prod_slug, status=0):
+            products = Product.objects.filter(slug=prod_slug, status=0).first()
+            context = {'products': products}
         else:
             messages.warning(request, "No such product found")
             return redirect('productcourses')
     else:
         messages.warning(request, "No such category found")
         return redirect('teacherscourses')
-    return render(request,"dashboard_app/productdetails.html", context)
+    return render(request, "dashboard_app/productdetails.html", context)
 
 @login_required
 def studentprofile(request):
+    if not request.user.is_student:
+        messages.warning(request, "You are not authorized to access this page.")
+        return redirect('index')  # Redirect to a safe page, like the home page
     # Mendapatkan objek User untuk pengguna yang sedang login
     user_profile = request.user  # Mengakses pengguna yang login langsung dari request.user
     
@@ -130,6 +150,9 @@ def studentprofile(request):
 
 @login_required
 def update_studentprofile(request):
+    if not request.user.is_student:
+        messages.warning(request, "You are not authorized to access this page.")
+        return redirect('index')  # Redirect to a safe page, like the home page
     if request.method == 'POST':
         form = ProfileUpdateForm(request.POST, request.FILES, instance=request.user)
         if form.is_valid():
@@ -142,19 +165,18 @@ def update_studentprofile(request):
 
 @login_required
 def teacherprofile(request):
+    # Check if the user is a teacher
+    if not request.user.is_teacher:
+        messages.warning(request, "You are not authorized to access this page.")
+        return redirect('index')  # Redirect to a safe page
     user_profile = request.user
-    
-    # Kirim profil pengguna ke template
-    return render(
-        request,
-        'dashboard_app/teacher_profile.html',
-        {
-            'user_profile': user_profile,
-        }
-    )
+    return render(request, 'dashboard_app/teacher_profile.html', {'user_profile': user_profile})
 
 @login_required
 def update_teacherprofile(request):
+    if not request.user.is_teacher:
+        messages.warning(request, "You are not authorized to access this page.")
+        return redirect('index')  # Redirect to a safe page
     if request.method == 'POST':
         form = ProfileUpdateForm(request.POST, request.FILES, instance=request.user)
         if form.is_valid():

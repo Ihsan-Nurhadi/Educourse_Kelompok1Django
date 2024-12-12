@@ -13,3 +13,9 @@
     color: #2F327D;
     margin-top: 60px;
   }
+
+  .text-blacklist{
+    font-family: "Poppins", sans-serif;
+    color: #2F327D;
+    font-weight: 600;
+  }

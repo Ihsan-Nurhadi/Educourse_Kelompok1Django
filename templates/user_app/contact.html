@@ -2,7 +2,7 @@
 {% load static %}
 {% block head_block%}
 <link rel="stylesheet" href="{% static 'css/contact.css' %}">
-<script defer src="{% static 'js/contact.js'%}"></script>
+{% comment %} <script defer src="{% static 'js/contact.js'%}"></script> {% endcomment %}
 {% endblock %}
 {% block body_block %}
 <div class="contact-section">
@@ -14,25 +14,30 @@
       </p>
     </div>
     <div class="contact-form">
-      <form>
+      <form method="post" action="{% url 'user_app:contact' %}">
+          {% csrf_token %}
+          {% if msg %}
+              {{ msg | safe }}
+          {% else %}
+          {% endif %}
         <div class="row mb-3">
           <div class="col-md-6 position-relative">
-            <input type="text" class="form-control" id="first-name" placeholder=" " required>
-            <label for="first-name" class="floating-label">First name</label>
+            <label for="firstName" class="floating-label"></label>
+            {{ form.firstName }}
           </div>
           <div class="col-md-6 position-relative">
-            <input type="text" class="form-control" id="last-name" placeholder=" " required>
-            <label for="last-name" class="floating-label">Last name</label>
+            <label for="lastName" class="floating-label"></label>
+            {{ form.lastName }}
           </div>
           <div class="mb-3 position-relative">
-            <input type="email" class="form-control" id="email" placeholder=" " required>
-            <label for="email" class="floating-label">Email Address</label>
+            <label for="email" class="floating-label"></label>
+            {{ form.email }}
           </div>
           <div class="mb-3">
-            <label for="exampleFormControlTextarea1" class="form-label">Message</label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            <label for="message" class="form-label"></label>
+            {{ form.message }}
           </div>
-          <button type="submit" class="submit-btn btn">Submit</button>
+          <button type="submit" value="contact" class="submit-btn btn">Submit</button>
         </div>
       </form>
     </div>  

@@ -7,15 +7,27 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 from .models import User , Category , Product # Pastikan model User diimpor jika diperlukan
 from django.contrib import messages
-from .forms import ProfileUpdateForm
+from .forms import ProfileUpdateForm, ContactForm
 
 # Create your views here.
 
 
 def index(request):
     return render(request, "user_app/index.html")
+
 def contact(request):
-    return render(request,'user_app/contact.html')
+    msg = None
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            form.save()  # Menyimpan data ke database
+            messages.success(request, "Terimakasih atas partisipasi Anda. Silahkan ")
+            return redirect('user_app:contact')
+    else:
+        form = ContactForm()
+
+    return render(request, 'user_app/contact.html', {'form': form,  'msg': msg})
+
 def about(request):
     return render(request,'user_app/aboutus.html')
 def team(request):

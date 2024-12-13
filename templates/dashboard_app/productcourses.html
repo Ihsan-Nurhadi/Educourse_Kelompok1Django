@@ -28,7 +28,11 @@
               <a href="{% url 'user_app:productdetails' item.category.slug item.slug %}" style="text-decoration: none; color: #F48C06;">
                 <div class="card-body">
                   <div class="category-image">
-                    <img src="{{ item.product_image.url }}" alt="Category Image">
+                  {% if product.product_image %}
+                    <img src="{{ item.product_image.urls }}" alt="Category Image">
+                  {% else %}
+                    <img src="{% static 'img/default_img.jpg' %}" alt="Default Image">
+                  {% endif %}
                   </div><br>
                   <h4 class="text-center"> {{ item.name }}</h4>
                   <br>

@@ -33,7 +33,7 @@ def register(request):
         form = SignUpForm(request.POST ,request.FILES)
         if form.is_valid():
             user = form.save()
-            msg = 'user created'
+            messages.success(request, "Anda Berhasil Mendaftar. Silahkan Masuk dengan Akun yang terdaftar")
         else:
             msg = 'form is not valid'
     else:

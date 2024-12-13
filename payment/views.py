@@ -10,6 +10,6 @@ def payment(request):
 
 def payment_t(request):
     cart = CartHandler(request)
-    cart_products_teacher = cart.get_prods
+    cart_products = cart.get_prods
     totals = cart.cart_total()
-    return render(request,"payment/payment_.html",{'cart_products_teacher':cart_products_teacher,"totals":totals}) 
+    return render(request,"payment/payment_.html",{'cart_products':cart_products,"totals":totals}) 

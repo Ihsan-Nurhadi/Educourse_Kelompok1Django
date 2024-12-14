@@ -9,7 +9,7 @@ from django.utils import timezone
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
-from courses_app.models import Post , Class
+from courses_app.models import Post , Class, Lesson
 from courses_app.forms import PostForm , ClassForm
 from user_app.models import User  # Ganti Teacher dengan User
 from payment.models import Order , OrderItem
@@ -189,3 +189,22 @@ def post_(request, pk):
     post = get_object_or_404(Post, pk=pk)
     post.publish()
     return redirect('post_detail', pk=pk)
+
+class LessonListView(ListView):
+    model = Lesson
+    template_name = 'courses_app/lesson_list.html'
+    context_object_name = 'lessons' 
+
+class LessonDetailView(DetailView):
+    model = Lesson
+    template_name = 'courses_app/lesson_detail.html' 
+    context_object_name = 'lesson' 
+
+    # Menambahkan produk yang terkait dengan kelas ini ke dalam konteks
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        lesson = self.get_object()  # Mendapatkan objek lesson berdasarkan pk
+
+        # Menambahkan produk terkait kelas ini ke dalam konteks
+        context['products'] = lesson.product.all()  # Mengambil semua produk terkait dengan lesson
+        return context

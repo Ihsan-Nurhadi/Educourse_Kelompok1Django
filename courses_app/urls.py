@@ -12,4 +12,6 @@ urlpatterns = [
     path('post/<int:pk>/remove/', views.PostDeleteView.as_view(), name='post_remove'),
     path('create_class/', views.ClassCreateView.as_view(), name='create_class'),
     path('post/<int:pk>/publish/', views.post_publish, name='post_publish'),
+    path('lesson_list', views.LessonListView.as_view(), name='lesson_list'),
+    path('lesson/<int:pk>/', views.LessonDetailView.as_view(), name='lesson_detail'),
 ]

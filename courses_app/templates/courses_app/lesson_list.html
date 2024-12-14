@@ -1,0 +1,29 @@
+{% extends 'dashboard_app/base_dashboard_student.html' %}
+{% load static %}
+{% block head_block %}
+<link rel="stylesheet" href="{% static 'css/post_detail.css' %}">
+
+{% endblock %}
+{% load embed_video_tags %}
+{% block body_block %}
+
+    <h1>Lesson List</h1>
+
+    <ul>
+        {% for lesson in lessons %}
+            <li>
+                <a href="{% url 'lesson_list' %}">
+                    <h2>{{ lesson.title }}</h2>
+                </a>
+                <p>{{ lesson.created_date }}</p>
+                <img src="{{ lesson.thumbnail.url }}" alt="{{ lesson.title }}" width="200">
+                {% for product in lesson.products.all %}
+                <p>Product: {{ product.name }}</p>
+                <a class="btn btn-primary" href="#">Lanjut Belajar</a>
+                {% endfor %}
+            </li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}
+

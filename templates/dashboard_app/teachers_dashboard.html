@@ -23,29 +23,23 @@
   
   <section class="container-fluid" style="background-color: #FFF3E4;">
       <div class="row align-items-center my-4">
-          <div class="col-md-5 offset-md-1">
+          <div class="me-3 ms-3">
               <h4>Perbarui Iklan Promosi</h4>
               <div class="promo-box">
-                  <form id="promo-form">
-                      <label for="promo-title">Judul Iklan:</label>
-                      <input type="text" id="promo-title" class="form-control mb-3" placeholder="Masukkan judul iklan" required>
-                      <label for="promo-description">Deskripsi Iklan:</label>
-                      <textarea id="promo-description" class="form-control mb-3" rows="3" placeholder="Masukkan deskripsi iklan" required></textarea>
-                      <button type="submit" class="btn btn-primary">Perbarui Iklan</button>
+                  <form id="promo-form" action="">
+
+                  {% if iklan.judul_iklan == None %}
+                    {% for iklan in iklan_list %}
+                        <input type="text" id="promo-title" class="form-control mb-3" value="{{ iklan.judul_iklan }}" disabled>
+                        <textarea id="promo-description" class="form-control mb-3" rows="3" disabled>
+                            {{ iklan.deskripsi_iklan }}
+                        </textarea>
+                    {% endfor %}
+                    <a href="{% url 'user_app:buat_iklanpromosi' %}" class="btn btn-primary" style="color: #fff; text-decoration: none;">Perbarui Iklan</a>
+                    {% else %}
+                    <a href="#" class="btn btn-primary" style="color: #fff; text-decoration: none;">Buat Iklan</a>
+                  {% endif %}
                   </form>
-              </div>
-          </div>
-  
-          <div class="col-md-5">
-              <h4>Pantau Pembelajaran Murid</h4>
-              <div class="monitoring-box">
-                  <h5>Progress Murid:</h5>
-                  <ul id="student-progress">
-                      <li><strong>Mayang:</strong> Biologi - 80% selesai</li>
-                      <li><strong>Rendi:</strong> Kimia - 60% selesai</li>
-                      <li><strong>Farel:</strong> Fisika - 90% selesai</li>
-                  </ul>
-                  <button type="submit" class="btn btn-primary">Tambah Progress</button>
               </div>
           </div>
       </div>

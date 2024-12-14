@@ -64,3 +64,10 @@ class Contact(models.Model):
 
     def __str__(self):
         return self.message
+
+class IklanPromosi(models.Model):
+    judul_iklan = models.CharField(max_length=100)
+    deskripsi_iklan = models.TextField()
+
+    def __str__(self):
+        return self.judul_iklan

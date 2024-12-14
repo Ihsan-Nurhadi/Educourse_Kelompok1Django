@@ -1,13 +1,13 @@
 # Create your views here.
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .forms import SignUpForm, LoginForm
 from django.contrib.auth import authenticate, login , logout
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from django.urls import reverse
-from .models import User , Category , Product # Pastikan model User diimpor jika diperlukan
+from .models import User , Category , Product, IklanPromosi # Pastikan model User diimpor jika diperlukan
 from django.contrib import messages
-from .forms import ProfileUpdateForm, ContactForm
+from .forms import ProfileUpdateForm, ContactForm, IklanPromosiForm
 
 # Create your views here.
 
@@ -98,7 +98,9 @@ def teacherdashboard(request):
     if not request.user.is_teacher:
         messages.warning(request, "You are not authorized to access this page.")
         return redirect('index')  # Redirect to a safe page, like the home page
-    return render(request, 'dashboard_app/teachers_dashboard.html')
+    # Query semua data iklan dari database
+    iklan_list = IklanPromosi.objects.all()
+    return render(request, 'dashboard_app/teachers_dashboard.html', {'iklan_list': iklan_list})
 
 @login_required
 def teacherscourses(request):
@@ -182,7 +184,8 @@ def teacherprofile(request):
         messages.warning(request, "You are not authorized to access this page.")
         return redirect('index')  # Redirect to a safe page
     user_profile = request.user
-    return render(request, 'dashboard_app/teacher_profile.html', {'user_profile': user_profile})
+    iklan_list = IklanPromosi.objects.all()
+    return render(request, 'dashboard_app/teacher_profile.html', {'user_profile': user_profile, 'iklan_list': iklan_list})
 
 @login_required
 def update_teacherprofile(request):
@@ -198,3 +201,18 @@ def update_teacherprofile(request):
         form = ProfileUpdateForm(instance=request.user)
 
     return render(request, 'dashboard_app/update_teacher_profile.html', {'form': form})
+
+@login_required
+def buat_iklanpromosi(request):
+    if not request.user.is_teacher:
+        messages.warning(request, "You are not authorized to access this page.")
+        return redirect('index')  # Redirect to a safe page
+    if request.method == "POST":
+        form = IklanPromosiForm(request.POST)
+        if form.is_valid():
+            form.save()  # Simpan data ke database
+            return redirect('user_app:teacherprofile')  # Redirect ke halaman yang sama atau lainnya
+    else:
+        form = IklanPromosiForm(instance=request.user)
+    user_profile = request.user
+    return render(request, 'dashboard_app/buat_iklan_promosi.html', {'user_profile': user_profile,'form': form})

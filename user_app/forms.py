@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from .models import User, Contact
+from .models import User, Contact, IklanPromosi
 
 class LoginForm(forms.Form):
     username = forms.CharField(
@@ -136,3 +136,35 @@ class ContactForm(forms.ModelForm):
         if commit:
             contact.save()
         return contact
+
+class IklanPromosiForm(forms.ModelForm):
+
+    judul_iklan = forms.CharField(
+        widget= forms.TextInput(
+            attrs={
+                "class": "form-control", 'placeholder': 'Masukkan judul iklan'
+            }
+        )
+    )
+    deskripsi_iklan = forms.CharField(
+        widget=forms.Textarea(
+            attrs={
+                "class": "form-control", 'placeholder': 'Masukkan deskripsi iklan'
+            }
+        )
+    )
+    class Meta:
+        model = IklanPromosi
+        fields = ['judul_iklan', 'deskripsi_iklan']
+    
+    def save(self, commit=True):
+        adv = super().save(commit=False)  # Memanfaatkan save() dari ModelForm
+        if commit:
+            adv.save()
+        return adv
+    
+
+# class IklanUpdateForm(forms.ModelForm):
+#     class Meta:
+#         model = IklanPromosi
+#         fields = ['judul_iklan', 'deskripsi_iklan']

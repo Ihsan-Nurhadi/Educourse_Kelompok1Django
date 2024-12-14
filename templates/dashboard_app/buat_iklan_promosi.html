@@ -1,0 +1,28 @@
+{% extends 'dashboard_app/base_dashboard_teacher.html' %}
+{% load static %}
+{% block head_block %}
+<link rel="stylesheet" href="{% static 'css/profile.css' %}">
+{% endblock %}
+{% block body_block %}
+<body>
+    <div class="update-profile-container">
+        <h1 class="text-center my-4">Update Teacher Iklan Promosi</h1>
+        <form method="post" enctype="multipart/form-data">
+            <div class="container">
+                <h3>Buatlah Iklan Promosi Anda</h3>
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="id_judul_iklan" class="form-label">Judul Iklan:</label>
+                        {{ form.judul_iklan }}
+                    </div>
+                    <div class="mb-3">
+                        <label for="id_deskripsi_iklan" class="form-label">Deskripsi Iklan:</label>
+                        {{ form.deskripsi_iklan }}
+                    </div>
+                <button type="submit" class="btn btn-primary">Save</button>
+                <br>
+        </form>
+        <br>
+    </div>
+</body>
+{% endblock %}

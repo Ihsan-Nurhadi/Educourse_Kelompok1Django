@@ -20,4 +20,18 @@
     </div>
     <a href="{% url 'user_app:update_teacherprofile' %}" class="btn btn-primary">Update</a>        
 </div>
+
+
+<div class="component" style="background-color: #fff3e6;">
+    <div class="profile_pic">
+    <h1>Iklan Promosi <span style="color: #F48C06;">Guru</span></h1>
+    </div>
+    <div class="details">
+    {% for iklan in iklan_list %}
+    <p>Judul Iklan : {{ iklan.judul_iklan }}</p>
+    <p>Deskripsi Iklan : {{ iklan.deskripsi_iklan }}</p>
+    {% endfor %}
+    </div>
+    <a href="#" class="btn btn-primary">Perbarui Iklan</a>        
+</div>
 {% endblock %}

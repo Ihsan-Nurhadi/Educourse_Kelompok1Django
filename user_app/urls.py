@@ -23,4 +23,5 @@ urlpatterns = [
     path('teacherprofile',views.teacherprofile, name='teacherprofile'),
     path('update_studentprofile/', views.update_studentprofile, name='update_studentprofile'),
     path('update_teacherprofile/', views.update_teacherprofile, name='update_teacherprofile'),
+    path('buat_iklanpromosi/', views.buat_iklanpromosi, name='buat_iklanpromosi'),
 ]

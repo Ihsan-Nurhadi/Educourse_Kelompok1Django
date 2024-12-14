@@ -12,7 +12,7 @@ from django.urls import reverse_lazy
 from courses_app.models import Post , Class
 from courses_app.forms import PostForm , ClassForm
 from user_app.models import User  # Ganti Teacher dengan User
-from payment.models import Order
+from payment.models import Order , OrderItem
 # Create your views here.
 
 class PostListView(ListView):
@@ -77,12 +77,16 @@ class PostDetailView(LoginRequiredMixin, DetailView):
         # Ambil semua kelas terkait dengan post ini
         context['classes'] = post.classes.all()
 
-        # Cek apakah user memiliki order dengan status True
+        # Cek apakah user memiliki order terkait dengan post ini dan status True
         user = self.request.user
         if user.is_authenticated:
-            context['has_active_order'] = Order.objects.filter(user=user, status=True).exists()
+            context['has_active_order_for_post'] = OrderItem.objects.filter(
+                order__user=user,  # User yang login
+                order__status=True,  # Order dengan status True
+                post=post  # Post yang sedang dilihat
+            ).exists()
         else:
-            context['has_active_order'] = False
+            context['has_active_order_for_post'] = False
 
         return context
 

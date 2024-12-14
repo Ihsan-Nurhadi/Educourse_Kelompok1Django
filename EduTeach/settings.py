@@ -88,6 +88,9 @@ DATABASES = {
     }
 }
 
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '61cc-114-10-77-30.ngrok-free.app']
+CSRF_TRUSTED_ORIGINS = ['https://61cc-114-10-77-30.ngrok-free.app']
+
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators

@@ -2,35 +2,48 @@
 {% load static %}
 {% block head_block %}
 <link rel="stylesheet" href="{% static 'css/payment.css' %}">
-
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- Optional: jQuery for AJAX -->
 {% endblock %}
+
 {% block body_block %}
 <div class="container" style="background-color: white; margin-bottom: 10px;">
-{% for post in cart_products_student %}
-<div class="containert">
-      <div class="card"  style="background-color: #ffff;">
-        <div class="card-body">
-          <div class="row">
-            <div class="col">
-              <div class="category-image">
-                <img class="image-fluid" style="width: 50%; height: 50%; object-fit: cover;" src="{{ post.thumbnail.url }}" alt="Category Image">
-              </div>
-            </div>
-            <div class="col">
-              <br>
-              <p style="text-decoration: none; color: #252525;" >{{ post.title }}</p>
-              <span class="float-start">Rp. {{ post.price }}</span>
-              <br/>
-              <!-- <span class="float-end"><button type="button" class="btn btn-primary">Payment</button></span> -->
+    {% for post in cart_products_student %}
+    <div class="containert">
+        <div class="card" style="background-color: #ffff;">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col">
+                        <div class="category-image">
+                            <img class="image-fluid" style="width: 50%; height: 50%; object-fit: cover;" src="{{ post.thumbnail.url }}" alt="Category Image">
+                        </div>
+                    </div>
+                    <div class="col">
+                        <br>
+                        <p style="text-decoration: none; color: #252525;">{{ post.title }}</p>
+                        <span class="float-start">Rp. {{ post.price }}</span>
+                        <br/>
+                    </div>
+                </div>
             </div>
         </div>
-      </a>
-      </div>
+    </div>
+    {% endfor %}
+    <div class="aside">
+        <p>Total: Rp. {{ totals }}</p>
     </div>
 </div>
-{% endfor %}
-<div class="aside">
-    <p>Total: Rp.{{ totals }}</p>
-</div>
+<div class="container">
+<div class="card">
+    <div class="card-header">
+      Form info
+    </div>
+    <div class="card-body">
+      <form method="POST" action="{% url 'payment' %}">
+        {% csrf_token %}
+        {{ form.as_p }}  <!-- Render the form fields -->
+        <button type="submit" class="btn btn-primary">Place Order</button>
+      </form>
+    </div>
+  </div>
 </div>
 {% endblock %}

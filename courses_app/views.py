@@ -12,6 +12,7 @@ from django.urls import reverse_lazy
 from courses_app.models import Post , Class
 from courses_app.forms import PostForm , ClassForm
 from user_app.models import User  # Ganti Teacher dengan User
+from payment.models import Order
 # Create your views here.
 
 class PostListView(ListView):
@@ -66,14 +67,23 @@ class ClassDetailView(LoginRequiredMixin, DetailView):
     context_object_name = 'class_instance'
 
     
-class PostDetailView(DetailView):
+class PostDetailView(LoginRequiredMixin, DetailView):
     model = Post
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        # Ambil semua kelas terkait dengan post ini
         post = self.object
-        context['classes'] = post.classes.all()  # Mengambil semua kelas terkait dengan post ini
+
+        # Ambil semua kelas terkait dengan post ini
+        context['classes'] = post.classes.all()
+
+        # Cek apakah user memiliki order dengan status True
+        user = self.request.user
+        if user.is_authenticated:
+            context['has_active_order'] = Order.objects.filter(user=user, status=True).exists()
+        else:
+            context['has_active_order'] = False
+
         return context
 
 class PostCreateView(LoginRequiredMixin, CreateView):

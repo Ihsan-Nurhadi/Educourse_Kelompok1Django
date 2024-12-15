@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 .welcome-banner {
-  background-color: #F48C06;
+  background-color: #FFBD73;
   padding: 20px;
   color: #fff;
   border-radius: 30px;
@@ -9,6 +9,16 @@
   margin-top: 50px;
   width: 165%;
   animation: fadeIn 1s ease-in;
+}
+
+.text-hapus{
+  font-family: "Poppins", sans-serif;
+  color: #2F327D;
+}
+
+.text-section{
+  font-family: "Poppins", sans-serif;
+  color: #2F327D;
 }
 
 .poppins-langganan{
@@ -283,6 +293,7 @@ clear: both;
 }
 .card{
   width: 100%;
+  right: 30%;
   margin-top: 20px;
   padding: 20px;
   background-color: #FFF3E4;
@@ -388,6 +399,7 @@ clear: both;
         width: 15px; /* Lebar ikon lebih kecil di layar kecil */
         height: 15px; /* Tinggi ikon lebih kecil di layar kecil */
     }
+    
 }
 
 /* Footer */
@@ -507,7 +519,7 @@ footer {
 .block {
   display: flex;
   position: absolute;
-  top: 55%;
+  top: 75%;
   right: 15%;
   text-align: left;
   /* margin: 5%; */
@@ -517,6 +529,18 @@ footer {
   align-items: center; /* Mengatur agar semua elemen sejajar di tengah */
   justify-content: flex-start; /* Memastikan elemen dimulai dari atas */
   padding: 20px;
-  background-color:whitesmoke; /* Menambahkan latar belakang putih */
+  background-color:#FFBD73; /* Menambahkan latar belakang putih */
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Menambahkan bayangan untuk efek 3D */
+  color: #2F327D;
+}
+.checkout-btn {
+  background-color: #2F327D;
+  border-color: #2F327D;
+  color: white; /* Menambah teks putih agar kontras */
+}
+
+.checkout-btn:hover {
+  background-color: #5d60a1; /* Warna saat hover (optional) */
+  border-color: #5d60a1;
+  color: white; /* Menambah teks putih agar kontras */
 }

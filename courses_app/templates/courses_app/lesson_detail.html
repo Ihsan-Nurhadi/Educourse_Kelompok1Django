@@ -53,13 +53,14 @@
 <div id="content">
   <h3 class="title">Sub Bab :</h3>
   <ul>
-        {% for lesson in subchapters.sub.all %}
-          <li>
-            <strong>{{ lesson.sub.course_name }}</strong><br>
-            <em>{{ chapter.text }}</em><br>            
-        {% empty %}
-          <p>No chapters available.</p>
-        {% endfor %}
+    {% for subchapter in subchapters %}
+      <li>
+        <strong>{{ subchapter.course_name }}</strong><br>
+        <em>{{ subchapter.text }}</em><br>            
+    {% empty %}
+        <p>No chapters available.</p>
+    {% endfor %}
+      </li>
   </ul>
 </div>   
 <br> 

@@ -12,32 +12,28 @@
     <div class="container nav-jejak">
         <a class="text-black" href="{% url 'user_app:teacherdashboard' %}" style="font-size: 25px;"> Dashboard /</a>
         <a class="text-black" href="{% url 'lesson_list' %}" style="font-size: 25px; text-decoration: none !important;"> Lesson /</a>
-        <a class="text-black" href="#" style="font-size: 25px; text-decoration: none !important;"> {{ lesson.title }} /</a>
+        <a class="text-black" href="#" style="font-size: 25px; text-decoration: none !important;">{% for lesson in subchapter.Sub.all %} {{ lesson.title }} {% endfor %}</a>
         <a class="text-black" href="#" style="font-size: 25px; text-decoration: none !important;">Course Class </a>
     </div>
 </div>
 
 <!-- Thumbnail Post -->
+ 
 <div class="container my-5">
     <div class="p-5 text-white ">
-      <h1 class="text white">Kelas : {{ lesson.title }} </h1>
-      <p class="lead">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
-            <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
-        </svg>
-        Dibuat oleh <code>{{lesson.author}}</code>
-      </p>
+      <h1 class="text white">Kelas : {{ subchapter.course_name }} </h1>
+
       Dibuat pada : {{ lesson.published_date }}
     </div>
     <div class="p-5 text-white" id="class">
-        <h2>Berikut adalah kelas yang terdapat dalam materi "{{ course.text }}"</h2>
+        <h2>Berikut adalah kelas yang terdapat dalam materi "{{ subchapter.text }}"</h2>
         <!-- Daftar Kelas -->
         <ul>
-            {% for chapter in subchapters %}
+            {% for subchapter in subchapters %}
             <li class="class-item">
                 <div class="class-info">
-                    <span class="class-name">{{ chapter.course_name }}</span>
-                    <a href="{% url 'courses_detail' pk=chapter.pk %}" class="btn btn-primary">Lihat</a>
+                    <span class="class-name">{{ subchapter.course_name }}</span>
+                    <a href="{% url 'courses_detail' pk=subchapter.pk %}" class="btn btn-primary">Lihat</a>
                 </div>
             </li>
             {% empty %}

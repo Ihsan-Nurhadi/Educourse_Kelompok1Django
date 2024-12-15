@@ -200,19 +200,34 @@ class LessonDetailView(DetailView):
     template_name = 'courses_app/lesson_detail.html' 
     context_object_name = 'lesson' 
 
-    # Menambahkan produk yang terkait dengan kelas ini ke dalam konteks
+    # Menambahkan produk dan subchapter yang terkait ke dalam konteks
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         lesson = self.get_object()  # Mendapatkan objek lesson berdasarkan pk
-
-        # Menambahkan produk terkait kelas ini ke dalam konteks
+        
+        # Menambahkan produk terkait lesson ke dalam konteks
         context['products'] = lesson.products.all()  # Mengambil semua produk terkait dengan lesson
+        
+        # Menambahkan subchapter terkait lesson ke dalam konteks
+        context['subchapters'] = Subchapter.objects.filter(Sub=lesson)  # Filter subchapter berdasarkan lesson
         return context
     
 class ChapterListView(ListView):
     model = Subchapter
     template_name = 'courses_app/courses_list.html'
     context_object_name = 'subchapters'
+
+    def get_queryset(self):
+        lesson_id = self.kwargs.get('pk')  # Ambil pk dari URL, jika tersedia
+        if lesson_id:
+            return Subchapter.objects.filter(Sub__id=lesson_id)
+        return Subchapter.objects.all()  # Default: semua subchapter
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        # Tambahkan data Lessons terkait ke dalam konteks
+        context['lessons'] = Lesson.objects.filter(chapters__in=context['subchapters']).distinct()
+        return context
 
 class ChapterDetailView(DetailView):
     model = Subchapter

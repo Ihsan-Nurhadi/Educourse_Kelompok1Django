@@ -8,11 +8,10 @@
 {% block body_block %}
 <div class="py-3" style="background:#FFBD73">
   <div class="container">
-      <a class="text-black" href="{% url 'user_app:teacherdashboard' %}" style="font-size: 25px; text-decoration: none !important;"> Dashboard /</a>
-      <a class="text-black" href="{% url 'lesson_list' %}" style="font-size: 25px; text-decoration: none !important;"> Lesson /</a>
-      <a class="text-black" href="#" style="font-size: 25px; text-decoration: none !important;"> {{ post.title }} </a>
-      <h1 class="post-title" >{{ lesson.title }}</h1>
-
+    <a class="text-black" href="{% url 'user_app:teacherdashboard' %}" style="font-size: 25px; text-decoration: none !important;"> Dashboard /</a>
+    <a class="text-black" href="{% url 'lesson_list' %}" style="font-size: 25px; text-decoration: none !important;"> Lesson </a>
+    <a class="text-black" href="#" style="font-size: 25px; text-decoration: none !important;"> {{ post.title }} </a>
+    <h1 class="post-title" >{{ lesson.title }}</h1>
   <!-- Post published date or publish button -->
       {% if lesson.published_date %}
       <div class="date post-date" style="font-size: 17px !important; margin-left: 5px !important;">Dibuat pada : {{ lesson.published_date }}</div>
@@ -20,6 +19,7 @@
       <a class="btn btn-primary" href="#">Publish</a>
       {% endif %}
   </div>
+</div>
   <div class="block">
       <!-- Thumbnail Image -->
      {% if lesson.thumbnail %}
@@ -27,7 +27,11 @@
      {% else %}
       <p>No image available</p>
      {% endif %}
-
+        <br>
+        <p><strong>Created at:</strong> {{ lesson.created_date }}</p>
+        <p><strong>Published at:</strong> {{ lesson.published_date }}</p>
+        <p class="title"><strong>Course content:</strong> Matematika Kelas 10</p>
+    <br>
       <!-- Tombol 'Lihat Kelas' jika pengguna telah membeli post ini -->
       <a href="#" class="btn btn-primary">Lihat Kelas</a>
 
@@ -43,13 +47,7 @@
   <p>No video found for this post.</p>
   {% endif %}   
   <p class="deskripsi">Contoh video pembelajaran</p>
-
-  <div id = "content" >
-    <p><strong>Created at:</strong> {{ lesson.created_date }}</p>
-    <p><strong>Published at:</strong> {{ lesson.published_date }}</p>
-  <h3 class="title">Course content:</h3>
 </div>
-<br>
 
   {% comment %} <ul>
       {% if classes %}
@@ -63,21 +61,5 @@
           <li>No classes available for this post.</li>
       {% endif %}
   </ul>
-</div> {% endcomment %}
-
-    <h1></h1>
-
-    <a href="{% url 'post_detail' pk=lesson.pk %}" style="text-decoration: none; color: inherit;">
-        {% if lesson.thumbnail %}
-          <img src="{{ lesson.thumbnail.url }}" class="card-img-top" alt="Thumbnail">
-        {% else %}
-          <p class="text-center">No image available</p>
-        {% endif %}
-
-    {% if lesson.video %}
-        <div>
-            <h3>Watch Video</h3>
-            <iframe width="560" height="315" src="{{ lesson.video }}" frameborder="0" allowfullscreen></iframe>
-        </div>
-    {% endif %}    
+</div> {% endcomment %}    
 {% endblock %}

@@ -1,5 +1,8 @@
 .post-title{
     text-transform: uppercase;
+    font-family: 'Poppins', sans-serif;
+    color: #2F327D;
+    font-weight: 600;
 }
 .item{
     margin-left: 16%;
@@ -12,8 +15,8 @@
 .block {
     display: flex;
     position: absolute;
-    top: 40%;
-    right: 20%;
+    top: 48%;
+    left: 70%;
     /* margin: 5%; */
     max-width: 300px;
     max-height: 500px;
@@ -66,9 +69,63 @@
     margin-left: 16%;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 20px;
-    background-color: whitesmoke;
+    background-color: #2F327D;
     margin-bottom: 10px;
+    color: white;
 }
+
+
+
 .title{
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    
 }
+
+.bg-title{
+    background-color: #2F327D;
+}
+
+.text-breadcrumb{
+    font-family: "Poppins", sans-serif;
+    color: #2F327D;
+    font-weight: 600;
+   
+  }
+
+  .post-content{
+    color: #2F327D;
+    font-weight: 500;
+    font-family: "Poppins", sans-serif;
+  }
+
+  .date.post-date {
+    color: #2F327D;
+    font-family: "Poppins", sans-serif;
+}
+
+    .deskripsi{
+        color: #ffffff;
+    }
+
+    .item{
+        background-color: #2F327D;
+    }
+
+    .block{
+        background-color: #2F327D;
+    }
+
+    .post-price{
+        color: #ffffff;
+    }
+
+    #add-cart-student {
+        color: #2F327D;
+        font-weight: 500;
+    }
+
+    em {
+        font-style: normal; 
+    }
+    
+    

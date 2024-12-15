@@ -9,16 +9,16 @@
 <!-- Post title -->
 <div class="py-3" style="background:#FFBD73">
     <div class="container">
-        <a class="text-black" href="{% url 'user_app:studentdashboard' %}" style="font-size: 25px; text-decoration: none !important;"> Dashboard /</a>
-        <a class="text-black" href="{% url 'post_list' %}" style="font-size: 25px; text-decoration: none !important;"> Search /</a>
-        <a class="text-black" href="#" style="font-size: 25px; text-decoration: none !important;"> {{ post.title }} </a>
+        <a class="text-breadcrumb" href="{% url 'user_app:studentdashboard' %}" style="font-size: 20px; text-decoration: none !important;"> Dashboard /</a>
+        <a class="text-breadcrumb" href="{% url 'post_list' %}" style="font-size: 20px; text-decoration: none !important;"> Search /</a>
+        <a class="text-breadcrumb" href="#" style="font-size: 20px; text-decoration: none !important;"> {{ post.title }} </a>
         <h1 class="post-title" >{{ post.title }}</h1>
         <p class="post-content" style="font-size: 24px !important;">
             {{ post.text|slice:":50"|safe|linebreaksbr }}
         </p>
     <!-- Post published date or publish button -->
         {% if post.published_date %}
-        <div class="date post-date" style="font-size: 17px !important; margin-left: 5px !important;">Dibuat pada : {{ post.published_date }}</div>
+        <div class="date post-date" style="font-size: 12px !important; margin-left: 5px !important;">Dibuat pada : {{ post.published_date }}</div>
         {% else %}
         <a class="btn btn-primary" href="{% url 'post_publish' pk=post.pk %}">Publish</a>
         {% endif %}
@@ -51,17 +51,17 @@
     {% else %}
     <p>No video found for this post.</p>
     {% endif %}   
-    <p class="deskripsi">Contoh video pembelajaran</p>                 
+    <p class="deskripsi">Contoh Video Pembelajaran</p>                 
 </div>
 <br>
-<div id = "content" >
+<div id = "content">
 <h3 class="title">Course content:</h3>
     <ul>
         {% if classes %}
             {% for class in classes %}
                 <li>
-                    <strong>{{ class.class_name }}</strong><br>
-                    <em>{{ class.text }}</em><br>
+                    <strong style="font-size: 16px;">{{ class.class_name }}</strong><br>
+                    <em style="font-size: 14px;">{{ class.text }}</em><br>
                 </li>
             {% endfor %}
         {% else %}

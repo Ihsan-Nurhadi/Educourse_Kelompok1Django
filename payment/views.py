@@ -58,7 +58,10 @@ def payment(request):
                 },
                 "credit_card": {
                     "secure": True
-                }
+                },
+                "callbacks": {
+                    "finish": "https://bb0e-36-83-205-186.ngrok-free.app/payment/finish/"
+                },
             }
             print("Transaction payload:", transaction)
 
@@ -139,9 +142,21 @@ def payment_finish(request):
     status_code = request.GET.get('status_code')
     transaction_status = request.GET.get('transaction_status')
 
-    # Cari pesanan berdasarkan order_id
-    order = Order.objects.filter(id=order_id).first()
+    print("Query Params:", request.GET)  # Debug: Tampilkan query parameters
 
+    # Pastikan order_id valid dan ambil angka dari order_id
+    if order_id:
+        try:
+            order_id_number = int(order_id.split('-')[1])  # Ambil angka dari order_id
+            order = Order.objects.filter(id=order_id_number).first()
+        except (IndexError, ValueError):
+            order = None
+            transaction_status = 'error'
+            message = "Order ID tidak valid."
+    else:
+        order = None
+        message = "Order ID tidak ditemukan."
+    
     # Periksa status transaksi dan lakukan logika tertentu
     if transaction_status == 'settlement':
         message = "Pembayaran berhasil! Pesanan Anda sedang diproses."
@@ -167,16 +182,23 @@ def payment_finish(request):
         'status_code': status_code,
     })
 
+
 @csrf_exempt
 def payment_notification(request):
     if request.method == 'POST':
         # Ambil notifikasi dari Midtrans
         notification = json.loads(request.body.decode('utf-8'))
         order_id = notification.get('order_id')
+
+        # Ekstrak angka dari order_id
+        order_id_number = int(order_id.split('-')[1])  # Ambil angka dari order_id
+
+        # Cari pesanan berdasarkan order_id yang sudah diekstrak
+        order = Order.objects.filter(id=order_id_number).first()
+
         transaction_status = notification.get('transaction_status')
 
         # Perbarui status pesanan di database
-        order = Order.objects.filter(id=order_id).first()
         if transaction_status == 'settlement' and order:
             order.status = True
             order.save()

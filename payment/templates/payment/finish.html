@@ -1,14 +1,9 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Status Pembayaran</title>
-</head>
-<body>
-    <h1>Status Pembayaran</h1>
-    <p>{{ message }}</p>
-    {% if order %}
-        <p>Order ID: {{ order.id }}</p>
-        <p>Status Transaksi: {{ transaction_status }}</p>
-    {% endif %}
-</body>
-</html>
+{% extends 'dashboard_app/base_dashboard_student.html' %}
+{% block body_block %}
+<h1>Status Pembayaran</h1>
+<p>{{ message }}</p>
+{% if order %}
+    <p>Order ID: {{ order.id }}</p>
+    <p>Status Transaksi: {{ transaction_status }}</p>
+{% endif %}
+{% endblock %}

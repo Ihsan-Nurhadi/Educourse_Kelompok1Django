@@ -88,8 +88,8 @@ DATABASES = {
     }
 }
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '61cc-114-10-77-30.ngrok-free.app']
-CSRF_TRUSTED_ORIGINS = ['https://61cc-114-10-77-30.ngrok-free.app']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'bb0e-36-83-205-186.ngrok-free.app']
+CSRF_TRUSTED_ORIGINS = ['https://bb0e-36-83-205-186.ngrok-free.app']
 
 
 # Password validation
@@ -110,6 +110,9 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+CORS_ALLOWED_ORIGINS = [
+    'https://bb0e-36-83-205-186.ngrok-free.app',
+]
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/

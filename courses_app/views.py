@@ -209,6 +209,21 @@ class LessonDetailView(DetailView):
         context['products'] = lesson.products.all()  # Mengambil semua produk terkait dengan lesson
         return context
     
-def courses_list(request):
-    subchapters = Subchapter.objects.prefetch_related('Sub').all()  # Mengambil semua data Subchapter beserta relasi ManyToMany Sub
-    return render(request, 'courses_list.html', {'subchapters': subchapters})
+class ChapterListView(ListView):
+    model = Subchapter
+    template_name = 'courses_app/courses_list.html'
+    context_object_name = 'subchapters'
+
+class ChapterDetailView(DetailView):
+    model = Subchapter
+    template_name = 'courses_app/courses_detail.html' 
+    context_object_name = 'subchapter' 
+
+     # Menambahkan produk yang terkait dengan kelas ini ke dalam konteks
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        subchapter = self.get_object()  # Mendapatkan objek lesson berdasarkan pk
+
+        # Menambahkan produk terkait kelas ini ke dalam konteks
+        context['Sub'] = subchapter.Sub.all()  # Mengambil semua produk terkait dengan lesson
+        return context

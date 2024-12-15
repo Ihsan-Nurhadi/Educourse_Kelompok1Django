@@ -12,7 +12,7 @@
     <div class="container nav-jejak">
         <a class="text-black" href="{% url 'user_app:teacherdashboard' %}" style="font-size: 25px;"> Dashboard /</a>
         <a class="text-black" href="{% url 'lesson_list' %}" style="font-size: 25px; text-decoration: none !important;"> Lesson /</a>
-        <a class="text-black" href="{% url 'lesson_detail' pk=lesson.pk %}" style="font-size: 25px; text-decoration: none !important;"> {{ lesson.title }} /</a>
+        <a class="text-black" href="#" style="font-size: 25px; text-decoration: none !important;"> {{ lesson.title }} /</a>
         <a class="text-black" href="#" style="font-size: 25px; text-decoration: none !important;">Course Class </a>
     </div>
 </div>
@@ -33,11 +33,11 @@
         <h2>Berikut adalah kelas yang terdapat dalam materi "{{ course.text }}"</h2>
         <!-- Daftar Kelas -->
         <ul>
-            {% for course in courses %}
+            {% for chapter in subchapters %}
             <li class="class-item">
                 <div class="class-info">
-                    <span class="class-name">{{ course.course_name }}</span>
-                    <a href="#" class="btn btn-primary">Lihat</a>
+                    <span class="class-name">{{ chapter.course_name }}</span>
+                    <a href="{% url 'courses_detail' pk=chapter.pk %}" class="btn btn-primary">Lihat</a>
                 </div>
             </li>
             {% empty %}
@@ -46,5 +46,4 @@
         </ul>
     </div>
 </div>
-
 {% endblock %}

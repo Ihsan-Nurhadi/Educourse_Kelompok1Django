@@ -1,0 +1,32 @@
+{% extends 'dashboard_app/base_dashboard_student.html' %}
+{% load static %}
+{% load embed_video_tags %}
+{% block head_block %}
+<link rel="stylesheet" href="{% static 'css/class_list.css' %}">
+{% endblock %}
+{% block body_block %}
+{% comment %} <div class="container my-5">
+    <div class="p-5 text-white">
+        {% if class_instance.post.pk %}
+        <a href="{% url 'class_list' pk=class_instance.post.pk %}">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16" id="back">
+                <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"/>
+            </svg>
+        </a>
+        {% endif %}
+        <h1>Detail Kelas: {{ class_instance.class_name }}</h1>
+        <p>{{ class_instance.text }}</p>
+    </div>    
+    <div class="p-5 text-white" id="class">
+        <!-- Daftar Kelas -->
+        <ul>
+            {% if class_instance.video %}
+            {% video class_instance.video 'large'%}
+            {% else %}
+            <p>No video found for this post.</p>
+            {% endif %}  
+        </ul>
+    </div>
+</div> {% endcomment %}
+Hai
+{% endblock %}

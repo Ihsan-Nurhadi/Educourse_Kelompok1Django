@@ -14,5 +14,6 @@ urlpatterns = [
     path('post/<int:pk>/publish/', views.post_publish, name='post_publish'),
     path('lesson_list', views.LessonListView.as_view(), name='lesson_list'),
     path('lesson_detail/<int:pk>/', views.LessonDetailView.as_view(), name='lesson_detail'),
-    path('course_list', views.courses_list, name='courses_list'),
+    path('lesson_detail/<int:pk>/courses_list', views.ChapterListView.as_view(), name='courses_list'),
+    path('courses_detail/<int:pk>', views.ChapterDetailView.as_view(), name='courses_detail'),
 ]

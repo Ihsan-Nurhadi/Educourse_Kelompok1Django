@@ -10,7 +10,6 @@
   <div class="container">
     <a class="text-black" href="{% url 'user_app:teacherdashboard' %}" style="font-size: 25px; text-decoration: none !important;"> Dashboard /</a>
     <a class="text-black" href="{% url 'lesson_list' %}" style="font-size: 25px; text-decoration: none !important;"> Lesson </a>
-    <a class="text-black" href="#" style="font-size: 25px; text-decoration: none !important;"> {{ post.title }} </a>
     <h1 class="post-title" >{{ lesson.title }}</h1>
   <!-- Post published date or publish button -->
       {% if lesson.published_date %}
@@ -35,7 +34,7 @@
         {% endfor %}
     <br>
       <!-- Tombol 'Lihat Kelas' jika pengguna telah membeli post ini -->
-      <a href="#" class="btn btn-primary">Lihat Kelas</a>
+      <a href="{% url 'courses_list' pk=lesson.pk %}" class="btn btn-primary">Lihat Kelas</a>
 
  </div>
 </div>
@@ -52,12 +51,11 @@
 </div>
 <br>
 <div id="content">
-  <h3 class="title">Subchapters content:</h3>
-  <ul><pre>{{ chapter }}</pre>
-
-        {% for chapter in subchapters %}
+  <h3 class="title">Sub Bab :</h3>
+  <ul>
+        {% for lesson in subchapters.sub.all %}
           <li>
-            <strong>{{ chapter.course_name }}</strong><br>
+            <strong>{{ lesson.sub.course_name }}</strong><br>
             <em>{{ chapter.text }}</em><br>            
         {% empty %}
           <p>No chapters available.</p>

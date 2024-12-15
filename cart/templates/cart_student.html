@@ -9,10 +9,10 @@
     <div class="row align-items-center">
       
       <div class="col-md-6 offset-md-1">
-        <div class="welcome-banner d-flex justify-content-between align-items-center">
+        <div class="welcome-banner d-flex justify-content-between align-items-center" >
           
           <div class="text-section">
-            <h2>Shopping Cart Page!</h2>
+            <h2 style="font-weight: 600;">Shopping Cart Page!</h2>
             <p>View your cart here and finish your payment</p>
           </div>
           <img src="{% static '/img/talentnew.png'%}" alt="talent" width="150" height="auto" class="img-fluid rounded">  
@@ -22,7 +22,7 @@
   </section>
   {% for post in cart_products_student %}
   <div class="container">
-        <div class="card"  style="background-color: #ffff;">
+        <div class="card"  style="background-color: #FFBD73;">
           <div class="card-body">
             <div class="row">
               <div class="col">
@@ -31,14 +31,15 @@
                 </div>
               </div>
               <div class="col">
-                <h4 class="text-center"> {{ post }}</h4>
+                <h4 class="text-hapus" style="font-weight: 600;"> {{ post }}</h4>
                 <br>
-                <p style="text-decoration: none; color: #252525;" >{{ post.title }}</p>
-                <p style="text-decoration: none; color: #252525;" >{{ post.author }}</p>
-                <span class="float-start">Harga : Rp. {{ post.price }}</span>
+                <p class="text-hapus" style="font-weight: 500;">{{ post.title }}</p>
+                <p class="text-hapus" style="font-weight: 500;">{{ post.author }}</p>
+                <span class="text-hapus" style="font-weight: 500;">Harga : Rp. {{ post.price }}</span>
                 <br/>
-                <!-- <span class="float-end"><button type="button" class="btn btn-primary">Payment</button></span> -->
-                <button type="button" data-index="{{post.id}}" class="btn btn-danger delete-product">Remove</button>
+                
+                <button type="button" data-index="{{post.id}}" class="btn btn-danger delete-product" style="margin-top: 20px;">Delete</button>
+
               </div>
           </div>
         </a>
@@ -49,7 +50,8 @@
   <div class="block">
     <h3 style="text-align: left;">Total:</h3> 
     <h3><b>Rp.{{ totals }}</b></h3>
-    <a href="{% url 'payment' %}" class="btn btn-success">Checkout</a>
+    <a href="{% url 'payment' %}" class="btn checkout-btn">Checkout</a>
+
   </div>
   <br><br><br><br><br><br><br><br><br><br><br><br>
   <script>

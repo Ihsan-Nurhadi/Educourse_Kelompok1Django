@@ -1,29 +1,54 @@
 {% extends 'dashboard_app/base_dashboard_student.html' %}
 {% load static %}
 {% block head_block %}
-<link rel="stylesheet" href="{% static 'css/post_detail.css' %}">
+<link rel="stylesheet" href="{% static 'css/lesson_list.css' %}">
 
 {% endblock %}
 {% load embed_video_tags %}
 {% block body_block %}
+<div class="py-3" style="background:#FFBD73">
+    <div class="container nav-jejak">
+      <a class="text-blacklist" href="{% url 'user_app:teacherdashboard' %}" style="font-size: 22px;"> Dashboard /</a>
+      <a class="text-blacklist" href="#" style="font-size: 22px;"> Search Courses</a>
+    </div>
+  </div>
 
-    <h1>Lesson List</h1>
+{% comment %} <h1 class="poppins-langganan" style="text-align: center;">Berlangganan <span style="color: #F48C06;">Produk</span> <br>EduTeach</h1>
+<div class="container mt-4">
+  <!-- Form Pencarian -->
+  <form method="get" action="{% url 'post_list' %}">
+    <div class="row mb-4">
+      <div class="col-md-10">
+        <input type="text" name="search" class="form-control" placeholder="Search posts..." value="{{ search_query }}">
+      </div>
+      <div class="col-md-2">
+        <button type="submit" class="btn btn-primary w-100" style="background-color: #F48C06;">Search</button>
+      </div>
+    </div>
+  </form> {% endcomment %}
 
-    <ul>
+    <h1 class="lesson-title" style="margin-left:5rem !important; margin: 2rem;">Lesson List</h1>
+        <ul class="container">
         {% for lesson in lessons %}
-            <li>
-                <a href="{% url 'lesson_list' %}">
-                    <h2>{{ lesson.title }}</h2>
-                </a>
-                <p>{{ lesson.created_date }}</p>
-                <img src="{{ lesson.thumbnail.url }}" alt="{{ lesson.title }}" width="200">
-                {% for product in lesson.products.all %}
-                <p>Product: {{ product.name }}</p>
-                <a class="btn btn-primary" href="#">Lanjut Belajar</a>
-                {% endfor %}
-            </li>
+            <div class="card block">
+                <div class="card-body">
+                    <div class="row">
+                        <li class="">
+                            <a href="{% url 'lesson_list' %}">
+                                <h2>{{ lesson.title }}</h2>
+                            </a>
+                            <p>{{ lesson.created_date }}</p>
+                            <img src="{{ lesson.thumbnail.url }}" alt="{{ lesson.title }}" width="200">
+                            {% for product in lesson.products.all %}
+                            <p>Product: {{ product.name }}</p>
+                            <a class="btn btn-primary" href="#">Lanjut Belajar</a>
+                            {% endfor %}
+                        </li>
+                    </div>
+                </div>
+            </div>
         {% endfor %}
-    </ul>
-
+        </ul>
+</div>
 {% endblock %}
 

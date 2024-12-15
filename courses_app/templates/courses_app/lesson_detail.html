@@ -1,0 +1,41 @@
+{% extends 'dashboard_app/base_dashboard_student.html' %}
+{% load static %}
+{% block head_block %}
+<link rel="stylesheet" href="{% static 'css/lesson_detail.css' %}">
+
+{% endblock %}
+{% load embed_video_tags %}
+{% block body_block %}
+    <h1>{{ lesson.title }}</h1>
+    <p><strong>Author:</strong> {{ lesson.author.username }}</p>
+    <p><strong>Created at:</strong> {{ lesson.created_date }}</p>
+    <p><strong>Published at:</strong> {{ lesson.published_date }}</p>
+
+    {% if lesson.thumbnail %}
+        <img src="{{ lesson.thumbnail.url }}" alt="{{ lesson.title }}" width="300">
+    {% endif %}
+
+    {% if lesson.video %}
+        <div>
+            <h3>Watch Video</h3>
+            <iframe width="560" height="315" src="{{ lesson.video }}" frameborder="0" allowfullscreen></iframe>
+        </div>
+    {% endif %}
+
+    <h2>Related Products</h2>
+    <ul>
+        {% for product in products %}
+            <li>
+                <h3>{{ product.name }}</h3>
+                <p>{{ product.small_desc }}</p>
+                <p>Price: ${{ product.sell_price }}</p>
+                {% if product.product_image %}
+                    <img src="{{ product.product_image.url }}" alt="{{ product.name }}" width="150">
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+
+    <p><a href="{% url 'lesson_list' %}">Back to Lesson List</a></p>
+    
+{% endblock %}

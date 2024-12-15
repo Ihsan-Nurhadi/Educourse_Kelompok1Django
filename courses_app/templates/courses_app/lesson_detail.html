@@ -50,21 +50,19 @@
   {% endif %}   
   <p class="deskripsi">Contoh video pembelajaran</p>
 </div>
-{% comment %}
-<div id = "content">
-    <h3 class="title">Course content:</h3>
-        <ul>
-      {% if classes %}
-          {% for class in classes %}
-              <li>
-                  <strong>{{ class.class_name }}</strong><br>
-                  <em>{{ class.text }}</em><br>
-              </li>
-          {% endfor %}
-      {% else %}
-          <li>No classes available for this post.</li>
-      {% endif %}
+<br>
+<div id="content">
+  <h3 class="title">Subchapters content:</h3>
+  <ul><pre>{{ chapter }}</pre>
+
+        {% for chapter in subchapters %}
+          <li>
+            <strong>{{ chapter.course_name }}</strong><br>
+            <em>{{ chapter.text }}</em><br>            
+        {% empty %}
+          <p>No chapters available.</p>
+        {% endfor %}
   </ul>
-</div> {% endcomment %}   
+</div>   
 <br> 
 {% endblock %}

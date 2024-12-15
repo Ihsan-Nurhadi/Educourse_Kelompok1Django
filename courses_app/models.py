@@ -64,11 +64,11 @@ class Lesson(models.Model):
     def is_teacher(self):
         return self.author.is_teacher
     
-class Course(models.Model):
+class Subchapter(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)  # Ganti Teacher menjadi User
     course_name = models.CharField(max_length=255)
     text = models.TextField()
-    lessons = models.ManyToManyField(Lesson, related_name='courses')
+    Sub = models.ManyToManyField(Lesson, related_name='chapters')
     video = EmbedVideoField(blank=True, null=True)
 
     def __str__(self):

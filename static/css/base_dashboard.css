@@ -9,6 +9,7 @@ body {
   font-family: 'Roboto', sans-serif;
   background-color: #FFF2E1;
 }
+/* Sidebar */
 .sidebar {
   height: 100vh;
   background-color: #FFBD73;
@@ -17,7 +18,9 @@ body {
   left: -250px; /* Awalnya tersembunyi */
   transition: left 0.3s ease-in-out;
   padding: 20px;
+  z-index: 1000; /* Pastikan sidebar berada di atas konten */
 }
+
 .sidebar header {
   margin-top: 1em;
   width: 100%;
@@ -27,7 +30,8 @@ body {
   background: #FFBD73;
   user-select: none;
 }
-.sidebar ul a{
+
+.sidebar ul a {
   display: block;
   height: 100%;
   width: 100%;
@@ -36,29 +40,37 @@ body {
   color: rgb(0, 0, 0);
   padding-left: 40px;
   box-sizing: border-box;
-  border-top: 1px solid rgba(255,255,255,.1);
+  border-top: 1px solid rgba(255, 255, 255, .1);
   transition: .4s;
 }
-.sidebar ul li a{
+
+.sidebar ul li a {
   text-decoration: none !important;
 }
 
-ul li:hover a{
+ul li:hover a {
   padding-left: 50px;
 }
-.sidebar ul a i{
+
+.sidebar ul a i {
   margin-right: 16px;
 }
-#check{
+
+/* Checkbox untuk kontrol sidebar */
+#check {
   display: none;
 }
-label #btn,label #cancel{
+
+/* Tombol buka dan tutup sidebar */
+label #btn,
+label #cancel {
   position: absolute;
   background: #FFBD73;
   border-radius: 3px;
   cursor: pointer;
 }
-label #btn{
+
+label #btn {
   left: 20px;
   top: 15px;
   font-size: 35px;
@@ -66,7 +78,8 @@ label #btn{
   padding: 6px 12px;
   transition: all .5s;
 }
-label #cancel{
+
+label #cancel {
   z-index: 1111;
   left: -195px;
   top: 50px;
@@ -75,25 +88,42 @@ label #cancel{
   padding: 4px 9px;
   transition: all .5s ease;
 }
-#check:checked ~ .sidebar{
+
+/* Ketika checkbox tercentang, sidebar muncul */
+#check:checked ~ .sidebar {
   left: 0;
 }
-#check:checked ~ label #btn{
+
+/* Efek saat tombol buka dan tutup sidebar berubah */
+#check:checked ~ label #btn {
   left: 250px;
   opacity: 0;
   pointer-events: none;
 }
-#check:checked ~ label #cancel{
+
+#check:checked ~ label #cancel {
   left: 195px;
 }
-#check:checked ~ section{
-  margin-left: 250px;
+
+/* Konten utama (section) saat sidebar muncul */
+#check:checked ~ section {
+  margin-left: 250px; /* Memberikan ruang untuk sidebar */
+  transition: margin-left 0.3s ease; /* Animasi konten utama */
 }
-/* Responsive adjustments */
+
+/* Responsif adjustments */
 @media screen and (max-width: 768px) {
-    .sidebar {
-        width: 50%;
-    }
+  .sidebar {
+    width: 50%; /* Sidebar 50% lebar layar pada ukuran mobile */
+  }
+  #check:checked ~ section {
+    margin-left: 50%; /* Mengatur margin untuk konten utama pada mobile */
+  }
+}
+
+/* CSS untuk konten utama, menambahkan margin kiri saat sidebar muncul */
+section {
+  transition: margin-left 0.3s ease; /* Smooth transition saat sidebar muncul/hilang */
 }
 
 /* Footer */

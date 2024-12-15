@@ -30,21 +30,22 @@
     <h1 class="lesson-title" style="margin-left:5rem !important; margin: 2rem;">Lesson List</h1>
         <ul class="container">
         {% for lesson in lessons %}
-            <div class="card block">
-                <div class="card-body">
-                    <div class="row">
-                        <li class="">
-                            <a href="{% url 'lesson_list' %}">
-                                <h2>{{ lesson.title }}</h2>
-                            </a>
-                            <p>{{ lesson.created_date }}</p>
-                            <img src="{{ lesson.thumbnail.url }}" alt="{{ lesson.title }}" width="200">
-                            {% for product in lesson.products.all %}
-                            <p>Product: {{ product.name }}</p>
-                            <a class="btn btn-primary" href="#">Lanjut Belajar</a>
-                            {% endfor %}
-                        </li>
-                    </div>
+            <div class="block lesson-list">
+                <div class="card-body lesson-card">
+                  <li>
+                    <h2>{{ lesson.title }}</h2>
+                      <a href="{% url 'lesson_detail' pk=lesson.pk %}" style="text-decoration: none; color: inherit;">
+                        {% if lesson.thumbnail %}
+                          <img src="{{ lesson.thumbnail.url }}" class="card-img-top"  alt="{{ lesson.title }}">
+                        {% else %}
+                          <p class="text-center">No image available</p>
+                        {% endif %}
+                      <p>{{ lesson.created_date }}</p>
+                      {% for product in lesson.products.all %}
+                      <p>Product: {{ product.name }}</p>
+                      <a class="btn btn-primary" href="{% url 'lesson_detail' pk=lesson.pk%}">Lanjut Belajar</a>
+                      {% endfor %}
+                  </li>
                 </div>
             </div>
         {% endfor %}

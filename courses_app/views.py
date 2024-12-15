@@ -206,5 +206,5 @@ class LessonDetailView(DetailView):
         lesson = self.get_object()  # Mendapatkan objek lesson berdasarkan pk
 
         # Menambahkan produk terkait kelas ini ke dalam konteks
-        context['products'] = lesson.product.all()  # Mengambil semua produk terkait dengan lesson
+        context['products'] = lesson.products.all()  # Mengambil semua produk terkait dengan lesson
         return context

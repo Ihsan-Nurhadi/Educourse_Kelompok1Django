@@ -7,6 +7,13 @@
 {% load embed_video_tags %}
 {% block body_block %}
     <h1>{{ lesson.title }}</h1>
+
+    <a href="{% url 'post_detail' pk=lesson.pk %}" style="text-decoration: none; color: inherit;">
+        {% if post.thumbnail %}
+          <img src="{{ post.thumbnail.url }}" class="card-img-top" alt="Thumbnail">
+        {% else %}
+          <p class="text-center">No image available</p>
+        {% endif %}
     <p><strong>Author:</strong> {{ lesson.author.username }}</p>
     <p><strong>Created at:</strong> {{ lesson.created_date }}</p>
     <p><strong>Published at:</strong> {{ lesson.published_date }}</p>

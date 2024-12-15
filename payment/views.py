@@ -58,7 +58,10 @@ def payment(request):
                 },
                 "credit_card": {
                     "secure": True
-                }
+                },
+                "callbacks": {
+                    "finish": "https://bb0e-36-83-205-186.ngrok-free.app/payment/finish/"
+                },
             }
             print("Transaction payload:", transaction)
 

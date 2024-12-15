@@ -9,7 +9,7 @@ from django.utils import timezone
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
-from courses_app.models import Post , Class, Lesson, Course
+from courses_app.models import Post , Class, Lesson, Subchapter
 from courses_app.forms import PostForm , ClassForm
 from user_app.models import User  # Ganti Teacher dengan User
 from payment.models import Order , OrderItem
@@ -210,5 +210,5 @@ class LessonDetailView(DetailView):
         return context
     
 def courses_list(request):
-    courses = Course.objects.prefetch_related('lessons').all()  # Mengambil semua data dari model Class beserta relasi
-    return render(request, 'courses_list.html', {'courses': courses})
+    subchapters = Subchapter.objects.prefetch_related('Sub').all()  # Mengambil semua data Subchapter beserta relasi ManyToMany Sub
+    return render(request, 'courses_list.html', {'subchapters': subchapters})

@@ -13,20 +13,6 @@
     </div>
   </div>
 
-{% comment %} <h1 class="poppins-langganan" style="text-align: center;">Berlangganan <span style="color: #F48C06;">Produk</span> <br>EduTeach</h1>
-<div class="container mt-4">
-  <!-- Form Pencarian -->
-  <form method="get" action="{% url 'post_list' %}">
-    <div class="row mb-4">
-      <div class="col-md-10">
-        <input type="text" name="search" class="form-control" placeholder="Search posts..." value="{{ search_query }}">
-      </div>
-      <div class="col-md-2">
-        <button type="submit" class="btn btn-primary w-100" style="background-color: #F48C06;">Search</button>
-      </div>
-    </div>
-  </form> {% endcomment %}
-
     <h1 class="lesson-title" style="margin-left:5rem !important; margin: 2rem;">Lesson List</h1>
         <ul class="container">
         {% for lesson in lessons %}

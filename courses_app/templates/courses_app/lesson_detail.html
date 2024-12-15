@@ -1,4 +1,4 @@
-{% extends 'dashboard_app/base_dashboard_student.html' %}
+{% extends 'dashboard_app/base_dashboard_teacher.html' %}
 {% load static %}
 {% block head_block %}
 <link rel="stylesheet" href="{% static 'css/lesson_detail.css' %}">
@@ -6,43 +6,78 @@
 {% endblock %}
 {% load embed_video_tags %}
 {% block body_block %}
-    <h1>{{ lesson.title }}</h1>
+<div class="py-3" style="background:#FFBD73">
+  <div class="container">
+      <a class="text-black" href="{% url 'user_app:teacherdashboard' %}" style="font-size: 25px; text-decoration: none !important;"> Dashboard /</a>
+      <a class="text-black" href="{% url 'lesson_list' %}" style="font-size: 25px; text-decoration: none !important;"> Lesson /</a>
+      <a class="text-black" href="#" style="font-size: 25px; text-decoration: none !important;"> {{ post.title }} </a>
+      <h1 class="post-title" >{{ lesson.title }}</h1>
+
+  <!-- Post published date or publish button -->
+      {% if lesson.published_date %}
+      <div class="date post-date" style="font-size: 17px !important; margin-left: 5px !important;">Dibuat pada : {{ lesson.published_date }}</div>
+      {% else %}
+      <a class="btn btn-primary" href="#">Publish</a>
+      {% endif %}
+  </div>
+  <div class="block">
+      <!-- Thumbnail Image -->
+     {% if lesson.thumbnail %}
+      <img src="{{ lesson.thumbnail.url }}" alt="Thumbnail" style="width: 100%; height: auto;">
+     {% else %}
+      <p>No image available</p>
+     {% endif %}
+
+      <!-- Tombol 'Lihat Kelas' jika pengguna telah membeli post ini -->
+      <a href="#" class="btn btn-primary">Lihat Kelas</a>
+
+ </div>
+</div>
+<br>
+<div class="item">
+  <!-- Video -->
+  {% if lesson.video %}
+  <!-- Menampilkan video -->
+  {% video lesson.video "550x360" %}
+  {% else %}
+  <p>No video found for this post.</p>
+  {% endif %}   
+  <p class="deskripsi">Contoh video pembelajaran</p>
+
+  <div id = "content" >
+    <p><strong>Created at:</strong> {{ lesson.created_date }}</p>
+    <p><strong>Published at:</strong> {{ lesson.published_date }}</p>
+  <h3 class="title">Course content:</h3>
+</div>
+<br>
+
+  {% comment %} <ul>
+      {% if classes %}
+          {% for class in classes %}
+              <li>
+                  <strong>{{ class.class_name }}</strong><br>
+                  <em>{{ class.text }}</em><br>
+              </li>
+          {% endfor %}
+      {% else %}
+          <li>No classes available for this post.</li>
+      {% endif %}
+  </ul>
+</div> {% endcomment %}
+
+    <h1></h1>
 
     <a href="{% url 'post_detail' pk=lesson.pk %}" style="text-decoration: none; color: inherit;">
-        {% if post.thumbnail %}
-          <img src="{{ post.thumbnail.url }}" class="card-img-top" alt="Thumbnail">
+        {% if lesson.thumbnail %}
+          <img src="{{ lesson.thumbnail.url }}" class="card-img-top" alt="Thumbnail">
         {% else %}
           <p class="text-center">No image available</p>
         {% endif %}
-    <p><strong>Author:</strong> {{ lesson.author.username }}</p>
-    <p><strong>Created at:</strong> {{ lesson.created_date }}</p>
-    <p><strong>Published at:</strong> {{ lesson.published_date }}</p>
-
-    {% if lesson.thumbnail %}
-        <img src="{{ lesson.thumbnail.url }}" alt="{{ lesson.title }}" width="300">
-    {% endif %}
 
     {% if lesson.video %}
         <div>
             <h3>Watch Video</h3>
             <iframe width="560" height="315" src="{{ lesson.video }}" frameborder="0" allowfullscreen></iframe>
         </div>
-    {% endif %}
-
-    <h2>Related Products</h2>
-    <ul>
-        {% for product in products %}
-            <li>
-                <h3>{{ product.name }}</h3>
-                <p>{{ product.small_desc }}</p>
-                <p>Price: ${{ product.sell_price }}</p>
-                {% if product.product_image %}
-                    <img src="{{ product.product_image.url }}" alt="{{ product.name }}" width="150">
-                {% endif %}
-            </li>
-        {% endfor %}
-    </ul>
-
-    <p><a href="{% url 'lesson_list' %}">Back to Lesson List</a></p>
-    
+    {% endif %}    
 {% endblock %}

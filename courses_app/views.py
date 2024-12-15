@@ -9,7 +9,7 @@ from django.utils import timezone
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
-from courses_app.models import Post , Class, Lesson
+from courses_app.models import Post , Class, Lesson, Course
 from courses_app.forms import PostForm , ClassForm
 from user_app.models import User  # Ganti Teacher dengan User
 from payment.models import Order , OrderItem
@@ -208,3 +208,7 @@ class LessonDetailView(DetailView):
         # Menambahkan produk terkait kelas ini ke dalam konteks
         context['products'] = lesson.products.all()  # Mengambil semua produk terkait dengan lesson
         return context
+    
+def courses_list(request):
+    courses = Course.objects.prefetch_related('lessons').all()  # Mengambil semua data dari model Class beserta relasi
+    return render(request, 'courses_list.html', {'courses': courses})

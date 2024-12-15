@@ -30,7 +30,9 @@
         <br>
         <p><strong>Created at:</strong> {{ lesson.created_date }}</p>
         <p><strong>Published at:</strong> {{ lesson.published_date }}</p>
-        <p class="title"><strong>Course content:</strong> Matematika Kelas 10</p>
+        {% for product in lesson.products.all %}
+        <p class="title"><strong>Course :</strong> {{ product.name }}</p>
+        {% endfor %}
     <br>
       <!-- Tombol 'Lihat Kelas' jika pengguna telah membeli post ini -->
       <a href="#" class="btn btn-primary">Lihat Kelas</a>
@@ -48,8 +50,10 @@
   {% endif %}   
   <p class="deskripsi">Contoh video pembelajaran</p>
 </div>
-
-  {% comment %} <ul>
+{% comment %}
+<div id = "content">
+    <h3 class="title">Course content:</h3>
+        <ul>
       {% if classes %}
           {% for class in classes %}
               <li>
@@ -61,5 +65,6 @@
           <li>No classes available for this post.</li>
       {% endif %}
   </ul>
-</div> {% endcomment %}    
+</div> {% endcomment %}   
+<br> 
 {% endblock %}

@@ -293,8 +293,14 @@ clear: both;
 .card.hidden {
   display: none;
 }
+
+.custom-bg {
+  background-color: #2F327D;
+  color: white; /* Pastikan teks tetap terlihat dengan warna putih */
+
 /*Testimonials*/
 /* Styling untuk container utama */
+
 .carousel-inner {
   padding: 20px; /* Jarak dalam carousel */
 }
